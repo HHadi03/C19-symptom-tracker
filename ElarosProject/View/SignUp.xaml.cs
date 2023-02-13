@@ -27,7 +27,7 @@ namespace ElarosProject.View
         {
             _loginVM = BindingContext as LoginVM;
 
-            _loginVM.LoginInfoList.Add(new LoginModel(UserName.Text, PassWord.Text));
+            _loginVM.LoginInfoList.Add(new LoginModel(UserName.Text, PassWord.Text, Email.Text));
 
             DisplayAlert("SIGNED UP", "You may now login with your username and password.", "OK");
             Navigation.PushAsync(new LogIn(_loginVM));

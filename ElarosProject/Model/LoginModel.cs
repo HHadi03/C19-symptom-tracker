@@ -8,11 +8,13 @@ namespace ElarosProject.Model
     {
         private string username { get; set; }
         private string password { get; set; }
+        private string email { get; set; }
 
-        public LoginModel(string username, string password)
+        public LoginModel(string username, string password, string email)
         {
             this.username = username;
             this.password = password;
+            this.email = email;
         }
 
         public string GetUsername()

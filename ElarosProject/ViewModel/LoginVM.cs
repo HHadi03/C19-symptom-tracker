@@ -16,11 +16,11 @@ namespace ElarosProject.ViewModel
             // Hard coded data for testing until DB is setup
             LoginInfoList = new ObservableCollection<LoginModel>
             {
-                new LoginModel("jchester", "jordan123"),
-                new LoginModel("nsinnott", "niall123"),
-                new LoginModel("srafiq", "sumaiya123"),
-                new LoginModel("jboothman", "josh123"),
-                new LoginModel("hhadi", "hassan123")
+                new LoginModel("jchester", "jordan123", "jchester@shu.com"),
+                new LoginModel("nsinnott", "niall123", "nsinnott@shu.com"),
+                new LoginModel("srafiq", "sumaiya123", "srafiq@shu.com"),
+                new LoginModel("jboothman", "josh123", "jboothman@shu.com"),
+                new LoginModel("hhadi", "hassan123", "hhadi@shu.com")
             };
         }
     }
