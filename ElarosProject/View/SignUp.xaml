@@ -7,11 +7,11 @@
             <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
                 <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
             </Frame>
-            <Label Text="Please provide your email address and create your username and password" TextColor="{StaticResource AppTextColor}" Padding="0,25" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
-            <Entry x:Name="Email" Placeholder="Email Address" WidthRequest="300" HorizontalOptions="Center" PlaceholderColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center"/>
-            <Entry x:Name="UserName" Placeholder="Username" WidthRequest="300" HorizontalOptions="Center" PlaceholderColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center"/>
-            <Entry x:Name="PassWord" Placeholder="Password" WidthRequest="300" HorizontalOptions="Center" PlaceholderColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" IsPassword="True"/>
-            <Button Text="Sign Up" TextColor="{StaticResource AppTextColor}" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" CornerRadius="10" Margin="0,20" BackgroundColor="{StaticResource ButtonColor}" Clicked="SignUpClick"/>
+            <Label Text="Please provide your email address and create your username and password" TextColor="{StaticResource AppTextColor}" FontSize="20" Padding="10,25" Margin="0,40,0,0" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+            <Entry x:Name="Email" Placeholder="Email Address" WidthRequest="300" HorizontalOptions="Center" PlaceholderColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" FontSize="20" HorizontalTextAlignment="Center"/>
+            <Entry x:Name="UserName" Placeholder="Username" WidthRequest="300" HorizontalOptions="Center" PlaceholderColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" FontSize="20" HorizontalTextAlignment="Center"/>
+            <Entry x:Name="PassWord" Placeholder="Password" WidthRequest="300" HorizontalOptions="Center" PlaceholderColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" FontSize="20" HorizontalTextAlignment="Center" IsPassword="True"/>
+            <Button Text="Sign Up" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="24" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" CornerRadius="10" Margin="0,40" BackgroundColor="{StaticResource ButtonColor}" Clicked="SignUpClick"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

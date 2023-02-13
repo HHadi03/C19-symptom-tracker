@@ -7,10 +7,10 @@
             <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
                 <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
             </Frame>
-            <Label Text="Don't have an account?" TextColor="{StaticResource AppTextColor}" Padding="0,25" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
-            <Button Text="Sign Up" TextColor="{StaticResource AppTextColor}" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" Clicked="SignUpClick" CornerRadius="10" BackgroundColor="{StaticResource ButtonColor}"/>
-            <Label Text="Already have an account?" TextColor="{StaticResource AppTextColor}" Padding="0,25" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
-            <Button Text="Log In" TextColor="{StaticResource AppTextColor}" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" Clicked="LogInClick" CornerRadius="10" BackgroundColor="{StaticResource ButtonColor}"/>
+            <Label Text="Don't have an account?" TextColor="{StaticResource AppTextColor}" FontSize="20" Padding="0,25" Margin="0,40,0,0" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+            <Button Text="Sign Up" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="24" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" Clicked="SignUpClick" CornerRadius="10" BackgroundColor="{StaticResource ButtonColor}"/>
+            <Label Text="Already have an account?" TextColor="{StaticResource AppTextColor}" FontSize="20" Padding="0,25" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0"/>
+            <Button Text="Log In" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="24" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" Clicked="LogInClick" CornerRadius="10" BackgroundColor="{StaticResource ButtonColor}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
