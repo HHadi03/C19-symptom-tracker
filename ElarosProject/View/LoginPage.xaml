@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ElarosProject.View.LoginPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="AliceBlue">
+            <Frame BackgroundColor="Orange">
+                <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
+            </Frame>
+            <Label Text="Don't have an account?" TextColor="Black" Padding="0,25" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+            <Button Text="Sign Up" TextColor="Black" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" Clicked="SignUpClick" CornerRadius="10" BackgroundColor="#bef1ff"/>
+            <Label Text="Already have an account?" TextColor="Black" Padding="0,25" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+            <Button Text="Log In" TextColor="Black" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" Clicked="LogInClick" CornerRadius="10" BackgroundColor="#bef1ff"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
