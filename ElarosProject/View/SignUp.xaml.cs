@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Mail;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -50,11 +51,40 @@ namespace ElarosProject.View
                 return;
             }
 
+            // Checks entered email is in the correct format
+            if (IsValid(Email.Text) == false)
+            {
+                DisplayAlert("ERROR", "Email address is an incorrect format. Please try again.", "OK");
+                UserName.Text = null;
+                PassWord.Text = null;
+                Email.Text = null;
+
+                return;
+            }
+
             // Success alert - account created
             _loginVM.LoginInfoList.Add(new LoginModel(UserName.Text, PassWord.Text, Email.Text));
             DisplayAlert("SIGNED UP", "You may now login with your username and password.", "OK");
             Navigation.PushAsync(new LogIn(_loginVM));
             
+        }
+
+        // Uses MailAddress from System.Net.Mail to check if an email address is in the valid format. Used in
+        // verification checks when new user signs up.
+        private static bool IsValid(string email)
+        {
+            var valid = true;
+
+            try
+            {
+                var emailAddress = new MailAddress(email);
+            }
+            catch
+            {
+                valid = false;
+            }
+
+            return valid;
         }
     }
 }
