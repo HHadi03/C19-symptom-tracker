@@ -14,5 +14,15 @@ namespace ElarosProject.Model
             this.username = username;
             this.password = password;
         }
+
+        public string GetUsername()
+        {
+            return username;
+        }
+
+        public string GetPassword()
+        {
+            return password;
+        }
     }
 }

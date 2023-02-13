@@ -8,9 +8,9 @@
                 <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
             </Frame>
             <Label Text="Enter your username and password" TextColor="Black" Padding="0,25" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
-            <Entry Placeholder="username" WidthRequest="200" HorizontalOptions="Center" PlaceholderColor="Gray" TextColor="Black" HorizontalTextAlignment="Center" />
-            <Entry Placeholder="password" WidthRequest="200" HorizontalOptions="Center" PlaceholderColor="Gray" TextColor="Black" HorizontalTextAlignment="Center" IsPassword="True"/>
-            <Button Text="Log In" TextColor="Black" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" CornerRadius="10" Margin="0,20" BackgroundColor="#bef1ff"/>
+            <Entry x:Name="UserName" Placeholder="username" WidthRequest="200" HorizontalOptions="Center" PlaceholderColor="Gray" TextColor="Black" HorizontalTextAlignment="Center" />
+            <Entry x:Name="PassWord" Placeholder="password" WidthRequest="200" HorizontalOptions="Center" PlaceholderColor="Gray" TextColor="Black" HorizontalTextAlignment="Center" IsPassword="True"/>
+            <Button Text="Log In" TextColor="Black" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" CornerRadius="10" Margin="0,20" BackgroundColor="#bef1ff" Clicked="LogInClick"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

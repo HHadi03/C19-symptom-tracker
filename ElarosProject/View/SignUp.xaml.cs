@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ElarosProject.Model;
+using ElarosProject.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,23 @@ namespace ElarosProject.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignUp : ContentPage
     {
+        private LoginVM _loginVM;
+
         public SignUp()
         {
             InitializeComponent();
+
+            this.BindingContext = new LoginVM();
+        }
+
+        protected void SignUpClick(object sender, EventArgs e)
+        {
+            _loginVM = BindingContext as LoginVM;
+
+            _loginVM.LoginInfoList.Add(new LoginModel(UserName.Text, PassWord.Text));
+
+            DisplayAlert("SIGNED UP", "You may now login with your username and password.", "OK");
+            Navigation.PushAsync(new LogIn(_loginVM));
         }
     }
 }
