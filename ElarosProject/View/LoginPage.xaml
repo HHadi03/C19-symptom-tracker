@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ElarosProject.View.LoginPage">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="AliceBlue">
-            <Frame BackgroundColor="Orange">
+        <StackLayout BackgroundColor="{StaticResource AppBackgroundColor}">
+            <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
                 <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
             </Frame>
-            <Label Text="Don't have an account?" TextColor="Black" Padding="0,25" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
-            <Button Text="Sign Up" TextColor="Black" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" Clicked="SignUpClick" CornerRadius="10" BackgroundColor="#bef1ff"/>
-            <Label Text="Already have an account?" TextColor="Black" Padding="0,25" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
-            <Button Text="Log In" TextColor="Black" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" Clicked="LogInClick" CornerRadius="10" BackgroundColor="#bef1ff"/>
+            <Label Text="Don't have an account?" TextColor="{StaticResource AppTextColor}" Padding="0,25" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+            <Button Text="Sign Up" TextColor="{StaticResource AppTextColor}" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" Clicked="SignUpClick" CornerRadius="10" BackgroundColor="{StaticResource ButtonColor}"/>
+            <Label Text="Already have an account?" TextColor="{StaticResource AppTextColor}" Padding="0,25" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+            <Button Text="Log In" TextColor="{StaticResource AppTextColor}" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" Clicked="LogInClick" CornerRadius="10" BackgroundColor="{StaticResource ButtonColor}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

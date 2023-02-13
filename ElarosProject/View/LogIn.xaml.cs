@@ -42,6 +42,16 @@ namespace ElarosProject.View
             // Set BindingContext for _loginVM attribute as LoginVM
             _loginVM = BindingContext as LoginVM;
 
+            // Checks that no fields are left empty
+            if (UserName.Text == null || PassWord.Text == null)
+            {
+                DisplayAlert("ERROR", "Entry fields cannot be blank. Please try again", "OK");
+                UserName.Text = null;
+                PassWord.Text = null;
+
+                return;
+            }
+
             // Loop through each user and if entered username / password matches then display success alert
             // NOTE: This will navigate to the Dashboard once created
             foreach (LoginModel login in _loginVM.LoginInfoList)
