@@ -19,11 +19,13 @@ namespace ElarosProject.View
 
         protected void SignUpClick(object sender, EventArgs e)
         {
+            // Open Sign Up page
             Navigation.PushAsync(new SignUp());
         }
 
         protected void LogInClick(object sender, EventArgs e)
         {
+            // Open Log In page
             Navigation.PushAsync(new LogIn());
         }
     }
