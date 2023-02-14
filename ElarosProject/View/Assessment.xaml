@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ElarosProject.View.Assessment"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout BackgroundColor="AliceBlue">
+        <Frame BackgroundColor="Orange">
+            <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
+        </Frame>
+        <Label Text="Initial Assessment" TextColor="Black" Padding="0,25" FontAttributes="Bold" FontSize="Large" HorizontalOptions="CenterAndExpand" />
+        <ListView x:Name="symptomsListView" HasUnevenRows="True" SelectionMode="None">
+            <ListView.ItemTemplate >
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="12,0,0,0">
+                            <CheckBox IsChecked="{Binding IsChecked}" Color="ForestGreen" WidthRequest="50" HeightRequest="50" />
+                            <Label Text="{Binding Description}" VerticalOptions="Center" FontSize="Medium" TextColor="Black" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
+
+
+
