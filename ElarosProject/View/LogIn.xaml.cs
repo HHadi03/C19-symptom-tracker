@@ -60,6 +60,7 @@ namespace ElarosProject.View
                 {
                     DisplayAlert("SUCCESS", "Login successful!", "OK");
                     loginFound = true;
+                    this.Navigation.PushAsync(new Dashboard(login));
                 }               
             }
 
