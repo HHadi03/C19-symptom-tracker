@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ElarosProject.View.Dashboard"
+            xmlns:local="clr-namespace:ElarosProject.View"
+            NavigationPage.HasNavigationBar="False"
+            BarBackgroundColor="{StaticResource FrameBackgroundColor}"
+            SelectedTabColor="{StaticResource AppTextColor}"
+            UnselectedTabColor="White"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom">
+
+    <ContentPage Title="Dashboard" BackgroundColor="{StaticResource AppBackgroundColor}" IconImageSource="dashboard.png">
+        <StackLayout>
+            <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
+                <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
+            </Frame>
+            <Label x:Name="WelcomeLabel" HorizontalOptions="Center" Text="" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="24" Padding="0,25"/>
+            <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Complete a Covid questionnaire in the Questionnaire tab" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="15,25"/>
+            <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Track your symptoms in the Symptom Diary tab" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="15,25"/>
+            <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Set your symptom goals in the Goal Setting tab" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="15,25"/>
+        </StackLayout>
+    </ContentPage>
+    <local:Questionnaire Title="Questionnaire" IconImageSource="checklist.png"/>
+    <local:Diary Title="Symptom Diary" IconImageSource="diary.png"/>
+    <local:Goals Title="Goal Setting" IconImageSource="goal.png"/>
+
+</TabbedPage>
