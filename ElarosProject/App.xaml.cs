@@ -11,7 +11,7 @@ namespace ElarosProject
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Assessment());
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()
