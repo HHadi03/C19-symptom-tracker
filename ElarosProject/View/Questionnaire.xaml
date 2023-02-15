@@ -7,7 +7,8 @@
             <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
                 <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
             </Frame>
-            <Label Text="QUESTIONNAIRE" HorizontalOptions="Center" TextColor="{StaticResource AppTextColor}" />
+            <Label Text="Covid-19 Questionnaire" HorizontalOptions="Center" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="28" Padding="0,25"/>
+            <Image Source="placeholder.png" HorizontalOptions="Center" Margin="15,20"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
