@@ -1,37 +1,49 @@
 ﻿using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ElarosProject.ViewModel;
+using System;
+using System.ComponentModel;
+using ElarosProject.Model;
+using System.Linq;
 
 namespace ElarosProject.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Assessment : ContentPage
     {
+        private AssessmentVM _assessmentVM;
+
         public Assessment()
         {
             InitializeComponent();
-            symptomsListView.ItemsSource = new List<Symptom>
-            {
-                new Symptom { Description = "Breathlessness" },
-                new Symptom { Description = "Cough" },
-                new Symptom { Description = "Voice Change/Noisy Breathing" },
-                new Symptom { Description = "Continence" },
-                new Symptom { Description = "Aches/Pains" },
-                new Symptom { Description = "Concentration/Short term memory" },
-                new Symptom { Description = "Mental Health (Anxiety/Depression)" },
-                new Symptom { Description = "Have you experienced PTSD related to your illness" },
-                new Symptom { Description = "Communication" },
-                new Symptom { Description = "Mobility" },
-                new Symptom { Description = "Personal Care" },
-                new Symptom { Description = "Day to day tasks" },
-                new Symptom { Description = "Do you provide care for another individual?" }
-            };
+            BindingContext = new AssessmentVM();
+            
         }
 
-        public class Symptom
+        protected void SubmitClick(object sender, EventArgs e)
         {
-            public string Description { get; set; }
-            public bool IsChecked { get; set; }
+            _assessmentVM = BindingContext as AssessmentVM;        
+
+            foreach (var item in SymptomsListView.ItemsSource)
+            {
+                // Cast item to a Symptom object
+                var symptom = (Symptom)item;
+
+                // Add to AssessmentResults if checked
+                if (symptom.IsChecked)
+                {
+                    _assessmentVM.AssessmentResults.Add(new AssessmentModel(_assessmentVM._loginVM.LoginInfoList.Where(u => u.GetUserID() == 1).FirstOrDefault(), symptom, 5));
+                    //
+                    // TODO: Add severity slider to Assessment.xaml and use that data in code above. Currently used 5 as a placeholder.
+                    //
+                }               
+            }
+
+            this.Navigation.PopModalAsync();
+            DisplayAlert("Assessment Submitted", "You may now login with your username and password.", "OK");
+
         }
+
     }
 }

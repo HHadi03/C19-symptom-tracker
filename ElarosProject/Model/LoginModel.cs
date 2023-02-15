@@ -6,25 +6,32 @@ namespace ElarosProject.Model
 {
     public class LoginModel
     {
-        private string username { get; set; }
-        private string password { get; set; }
-        private string email { get; set; }
+        private int UserID { get; set; }
+        private string Username { get; set; }
+        private string Password { get; set; }
+        private string Email { get; set; }
 
-        public LoginModel(string username, string password, string email)
+        public LoginModel(int uid, string username, string password, string email)
         {
-            this.username = username;
-            this.password = password;
-            this.email = email;
+            UserID = uid;
+            Username = username;
+            Password = password;
+            Email = email;
+        }
+
+        public int GetUserID()
+        {
+            return UserID;
         }
 
         public string GetUsername()
         {
-            return username;
+            return Username;
         }
 
         public string GetPassword()
         {
-            return password;
+            return Password;
         }
     }
 }

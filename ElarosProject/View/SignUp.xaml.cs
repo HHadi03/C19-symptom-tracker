@@ -16,6 +16,7 @@ namespace ElarosProject.View
     public partial class SignUp : ContentPage
     {
         private LoginVM _loginVM;
+        
 
         public SignUp()
         {
@@ -24,7 +25,7 @@ namespace ElarosProject.View
             this.BindingContext = new LoginVM();
         }
 
-        protected void SignUpClick(object sender, EventArgs e)
+        async void SignUpClick(object sender, EventArgs e)
         {
             // Set BindingContext for _loginVM attribute as LoginVM
             _loginVM = BindingContext as LoginVM;
@@ -32,7 +33,7 @@ namespace ElarosProject.View
             // Checks that no fields are left empty
             if (UserName.Text == null || PassWord.Text == null || Email.Text == null)
             {
-                DisplayAlert("ERROR", "Entry fields cannot be blank. Please try again", "OK");
+                await DisplayAlert("ERROR", "Entry fields cannot be blank. Please try again", "OK");
                 UserName.Text = null;
                 PassWord.Text = null;
                 Email.Text = null;
@@ -44,7 +45,7 @@ namespace ElarosProject.View
             var username = _loginVM.LoginInfoList.Where(u => u.GetUsername() == UserName.Text);
             if (username.Any())
             {
-                DisplayAlert("ERROR", "Username already exists, please try again.", "OK");
+                await DisplayAlert("ERROR", "Username already exists, please try again.", "OK");
                 UserName.Text = null;
                 PassWord.Text = null;
 
@@ -54,7 +55,7 @@ namespace ElarosProject.View
             // Checks entered email is in the correct format
             if (IsValid(Email.Text) == false)
             {
-                DisplayAlert("ERROR", "Email address is an incorrect format. Please try again.", "OK");
+                await DisplayAlert("ERROR", "Email address is an incorrect format. Please try again.", "OK");
                 UserName.Text = null;
                 PassWord.Text = null;
                 Email.Text = null;
@@ -63,10 +64,10 @@ namespace ElarosProject.View
             }
 
             // Success alert - account created
-            _loginVM.LoginInfoList.Add(new LoginModel(UserName.Text, PassWord.Text, Email.Text));
-            DisplayAlert("SIGNED UP", "You may now login with your username and password.", "OK");
-            Navigation.PushAsync(new LogIn(_loginVM));
-            
+            _loginVM.LoginInfoList.Add(new LoginModel((_loginVM.LoginInfoList.Count + 1), UserName.Text, PassWord.Text, Email.Text));
+            await Navigation.PushModalAsync(new Assessment());
+            // await Navigation.PushAsync(new Assessment());
+            await Navigation.PushAsync(new LogIn(_loginVM));
         }
 
         // Uses MailAddress from System.Net.Mail to check if an email address is in the valid format. Used in
