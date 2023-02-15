@@ -13,15 +13,19 @@ namespace ElarosProject.View
     public partial class Assessment : ContentPage
     {
         private AssessmentVM _assessmentVM;
+        private LoginVM _loginVM;
+        private LoginModel User;
 
-        public Assessment()
+        public Assessment(LoginModel user, AssessmentVM assessmentVM, LoginVM loginVM)
         {
             InitializeComponent();
+            _assessmentVM = assessmentVM;
+            _loginVM = loginVM;
             BindingContext = new AssessmentVM();
-            
+            User = user;
         }
 
-        protected void SubmitClick(object sender, EventArgs e)
+        async void SubmitClick(object sender, EventArgs e)
         {
             _assessmentVM = BindingContext as AssessmentVM;        
 
@@ -33,15 +37,16 @@ namespace ElarosProject.View
                 // Add to AssessmentResults if checked
                 if (symptom.IsChecked)
                 {
-                    _assessmentVM.AssessmentResults.Add(new AssessmentModel(_assessmentVM._loginVM.LoginInfoList.Where(u => u.GetUserID() == 1).FirstOrDefault(), symptom, 5));
+                    _assessmentVM.AssessmentResults.Add(new AssessmentModel(User, symptom, 5, DateTime.Now.ToLongDateString()));
                     //
                     // TODO: Add severity slider to Assessment.xaml and use that data in code above. Currently used 5 as a placeholder.
                     //
                 }               
             }
 
-            this.Navigation.PopModalAsync();
-            DisplayAlert("Assessment Submitted", "You may now login with your username and password.", "OK");
+            // Move onto Login Page - Carry over the viewmodel instances so data persists through the pages
+            await Navigation.PushAsync(new LogIn(_loginVM, _assessmentVM));
+            await DisplayAlert("Assessment Submitted", "You may now login with your username and password.", "OK");
 
         }
 

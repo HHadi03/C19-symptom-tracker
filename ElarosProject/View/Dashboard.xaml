@@ -5,8 +5,8 @@
             xmlns:local="clr-namespace:ElarosProject.View"
             NavigationPage.HasNavigationBar="False"
             BarBackgroundColor="{StaticResource FrameBackgroundColor}"
-            SelectedTabColor="{StaticResource AppTextColor}"
-            UnselectedTabColor="White"
+            SelectedTabColor="AliceBlue"
+            UnselectedTabColor="Black"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             android:TabbedPage.ToolbarPlacement="Bottom">
 
@@ -15,10 +15,27 @@
             <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
                 <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
             </Frame>
-            <Label x:Name="WelcomeLabel" HorizontalOptions="Center" Text="" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="24" Padding="0,25"/>
-            <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Complete a Covid questionnaire in the Questionnaire tab" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="15,25"/>
-            <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Track your symptoms in the Symptom Diary tab" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="15,25"/>
-            <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Set your symptom goals in the Goal Setting tab" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="15,25"/>
+            <Label x:Name="WelcomeLabel" HorizontalOptions="Center" Text="" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="28" Padding="0,25"/>
+            <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Your current symptoms:" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="20,0"/>
+            <CarouselView x:Name="SymptomCarousel" ItemsSource="{Binding}"  Margin="30, 20" HeightRequest="180">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame Margin="5" Padding="15" HasShadow="True" CornerRadius="10">
+                                <StackLayout>
+                                    <Label Text="{Binding Symptom.SymptomName}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="24"/>
+                                    <Label Text="{Binding Severity, StringFormat='{}{0}/10'}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="24"/>
+                                    <Label Text="{Binding DateLogged}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="24"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Your current goals:" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="20,0"/>
+            
+            <!--CarouselView to go here once goal setting is ready-->
+            
         </StackLayout>
     </ContentPage>
     <local:Questionnaire Title="Questionnaire" IconImageSource="checklist.png"/>

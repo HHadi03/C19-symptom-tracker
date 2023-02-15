@@ -16,20 +16,23 @@ namespace ElarosProject.View
     public partial class LogIn : ContentPage
     {
         private LoginVM _loginVM;
+        private AssessmentVM _assessmentVM;
 
         // Default constructor for existing users
         public LogIn()
         {
             InitializeComponent();
+            _assessmentVM = new AssessmentVM();
             this.BindingContext = new LoginVM();
         }
 
         // Constructor used by those newly signed up - uses the same LoginVM instance used by SignUp page
         // as the BindingContext so the new user details are available in the collection.
         // NOTE: This will be redundant once a database is connected with user info
-        public LogIn(LoginVM login)
+        public LogIn(LoginVM login, AssessmentVM assessmentVM)
         {
             InitializeComponent();
+            _assessmentVM = assessmentVM;
             this._loginVM = login;
             this.BindingContext = login;
         }
@@ -60,7 +63,9 @@ namespace ElarosProject.View
                 {
                     DisplayAlert("SUCCESS", "Login successful!", "OK");
                     loginFound = true;
-                    this.Navigation.PushAsync(new Dashboard(login));
+
+                    // Moves to dashboard - carrying over viewmodel instances again so data persists
+                    this.Navigation.PushAsync(new Dashboard(login, _assessmentVM));
                 }               
             }
 
