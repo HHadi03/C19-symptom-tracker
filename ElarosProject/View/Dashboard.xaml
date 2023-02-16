@@ -15,11 +15,11 @@
     <ContentPage Title="Dashboard" BackgroundColor="{StaticResource AppBackgroundColor}" IconImageSource="dashboard.png">
         <StackLayout>
             <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
-                <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
+                <Image Source="ElarosLogo.png" HorizontalOptions="Center"  HeightRequest="80" ></Image>
             </Frame>
             <Label x:Name="WelcomeLabel" HorizontalOptions="Center" Text="" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="28" Padding="0,25"/>
             <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Your current symptoms:" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="20,0"/>
-            <CarouselView x:Name="SymptomCarousel" ItemsSource="{Binding}"  Margin="30, 20" HeightRequest="180">
+            <CarouselView x:Name="SymptomCarousel" ItemsSource="{Binding}" Margin="30, 20" HeightRequest="180">
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout>

@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ElarosProject.View;
+using System.Threading.Tasks;
 
 namespace ElarosProject
 {
@@ -22,8 +23,14 @@ namespace ElarosProject
         {
         }
 
-        protected override void OnResume()
+        protected async override void OnResume()
         {
+            await MainPage.Navigation.PushModalAsync(new ResumePage(), false);
+            await Task.Delay(800);
+            await MainPage.Navigation.PopModalAsync(true);
+
+            
+
         }
     }
 }

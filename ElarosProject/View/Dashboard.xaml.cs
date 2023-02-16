@@ -27,9 +27,9 @@ namespace ElarosProject.View
 
             // Code to load Dashboard (3rd tab) as initial page
             var pages = Children.GetEnumerator();
-            pages.MoveNext(); // First page
-            pages.MoveNext(); // Second page
-            pages.MoveNext();
+            pages.MoveNext(); // Moves to first tab
+            pages.MoveNext(); // Moves to second tab
+            pages.MoveNext(); // Moves to third tab (The Dashboard tab)
             CurrentPage = pages.Current;
 
             // Set current user and their ID
@@ -38,8 +38,9 @@ namespace ElarosProject.View
 
             // Uses persisted AssessmentVM to calculate new AssessmentResults collection for specific user
             _assessmentVM = assessmentVM;
-            BindingContext = _assessmentVM;
             specificAssessmentResults = _assessmentVM.SpecificAssessmentResults(currentId);
+
+            // Binds new AssessmentResults collection data
             BindingContext = specificAssessmentResults;
             
             // Display welcome to user
