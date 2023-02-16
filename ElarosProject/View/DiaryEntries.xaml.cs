@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 
-namespace CovidApp.Views
+namespace ElarosProject.Views
 {
     public partial class DiaryEntries : ContentPage
     {
