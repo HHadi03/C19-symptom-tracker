@@ -97,7 +97,7 @@ namespace ElarosProject.View
         {
             InitializeComponent();
             chartViewSymptoms.Chart = new RadarChart { Entries = symptoms };
-            chartViewDisabilities.Chart = new RadarChart { Entries= disabilities };
+            chartViewDisabilities.Chart = new RadarChart { Entries = disabilities };
         }
     }
 }
