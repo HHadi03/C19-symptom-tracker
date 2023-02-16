@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="CovidApp.Views.DiaryEntries"
+    Title="{Binding Title}" >
+
+    <ContentPage.Content>
+       
+         <ListView x:Name="entriesList" ItemsSource="{Binding allEntries}">
+             <ListView.Header>
+               <Grid>
+                            <Grid.ColumnDefinitions>
+                                   <ColumnDefinition Width="2*"/>
+                                   <ColumnDefinition Width="5*"/>
+                               </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="5*" />
+                                    <RowDefinition Height="5*" />
+                                </Grid.RowDefinitions>
+                      <Label Text="Entry Date"/>
+                 <Label  Grid.Column="1" Text="Activity Summary"/>
+<Label Grid.Column="2" Text="Fatigue Levels"/>
+
+               </Grid>
+              
+                 
+             </ListView.Header>
+       
+	<ListView.ItemTemplate>
+        
+                    <DataTemplate>
+                        <ViewCell >
+                            <Grid>
+                               <Grid.ColumnDefinitions>
+                                   <ColumnDefinition Width="2*" />
+                                   <ColumnDefinition Width="5*" />
+                               </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="5*" />
+                                    <RowDefinition Height="5*" />
+                                </Grid.RowDefinitions>
+                             
+
+ 
+                                    
+              
+
+                               
+                               
+                          
+                                   <Label Text="{Binding date}"/>
+                          
+                                 <Label Grid.Column="1" Text="{Binding activities}"/>
+                                <Label Grid.Column="2"  Text="{Binding fatigueLevel}"/>
+                            </Grid>
+		
+ 		</ViewCell>
+                    </DataTemplate>
+              </ListView.ItemTemplate>
+</ListView>
+    </ContentPage.Content>
+        <ContentPage.Resources>
+        <ResourceDictionary>
+
+             <Color x:Key="pageAccent">#2a01a5</Color>
+        <Style TargetType="ListView">
+            <Setter Property="Margin" Value="20"></Setter>
+        </Style>
+
+             <Style TargetType="Grid">
+            <Setter Property="BackgroundColor" Value="#d9f1ff"></Setter>
+        </Style>
+        </ResourceDictionary>
+       
+    </ContentPage.Resources>
+</ContentPage>
+
