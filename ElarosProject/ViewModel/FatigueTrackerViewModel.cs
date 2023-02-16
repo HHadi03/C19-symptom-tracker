@@ -5,7 +5,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 
 
-namespace CovidApp.ViewModels
+namespace ElarosProject.ViewModels
 {
     public class FatigueTrackerViewModel : BaseViewModel
     {
