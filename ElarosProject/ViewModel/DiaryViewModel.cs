@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-namespace CovidApp.ViewModels
+namespace ElarosProject.ViewModels
 
 {
 	public class DiaryViewModel : BaseViewModel
