@@ -16,7 +16,7 @@ namespace CovidApp.ViewModels
         public FatigueTrackerViewModel()
         {
             Title = "Fatigue Tracker";
-            logActivities.Add(new Models.fatigueTracker(myDate,));
+            logActivities.Add(new Models.fatigueTracker(myDate));
         }
 
         
