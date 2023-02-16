@@ -15,26 +15,14 @@ namespace ElarosProject.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LogIn : ContentPage
     {
-        private LoginVM _loginVM;
-        private AssessmentVM _assessmentVM;
+        private LoginVM _loginVM = Application.Current.Properties["_loginVM"] as LoginVM;
+        private AssessmentVM _assessmentVM = Application.Current.Properties["_assessmentVM"] as AssessmentVM;
 
         // Default constructor for existing users
         public LogIn()
         {
             InitializeComponent();
-            _assessmentVM = new AssessmentVM();
-            this.BindingContext = new LoginVM();
-        }
-
-        // Constructor used by those newly signed up - uses the same LoginVM instance used by SignUp page
-        // as the BindingContext so the new user details are available in the collection.
-        // NOTE: This will be redundant once a database is connected with user info
-        public LogIn(LoginVM login, AssessmentVM assessmentVM)
-        {
-            InitializeComponent();
-            _assessmentVM = assessmentVM;
-            this._loginVM = login;
-            this.BindingContext = login;
+            this.BindingContext = _loginVM;
         }
 
         protected void LogInClick(object sender, EventArgs e)
@@ -63,9 +51,10 @@ namespace ElarosProject.View
                 {
                     DisplayAlert("SUCCESS", "Login successful!", "OK");
                     loginFound = true;
+                    Application.Current.Properties["currentUser"] = login;
 
                     // Moves to dashboard - carrying over viewmodel instances again so data persists
-                    this.Navigation.PushAsync(new Dashboard(login, _assessmentVM));
+                    this.Navigation.PushAsync(new Dashboard());
                 }               
             }
 

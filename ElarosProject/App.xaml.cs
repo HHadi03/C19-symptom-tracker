@@ -3,16 +3,19 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ElarosProject.View;
 using System.Threading.Tasks;
+using ElarosProject.ViewModel;
 
 namespace ElarosProject
 {
     public partial class App : Application
     {
+        public LoginVM LoginVMApp { get; set; }
         public App()
         {
             InitializeComponent();
 
             MainPage = new NavigationPage(new LoginPage());
+            LoginVMApp = new LoginVM();
         }
 
         protected override void OnStart()

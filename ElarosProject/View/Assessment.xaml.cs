@@ -12,17 +12,14 @@ namespace ElarosProject.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Assessment : ContentPage
     {
-        private AssessmentVM _assessmentVM;
-        private LoginVM _loginVM;
-        private LoginModel User;
+        private AssessmentVM _assessmentVM = Application.Current.Properties["_assessmentVM"] as AssessmentVM;
+        private LoginVM _loginVM = Application.Current.Properties["_loginVM"] as LoginVM;
+        private LoginModel User = Application.Current.Properties["currentUser"] as LoginModel;
 
-        public Assessment(LoginModel user, AssessmentVM assessmentVM, LoginVM loginVM)
+        public Assessment()
         {
             InitializeComponent();
-            _assessmentVM = assessmentVM;
-            _loginVM = loginVM;
-            BindingContext = new AssessmentVM();
-            User = user;
+            BindingContext = _assessmentVM;
         }
 
         async void SubmitClick(object sender, EventArgs e)
@@ -45,7 +42,7 @@ namespace ElarosProject.View
             }
 
             // Move onto Login Page - Carry over the viewmodel instances so data persists through the pages
-            await Navigation.PushAsync(new LogIn(_loginVM, _assessmentVM));
+            await Navigation.PushAsync(new LogIn());
             await DisplayAlert("Assessment Submitted", "You may now login with your username and password.", "OK");
 
         }

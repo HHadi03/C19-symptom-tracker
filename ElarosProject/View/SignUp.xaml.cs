@@ -15,15 +15,13 @@ namespace ElarosProject.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignUp : ContentPage
     {
-        private LoginVM _loginVM;
-        private AssessmentVM _assessmentVM;
+        private LoginVM _loginVM = Application.Current.Properties["_loginVM"] as LoginVM;
+        private AssessmentVM _assessmentVM = Application.Current.Properties["_assessmentVM"] as AssessmentVM;
 
         public SignUp()
         {
             InitializeComponent();
-
-            this.BindingContext = new LoginVM();
-            _assessmentVM = new AssessmentVM();
+            this.BindingContext = _loginVM;
         }
 
         async void SignUpClick(object sender, EventArgs e)
@@ -67,9 +65,10 @@ namespace ElarosProject.View
             // Success alert - account created
             LoginModel newUser = new LoginModel((_loginVM.LoginInfoList.Count + 1), UserName.Text, PassWord.Text, Email.Text);
             _loginVM.LoginInfoList.Add(newUser);
+            Application.Current.Properties["currentUser"] = newUser;
 
             // Move to Assessment Page - Carries over the user, assessment collection and login collection
-            await Navigation.PushAsync(new Assessment(newUser, _assessmentVM, _loginVM));
+            await Navigation.PushAsync(new Assessment());
         }
 
         // Uses MailAddress from System.Net.Mail to check if an email address is in the valid format. Used in

@@ -17,11 +17,11 @@ namespace ElarosProject.View
     public partial class Dashboard : TabbedPage
     {
         private ObservableCollection<AssessmentModel> specificAssessmentResults;
-        private AssessmentVM _assessmentVM;
-        private LoginModel currentUser;
+        private AssessmentVM _assessmentVM = Application.Current.Properties["_assessmentVM"] as AssessmentVM;
+        private LoginModel currentUser = Application.Current.Properties["currentUser"] as LoginModel;
         private int currentId;
 
-        public Dashboard(LoginModel user, AssessmentVM assessmentVM)
+        public Dashboard()
         {
             InitializeComponent();
 
@@ -33,18 +33,16 @@ namespace ElarosProject.View
             CurrentPage = pages.Current;
 
             // Set current user and their ID
-            currentUser = user;
             currentId = currentUser.GetUserID();
 
             // Uses persisted AssessmentVM to calculate new AssessmentResults collection for specific user
-            _assessmentVM = assessmentVM;
             specificAssessmentResults = _assessmentVM.SpecificAssessmentResults(currentId);
 
             // Binds new AssessmentResults collection data
             BindingContext = specificAssessmentResults;
             
             // Display welcome to user
-            WelcomeLabel.Text = "Welcome " + user.GetUsername() + "!";
+            WelcomeLabel.Text = "Welcome " + currentUser.GetUsername() + "!";
         }
     }
 }
