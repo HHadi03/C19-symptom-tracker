@@ -16,5 +16,42 @@ namespace ElarosProject.View
         {
             InitializeComponent();
         }
+
+        protected void NewGoalClick(object sender, EventArgs e)
+        {
+            this.Navigation.PushAsync(new NewGoal());
+        }
+
+        protected void UpdateGoalClick(object sender, EventArgs e)
+        {
+             bool HasGoals = false;
+
+            // code to search if goal have been created
+
+            if(HasGoals == false)
+            {
+                DisplayAlert("Error", "You have no set goals", "OK");
+            }
+            else
+            {
+                this.Navigation.PushAsync(new UpdateGoals());
+            }
+        }
+
+        protected void ViewGoalClick(object sender, EventArgs e)
+        {
+            bool HasGoals = false;
+
+            // code to search if goal have been created
+
+            if (HasGoals == false)
+            {
+                DisplayAlert("Error", "You have no set goals", "OK");
+            }
+            else 
+            {
+                this.Navigation.PushAsync(new ViewGoals());
+            }
+        }
     }
 }
