@@ -30,6 +30,7 @@ namespace ElarosProject.View
 
             //code to create goal object
             Ngoal.Name = GoalName.Text;
+            Ngoal.Symptom = GoalSymptom.SelectedItem.ToString();
             Ngoal.SeverityLevel = GoalSeverity.SelectedItem.ToString();
             Ngoal.StartDate = DateTime.Now;
             Ngoal.TargetDate = TargetDatePicker.Date;

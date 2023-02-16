@@ -11,7 +11,7 @@
             <Label Text="Choose a name for the goal" HorizontalOptions="Center" TextColor="{StaticResource AppTextColor}"/>
             <Entry x:Name="GoalName" Placeholder="Name" PlaceholderColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center"></Entry>
             <Label Text="Select the symptom you wish to make a goal for" HorizontalOptions="Center" TextColor="{StaticResource AppTextColor}"/>
-            <Picker Title="Symptom" TitleColor="{StaticResource AppTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center">
+            <Picker x:Name="GoalSymptom" Title="Symptom" TitleColor="{StaticResource AppTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center">
                 <Picker.Items>
                     <x:String>Breathlessness</x:String>
                     <x:String>Cough</x:String>
