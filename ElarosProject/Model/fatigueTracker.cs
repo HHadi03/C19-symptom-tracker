@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-namespace CovidApp.Models
+namespace ElarosProject.Models
 {
 	public class fatigueTracker
 	{
