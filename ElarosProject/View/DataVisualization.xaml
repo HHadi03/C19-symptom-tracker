@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" 
              x:Class="ElarosProject.View.DataVisualization">
     <ContentPage.Content>
         <StackLayout BackgroundColor="{StaticResource AppBackgroundColor}">
@@ -8,6 +9,10 @@
                 <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
             </Frame>
             <Label Text="DATA VISUALIZATION PAGE" HorizontalOptions="Center" TextColor="{StaticResource AppTextColor}"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <microcharts:ChartView x:Name="chartViewSymptoms" HeightRequest="300"/>
+                <microcharts:ChartView x:Name="chartViewDisabilities" HeightRequest="300"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
