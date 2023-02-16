@@ -13,6 +13,11 @@ namespace ElarosProject.Model
         public DateTime StartDate { get; set; }
         public DateTime TargetDate { get; set; }
 
+        public GoalModel()
+        {
+
+        }
+
         public GoalModel(string Name, string Symptom, string SeverityLevel, DateTime StartDate, DateTime TargetDate)
         {
             this.Name = Name;

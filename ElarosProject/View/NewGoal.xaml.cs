@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,13 +14,19 @@ namespace ElarosProject.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewGoal : ContentPage
     {
+        public GoalModel Ngoal = new GoalModel();
+
         public NewGoal()
         {
             InitializeComponent();
+
+            
         }
 
-        protected void SaveClick(object sender, EventArgs e, GoalModel Ngoal)
+        protected void SaveClick(object sender, EventArgs e)
         {
+            
+
             // checks if goal name is left blank
             if (GoalName.Text == null) 
             {

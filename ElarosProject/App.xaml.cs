@@ -28,9 +28,6 @@ namespace ElarosProject
             await MainPage.Navigation.PushModalAsync(new ResumePage(), false);
             await Task.Delay(800);
             await MainPage.Navigation.PopModalAsync(true);
-
-            
-
         }
     }
 }
