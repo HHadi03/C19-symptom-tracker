@@ -10,7 +10,7 @@ namespace CovidApp.Views
         public DiaryEntries()
         {
             InitializeComponent();
-            BindingContext = new ViewModels.FatigueTrackerViewModel();
+            BindingContext = new ViewModels.DiaryViewModel();
            
         }
 
