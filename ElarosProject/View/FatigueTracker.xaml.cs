@@ -4,7 +4,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 
-namespace CovidApp.Views
+namespace ElarosProject.Views
 {	
 	public partial class FatigueTracker : ContentPage
 	{
