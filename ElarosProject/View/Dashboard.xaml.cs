@@ -25,6 +25,13 @@ namespace ElarosProject.View
         {
             InitializeComponent();
 
+            // Code to load Dashboard (3rd tab) as initial page
+            var pages = Children.GetEnumerator();
+            pages.MoveNext(); // First page
+            pages.MoveNext(); // Second page
+            pages.MoveNext();
+            CurrentPage = pages.Current;
+
             // Set current user and their ID
             currentUser = user;
             currentId = currentUser.GetUserID();

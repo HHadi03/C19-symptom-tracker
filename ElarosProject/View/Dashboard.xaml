@@ -10,6 +10,8 @@
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             android:TabbedPage.ToolbarPlacement="Bottom">
 
+    <local:Questionnaire Title="Assessment" IconImageSource="checklist.png"/>
+    <local:DataVisualization Title="Analysis" IconImageSource="chart.png"/>
     <ContentPage Title="Dashboard" BackgroundColor="{StaticResource AppBackgroundColor}" IconImageSource="dashboard.png">
         <StackLayout>
             <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
@@ -38,8 +40,7 @@
             
         </StackLayout>
     </ContentPage>
-    <local:Questionnaire Title="Questionnaire" IconImageSource="checklist.png"/>
-    <local:Diary Title="Symptom Diary" IconImageSource="diary.png"/>
-    <local:Goals Title="Goal Setting" IconImageSource="goal.png"/>
+    <local:Diary Title="Diary" IconImageSource="diary.png"/>
+    <local:Goals Title="Goals" IconImageSource="goal.png"/>
 
 </TabbedPage>
