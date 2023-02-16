@@ -1,5 +1,5 @@
 ﻿using System;
-namespace CovidApp.Models
+namespace ElarosProject.Models
 {
 	public class diaryEntry
 	{
