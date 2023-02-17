@@ -8,29 +8,31 @@ namespace ElarosProject.Model
     public class GoalModel
     {
         public string Name { get; set; }
-        public string Symptom { get; set; }
+        public string GoalSymptom { get; set; }
         public string SeverityLevel { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime TargetDate { get; set; }
+        public string StartDate { get; set; }
+        public string TargetDate { get; set; }
+        public string UpdateDate { get; set; }
 
         public GoalModel()
         {
 
         }
 
-        public GoalModel(string Name, string Symptom, string SeverityLevel, DateTime StartDate, DateTime TargetDate)
+        public GoalModel(string Name, string symptomName, string SeverityLevel, string StartDate, string TargetDate)
         {
             this.Name = Name;
-            this.Symptom = Symptom;
+            this.GoalSymptom = symptomName;
             this.SeverityLevel = SeverityLevel;
             this.StartDate = StartDate;
             this.TargetDate = TargetDate;
         }
 
         public string GetName() { return Name; }
-        public string GetSymptom() { return Symptom; }
+        public string GetSymptom() { return GoalSymptom; }
         public string GetSeverityLevel() { return SeverityLevel; }
-        public DateTime GetStartDate() { return StartDate; }
-        public DateTime GetTargetDate() { return TargetDate; }
+        public string GetStartDate() { return StartDate; }
+        public string GetTargetDate() { return TargetDate; }
+        public string GetUpdateDate() { return UpdateDate; }
     }
 }

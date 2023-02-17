@@ -8,20 +8,25 @@
             <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
                 <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
             </Frame>
-            <Label Text="Select a goal to update" HorizontalOptions="Center" TextColor="{StaticResource AppTextColor}" />
-            <Picker Title="Goal" TitleColor="{StaticResource AppTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center"></Picker>
-            <Label Text="What is your current symptom severity" HorizontalOptions="Center" TextColor="{StaticResource AppTextColor}" />
-            <Picker Title="Severity Level" TitleColor="{StaticResource AppTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center">
+            <Label Text="Update Goals" HorizontalOptions="Center" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="28" Padding="0,20, 0, 5"/>
+            <Label Text="Select a goal to update" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="0, 10, 0, 10"/>
+            <Picker Title="Goal" TitleColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" ItemsSource="{Binding}" ItemDisplayBinding="{Binding Name}"></Picker>
+            <Label Text="Enter a target severity" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="0, 10, 0, 10"/>
+            <Picker Title="Severity Level" TitleColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center">
                 <Picker.Items>
                     <x:String>1</x:String>
                     <x:String>2</x:String>
                     <x:String>3</x:String>
                     <x:String>4</x:String>
                     <x:String>5</x:String>
+                    <x:String>6</x:String>
+                    <x:String>7</x:String>
+                    <x:String>8</x:String>
+                    <x:String>9</x:String>
+                    <x:String>10</x:String>
                 </Picker.Items>
             </Picker>
-            <Label Text="Select the current date" HorizontalOptions="Center" TextColor="{StaticResource AppTextColor}" />
-            <DatePicker TextColor="{StaticResource AppTextColor}" HorizontalOptions="Center"></DatePicker>
+    
             <Button Text="Update" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" WidthRequest="100" HeightRequest="80" CornerRadius="10" Margin="100,40" BackgroundColor="{StaticResource ButtonColor}" FontSize="20" Clicked="UpdateClick"></Button>
         </StackLayout>
     </ContentPage.Content>

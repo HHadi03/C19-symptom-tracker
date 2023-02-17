@@ -14,6 +14,10 @@ namespace ElarosProject.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Goals : ContentPage
     {
+        public LoginVM _loginVM = Application.Current.Properties["_loginVM"] as LoginVM;
+        public AssessmentVM _assessmentVM = Application.Current.Properties["_assessmentVM"] as AssessmentVM;
+        public GoalVM _goalVM = Application.Current.Properties["_goalVM"] as GoalVM;
+        public LoginModel currentUser = Application.Current.Properties["currentUser"] as LoginModel;
 
         public Goals()
         {
@@ -27,13 +31,9 @@ namespace ElarosProject.View
 
         protected void UpdateGoalClick(object sender, EventArgs e)
         {
-             bool HasGoals = false;
-
-            // code to search if goal have been created
-
-            if(HasGoals == false)
+            if (_goalVM.GoalList.Count == 0)
             {
-                DisplayAlert("Error", "You have no set goals", "OK");
+                DisplayAlert("ERROR", "No goals have been set", "OK");
             }
             else
             {
@@ -43,15 +43,11 @@ namespace ElarosProject.View
 
         protected void ViewGoalClick(object sender, EventArgs e)
         {
-            bool HasGoals = false;
-
-            // code to search if goal have been created
-
-            if (HasGoals == false)
+            if (_goalVM.GoalList.Count == 0)
             {
-                DisplayAlert("Error", "You have no set goals", "OK");
+                DisplayAlert("ERROR", "No goals have been set", "OK");
             }
-            else 
+            else
             {
                 this.Navigation.PushAsync(new ViewGoals());
             }

@@ -13,16 +13,9 @@ namespace ElarosProject.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-        private LoginVM _loginVM = new LoginVM();
-        private AssessmentVM _assessmentVM = new AssessmentVM();
-
         public LoginPage()
         {
             InitializeComponent();
-
-            // Sets VM objects as Application properties useable throughout
-            Application.Current.Properties["_loginVM"] = _loginVM;
-            Application.Current.Properties["_assessmentVM"] = _assessmentVM;
         }
 
         protected void SignUpClick(object sender, EventArgs e)

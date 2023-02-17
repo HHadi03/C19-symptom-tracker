@@ -37,6 +37,7 @@ namespace ElarosProject.View
 
             // Uses persisted AssessmentVM to calculate new AssessmentResults collection for specific user
             specificAssessmentResults = _assessmentVM.SpecificAssessmentResults(currentId);
+            Application.Current.Properties["userResults"] = specificAssessmentResults;
 
             // Binds new AssessmentResults collection data
             BindingContext = specificAssessmentResults;

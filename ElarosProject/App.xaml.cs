@@ -4,6 +4,7 @@ using Xamarin.Forms.Xaml;
 using ElarosProject.View;
 using System.Threading.Tasks;
 using ElarosProject.ViewModel;
+using ElarosProject.Model;
 
 namespace ElarosProject
 {
@@ -15,7 +16,12 @@ namespace ElarosProject
             InitializeComponent();
 
             MainPage = new NavigationPage(new LoginPage());
-            LoginVMApp = new LoginVM();
+
+            // Sets VM objects as Application properties useable throughout
+            Application.Current.Properties["_loginVM"] = new LoginVM();
+            Application.Current.Properties["_assessmentVM"] = new AssessmentVM();
+            Application.Current.Properties["_goalVM"] = new GoalVM();
+            
         }
 
         protected override void OnStart()

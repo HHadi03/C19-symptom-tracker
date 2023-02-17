@@ -8,9 +8,38 @@
             <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
                 <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
             </Frame>
-            <Label Text="Select a goal to view" HorizontalOptions="Center" TextColor="{StaticResource AppTextColor}" />
-            <Picker Title="Goal" TitleColor="{StaticResource AppTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center"></Picker>
-            <Label Text="Graph can be added with a library" HorizontalOptions="Center" TextColor="{StaticResource AppTextColor}" />
+            <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Goal information:" TextColor="{StaticResource AppTextColor}" FontSize="24" FontAttributes="Bold" Padding="0,40, 0, 15"/>
+            <CarouselView x:Name="GoalsListView" ItemsSource="{Binding GoalList}" Margin="30, 20" Loop="False">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame Padding="15" HasShadow="True" CornerRadius="10">
+                                <StackLayout Padding="12,0,0,0">
+                                    <StackLayout>
+                                        <Label Text="{Binding Name}" HorizontalTextAlignment="Center" HorizontalOptions="Center" Margin="0,20" FontSize="24" FontAttributes="Bold" TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Symptom: "  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="Black" />
+                                        <Label Text="{Binding GoalSymptom}"  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Target: "  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="Black" />
+                                        <Label Text="{Binding SeverityLevel}"  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Date Created: "  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="Black" />
+                                        <Label Text="{Binding StartDate}"  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Target Date: "  HorizontalOptions="Center" Margin="0,20, 15, 0" FontSize="24" TextColor="Black" />
+                                        <Label Text="{Binding TargetDate}"  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="Black" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

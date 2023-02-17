@@ -1,6 +1,8 @@
 ﻿using ElarosProject.Model;
+using ElarosProject.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -14,12 +16,18 @@ namespace ElarosProject.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewGoal : ContentPage
     {
-        public GoalModel Ngoal = new GoalModel();
+        public LoginVM _loginVM = Application.Current.Properties["_loginVM"] as LoginVM;
+        public AssessmentVM _assessmentVM = Application.Current.Properties["_assessmentVM"] as AssessmentVM;
+        public GoalVM _goalVM = Application.Current.Properties["_goalVM"] as GoalVM;
+        public LoginModel currentUser = Application.Current.Properties["currentUser"] as LoginModel;
+        public ObservableCollection<AssessmentModel> userResults = new ObservableCollection<AssessmentModel>();
+        public GoalModel newGoal = new GoalModel();
 
         public NewGoal()
         {
             InitializeComponent();
-
+            userResults = (ObservableCollection<AssessmentModel>)Application.Current.Properties["userResults"];
+            BindingContext = userResults;
             
         }
 
@@ -36,10 +44,17 @@ namespace ElarosProject.View
             }
 
             //code to create goal object
-            Ngoal.Name = GoalName.Text;
-            Ngoal.SeverityLevel = GoalSeverity.SelectedItem.ToString();
-            Ngoal.StartDate = DateTime.Now;
-            Ngoal.TargetDate = TargetDatePicker.Date;
+            // Symptom pickerSymptom = (Symptom)SymptomPicker.SelectedItem;
+            AssessmentModel pickerSymptom = (AssessmentModel)SymptomPicker.SelectedItem;
+            string pickerSymptomName = pickerSymptom.Symptom.SymptomName;
+
+            newGoal.Name = GoalName.Text;
+            newGoal.GoalSymptom = pickerSymptomName;
+            newGoal.SeverityLevel = GoalSeverity.SelectedItem.ToString();
+            newGoal.StartDate = DateTime.Now.ToString("dd/MM/yyyy");
+            newGoal.TargetDate = TargetDatePicker.Date.ToString("dd/MM/yyyy");
+
+            _goalVM.GoalList.Add(new GoalModel(newGoal.Name, newGoal.GoalSymptom, newGoal.SeverityLevel, newGoal.StartDate, newGoal.TargetDate));
 
             // code to save goal to database
 
