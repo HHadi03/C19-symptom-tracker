@@ -8,7 +8,6 @@
             <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
                 <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
             </Frame>
-            <Label Text="DATA VISUALISATION PAGE" HorizontalOptions="Center" TextColor="{StaticResource AppTextColor}"/>
             <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300">
                 <Label Text="Symptom Severity" TextColor="{StaticResource AppTextColor}"/>
                 <Frame>
@@ -18,6 +17,12 @@
                 <Frame>
                     <microcharts:ChartView x:Name="chartViewDisabilities" HeightRequest="200"/>
                 </Frame>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Bar" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="24" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" CornerRadius="10" Margin="0,40" BackgroundColor="{StaticResource ButtonColor}" Clicked="BarChartClicked"/>
+                    <Button Text="Radar" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="24" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" CornerRadius="10" Margin="0,40" BackgroundColor="{StaticResource ButtonColor}" Clicked="RadarChartClicked"/>
+                    <Button Text="Radial" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="24" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" CornerRadius="10" Margin="0,40" BackgroundColor="{StaticResource ButtonColor}" Clicked="RadialChartClicked"/>
+
+                </StackLayout>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
