@@ -29,7 +29,18 @@ namespace ElarosProject.View
 
         protected void UpdateClick(object sender, EventArgs e)
         {
+            GoalModel fromPicker = (GoalModel)GoalPicker.SelectedItem;
+            string goalName = fromPicker.Name;
+
             //code to update goal
+            foreach (GoalModel goal in _goalVM.GoalList)
+            {
+                if (goal.Name == goalName)
+                {
+                    goal.SeverityLevel = SeverityPicker.SelectedItem.ToString();
+                    goal.UpdateDate = DateTime.Now.ToString("dd/MM/yyyy");
+                }
+            }
 
             DisplayAlert("SUCCESS", "Goal updated", "OK");
             this.Navigation.PushAsync( new Goals());

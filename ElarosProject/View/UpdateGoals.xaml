@@ -10,9 +10,9 @@
             </Frame>
             <Label Text="Update Goals" HorizontalOptions="Center" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="28" Padding="0,20, 0, 5"/>
             <Label Text="Select a goal to update" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="0, 10, 0, 10"/>
-            <Picker Title="Goal" TitleColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" ItemsSource="{Binding}" ItemDisplayBinding="{Binding Name}"></Picker>
+            <Picker x:Name="GoalPicker" Title="Goal" TitleColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" ItemsSource="{Binding}" ItemDisplayBinding="{Binding Name}"></Picker>
             <Label Text="Enter a target severity" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="0, 10, 0, 10"/>
-            <Picker Title="Severity Level" TitleColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center">
+            <Picker x:Name="SeverityPicker" Title="Severity Level" TitleColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center">
                 <Picker.Items>
                     <x:String>1</x:String>
                     <x:String>2</x:String>

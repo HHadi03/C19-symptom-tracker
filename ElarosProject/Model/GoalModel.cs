@@ -27,12 +27,5 @@ namespace ElarosProject.Model
             this.StartDate = StartDate;
             this.TargetDate = TargetDate;
         }
-
-        public string GetName() { return Name; }
-        public string GetSymptom() { return GoalSymptom; }
-        public string GetSeverityLevel() { return SeverityLevel; }
-        public string GetStartDate() { return StartDate; }
-        public string GetTargetDate() { return TargetDate; }
-        public string GetUpdateDate() { return UpdateDate; }
     }
 }
