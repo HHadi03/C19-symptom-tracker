@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "230569679023",
+    "firebase_url": "https://elarosdb-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "elarosdb",
+    "storage_bucket": "elarosdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230569679023:android:d7efd8f905744be6461c5a",
+        "android_client_info": {
+          "package_name": "com.companyname.elarosproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "230569679023-anrm4aakg784vaccr0nra55j5js3pkcn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnwLkBWEJDsJwmgs_1Hkpg7ydKW9T5rRM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "230569679023-anrm4aakg784vaccr0nra55j5js3pkcn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
