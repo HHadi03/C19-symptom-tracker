@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ElarosProject.View.fatigueEntries">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+             <Style x:Key="customFrame" TargetType="Frame">
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="BorderColor" Value="#91BAD2"/>
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="HasShadow" Value="True"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+             </Style>
+            
+           
+             <Style x:Key="headingLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontFamily" Value="boldFont"/>
+                <Setter Property="TextColor" Value="#296D98"/>
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+             </Style>
+
+             <Style x:Key="myButton" TargetType="Button">
+                <Setter Property="BorderColor" Value="#91BAD2"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="BorderWidth" Value="1.5"/>
+                <Setter Property="BackgroundColor" Value="#d9f1ff"/>
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="FontFamily" Value="boldFont"/>
+                <Setter Property="TextColor" Value="#296D99"/>
+                <Setter Property="HeightRequest" Value="50"/>
+             </Style>
+            
+             <Style x:Key="regularLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Default"/>
+                <Setter Property="FontFamily" Value="myFont"/>
+                <Setter Property="TextColor" Value="Black"/>
+             </Style>
+
+             <Style TargetType="ImageButton">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
+                    <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
+                </Frame>
+
+                <ListView Margin="10" x:Name="listView" ItemsSource="{Binding userEntries}">
+                    <ListView.Header>
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.1"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <BoxView  Grid.ColumnSpan="3" HeightRequest="0.1" Color="#296D99" IsVisible="True"/>
+                            <Label Grid.Row="1" Style="{StaticResource headingLabel}" Text="Entry Date"/>
+                            <Label Grid.Row="1"  Style="{StaticResource headingLabel}" Grid.Column="1" Text="Activity Summary"/>
+                            <Label Grid.Row="1" Style="{StaticResource headingLabel}" Grid.Column="2" Text="Fatigue Levels"/>
+                        </Grid>
+                    </ListView.Header>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions> 
+                                        <RowDefinition Height="0.1" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <BoxView HeightRequest="0.1" Grid.ColumnSpan="3" Color="#296D99" IsVisible="True"/>
+                                    <Label Grid.Row="1" Style="{StaticResource regularLabel}" Text="{Binding date}"/>
+                                    <Label Grid.Row="1" Style="{StaticResource regularLabel}" Grid.Column="1" Text="{Binding activities}"/>
+                                    <Label Grid.Row="1" Style="{StaticResource regularLabel}" Grid.Column="2" Text="{Binding fatigueLevel}"/>         
+                                </Grid>
+ 		                    </ViewCell>   
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>     
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+
