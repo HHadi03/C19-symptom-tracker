@@ -10,7 +10,7 @@ namespace ElarosProject
 {
     public class databaseConnection
     {
-        FirebaseClient fbClient = new FirebaseClient("https://elarosproject-default-rtdb.europe-west1.firebasedatabase.app/"); //amend url
+        FirebaseClient fbClient = new FirebaseClient("https://elarosdb-default-rtdb.europe-west1.firebasedatabase.app/"); 
 
 
         public async Task<bool> SubmitLogin(Model.LoginModel login)
