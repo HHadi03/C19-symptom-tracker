@@ -8,12 +8,16 @@ namespace ElarosProject.Model
     public class Symptom
     {
         public string SymptomName { get; set; }
-        public bool IsChecked { get; set; }
+        public string SeverityPage { get; set; }
+        public bool IsSelected { get; set; }
 
-        public Symptom(string name, bool ischecked)
+
+        public Symptom(string name, string severityPage)
         {
             SymptomName = name;
-            IsChecked = ischecked;
+            SeverityPage = severityPage;
+            IsSelected = false;
+
         }
 
         public string GetSymptomName()
@@ -21,9 +25,5 @@ namespace ElarosProject.Model
             return SymptomName;
         }
 
-        public bool SymptomChecked()
-        {
-            return IsChecked;
-        }
     }
 }

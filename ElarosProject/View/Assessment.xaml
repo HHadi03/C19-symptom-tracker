@@ -8,13 +8,13 @@
             <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
         </Frame>
         <Label Text="Initial Assessment" TextColor="Black" Padding="0,25" FontAttributes="Bold" FontSize="28" HorizontalOptions="CenterAndExpand" />
-        
+
         <ListView x:Name="SymptomsListView" ItemsSource="{Binding SymptomList}" HasUnevenRows="True" SeparatorVisibility="None" SelectionMode="None" Footer="">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" Padding="12,0,0,0">
-                            <CheckBox IsChecked="{Binding IsChecked}" Color="ForestGreen" WidthRequest="50" HeightRequest="50" />
+                            <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" Color="ForestGreen" WidthRequest="50" HeightRequest="50" />
                             <Label Text="{Binding SymptomName}" VerticalOptions="Center" Margin="0,20" FontSize="24" TextColor="Black" />
                         </StackLayout>
                     </ViewCell>
@@ -30,7 +30,7 @@
                 </DataTemplate>
             </ListView.FooterTemplate>
         </ListView>
-        
+
     </StackLayout>
 </ContentPage>
 

@@ -18,31 +18,22 @@ namespace ElarosProject.ViewModel
         {
             SymptomList = new ObservableCollection<Symptom>
             {
-                new Symptom("Breathlessness", false),
-                new Symptom("Cough", false),
-                new Symptom("Voice Change/Noisy Breathing", false),
-                new Symptom("Continence", false),
-                new Symptom("Aches/Pains", false),
-                new Symptom("Concentration/Short term memory", false),
-                new Symptom("Mental Health", false),
-                new Symptom("PTSD", false),
-                new Symptom("Communication", false),
-                new Symptom("Mobility", false),
-                new Symptom("Personal Care", false),
-                new Symptom("Daily tasks", false),
+                new Symptom("Breathlessness", "BreathlessnessSeverity.xaml"),
+                new Symptom("Cough", "CoughSeverity.xaml"),
+                new Symptom("Voice Change/Noisy Breathing", "VoiceSeverity.xaml"),
+                new Symptom("Continence", "ContinenceSeverity.xaml"),
+                new Symptom("Aches/Pains", "AchesSeverity.xaml"),
+                new Symptom("Concentration/Short term memory", "ConcentrationSeverity.xaml"),
+                new Symptom("Mental Health", "MentalHealthSeverity.xaml"),
+                new Symptom("PTSD", "PTSDSeverity.xaml"),
+                new Symptom("Communication", "CommunicationSeverity.xaml"),
+                new Symptom("Mobility", "MobilitySeverity.xaml"),
+                new Symptom("Personal Care", "PersonalCareSeverity.xaml"),
+                new Symptom("Daily tasks", "DailyTasksSeverity.xaml")
             };
 
-            AssessmentResults = new ObservableCollection<AssessmentModel>
-            {
-                new AssessmentModel(_loginVM.LoginInfoList.Where(u => u.GetUserID() == 1).FirstOrDefault(), SymptomList.Where(s => s.GetSymptomName() == "Cough").FirstOrDefault(), 8, DateTime.Now.ToLongDateString()),
-                new AssessmentModel(_loginVM.LoginInfoList.Where(u => u.GetUserID() == 1).FirstOrDefault(), SymptomList.Where(s => s.GetSymptomName() == "PTSD").FirstOrDefault(), 6, DateTime.Now.ToLongDateString()),
-                new AssessmentModel(_loginVM.LoginInfoList.Where(u => u.GetUserID() == 4).FirstOrDefault(), SymptomList.Where(s => s.GetSymptomName() == "Breathlessness").FirstOrDefault(), 3, DateTime.Now.ToLongDateString()),
-                new AssessmentModel(_loginVM.LoginInfoList.Where(u => u.GetUserID() == 4).FirstOrDefault(), SymptomList.Where(s => s.GetSymptomName() == "Cough").FirstOrDefault(), 6, DateTime.Now.ToLongDateString()),
-                new AssessmentModel(_loginVM.LoginInfoList.Where(u => u.GetUserID() == 4).FirstOrDefault(), SymptomList.Where(s => s.GetSymptomName() == "Mobility").FirstOrDefault(), 10, DateTime.Now.ToLongDateString()),
-                new AssessmentModel(_loginVM.LoginInfoList.Where(u => u.GetUserID() == 3).FirstOrDefault(), SymptomList.Where(s => s.GetSymptomName() == "Aches/Pains").FirstOrDefault(), 8, DateTime.Now.ToLongDateString()),
-                new AssessmentModel(_loginVM.LoginInfoList.Where(u => u.GetUserID() == 3).FirstOrDefault(), SymptomList.Where(s => s.GetSymptomName() == "Mobility").FirstOrDefault(), 9, DateTime.Now.ToLongDateString()),
-                new AssessmentModel(_loginVM.LoginInfoList.Where(u => u.GetUserID() == 2).FirstOrDefault(), SymptomList.Where(s => s.GetSymptomName() == "PTSD").FirstOrDefault(), 7, DateTime.Now.ToLongDateString())
-            };            
+            AssessmentResults = new ObservableCollection<AssessmentModel>();
+          
         }
 
         public ObservableCollection<AssessmentModel> SpecificAssessmentResults(int currentId)
