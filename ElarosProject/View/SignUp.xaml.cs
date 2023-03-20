@@ -64,11 +64,6 @@ namespace ElarosProject.View
                 return;
             }
 
-            // Success alert - account created
-            //LoginModel newUser = new LoginModel((_loginVM.LoginInfoList.Count + 1), UserName.Text, PassWord.Text, Email.Text);
-            //_loginVM.LoginInfoList.Add(newUser);
-            //Application.Current.Properties["currentUser"] = newUser;
-
             // Register new user with Firebase Authentication
             try
             {
@@ -82,10 +77,10 @@ namespace ElarosProject.View
                         new EmailProvider()
                     }
                 });
+
                 var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(Email.Text, PassWord.Text, UserName.Text);
                 var user = auth.User;
                 var token = await user.GetIdTokenAsync();
-                await App.Current.MainPage.DisplayAlert("Sign up successful", token, "OK");
 
                 LoginModel newUser = new LoginModel(user.Uid, UserName.Text, PassWord.Text, Email.Text);
                 _loginVM.LoginInfoList.Add(newUser);
@@ -95,7 +90,7 @@ namespace ElarosProject.View
             }
             catch (Exception ex)
             {
-                await App.Current.MainPage.DisplayAlert(ex.ToString(), ex.Message, "OK");
+                await App.Current.MainPage.DisplayAlert("Exception occurred", ex.Message, "OK");
             }
             
         }

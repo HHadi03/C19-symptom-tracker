@@ -92,7 +92,6 @@ namespace ElarosProject.View
                         }
                     }
 
-                    await App.Current.MainPage.DisplayAlert("Log in successful", token, "OK");
                     await Navigation.PushAsync(new Dashboard());
                 }
                 else
