@@ -33,9 +33,9 @@ namespace ElarosProject
             return false;
         }
 
-        public async Task<bool> SaveSymptoms(Model.Symptom userSymptoms)
+        public async Task<bool> SaveSymptoms(Model.AssessmentModel userSymptom)
         {
-            var data = await fbClient.Child(nameof(Model.Symptom)).PostAsync(JsonConvert.SerializeObject(userSymptoms));
+            var data = await fbClient.Child(nameof(Model.AssessmentModel)).PostAsync(JsonConvert.SerializeObject(userSymptom));
             if (!string.IsNullOrEmpty(data.Key))
             {
                 return true;

@@ -32,7 +32,9 @@ namespace ElarosProject.View
         {
             if (selectedSeverity >= 1 && selectedSeverity <= 10)
             {
-                _assessmentVM.AssessmentResults.Add(new AssessmentModel(currentUser, _assessmentVM.SymptomList.Where(s => s.GetSymptomName() == "Concentration/Short term memory").FirstOrDefault(), selectedSeverity, DateTime.Now.ToString("dd/MM/yy")));
+                AssessmentModel symptom = new AssessmentModel(currentUser, _assessmentVM.SymptomList.Where(s => s.GetSymptomName() == "Concentration/Short term memory").FirstOrDefault(), selectedSeverity, DateTime.Now.ToString("dd/MM/yy"));
+
+                _assessmentVM.AssessmentResults.Add(symptom);
 
                 await DisplayAlert("Submitted", "Your selection has been saved", "OK");
                 inputValidatedTaskCompleted.SetResult(true);
