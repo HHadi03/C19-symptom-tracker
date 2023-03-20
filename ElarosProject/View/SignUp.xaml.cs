@@ -9,6 +9,8 @@ using System.Net.Mail;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Firebase.Auth.Providers;
+using Firebase.Auth;
 
 namespace ElarosProject.View
 {
@@ -16,7 +18,7 @@ namespace ElarosProject.View
     public partial class SignUp : ContentPage
     {
         private LoginVM _loginVM = Application.Current.Properties["_loginVM"] as LoginVM;
-        private AssessmentVM _assessmentVM = Application.Current.Properties["_assessmentVM"] as AssessmentVM;
+        public string WebAPIkey = "AIzaSyAnwLkBWEJDsJwmgs_1Hkpg7ydKW9T5rRM";
 
         public SignUp()
         {
@@ -63,12 +65,39 @@ namespace ElarosProject.View
             }
 
             // Success alert - account created
-            LoginModel newUser = new LoginModel((_loginVM.LoginInfoList.Count + 1), UserName.Text, PassWord.Text, Email.Text);
-            _loginVM.LoginInfoList.Add(newUser);
-            Application.Current.Properties["currentUser"] = newUser;
+            //LoginModel newUser = new LoginModel((_loginVM.LoginInfoList.Count + 1), UserName.Text, PassWord.Text, Email.Text);
+            //_loginVM.LoginInfoList.Add(newUser);
+            //Application.Current.Properties["currentUser"] = newUser;
 
-            // Move to Assessment Page - Carries over the user, assessment collection and login collection
-            await Navigation.PushAsync(new Assessment());
+            // Register new user with Firebase Authentication
+            try
+            {
+                var authProvider = new FirebaseAuthClient(new FirebaseAuthConfig
+                {
+                    ApiKey = WebAPIkey,
+                    AuthDomain = "elarosdb.firebaseapp.com",
+                    Providers = new FirebaseAuthProvider[]
+                    {
+                        new GoogleProvider().AddScopes("email"),
+                        new EmailProvider()
+                    }
+                });
+                var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(Email.Text, PassWord.Text, UserName.Text);
+                var user = auth.User;
+                var token = await user.GetIdTokenAsync();
+                await App.Current.MainPage.DisplayAlert("Sign up successful", token, "OK");
+
+                LoginModel newUser = new LoginModel(user.Uid, UserName.Text, PassWord.Text, Email.Text);
+                _loginVM.LoginInfoList.Add(newUser);
+                Application.Current.Properties["currentUser"] = newUser;
+
+                await Navigation.PushAsync(new Assessment());
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert(ex.ToString(), ex.Message, "OK");
+            }
+            
         }
 
         // Uses MailAddress from System.Net.Mail to check if an email address is in the valid format. Used in

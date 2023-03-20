@@ -19,7 +19,7 @@ namespace ElarosProject.View
         private ObservableCollection<AssessmentModel> specificAssessmentResults;
         private AssessmentVM _assessmentVM = Application.Current.Properties["_assessmentVM"] as AssessmentVM;
         private LoginModel currentUser = Application.Current.Properties["currentUser"] as LoginModel;
-        private int currentId;
+        private string currentId;
 
         public Dashboard()
         {

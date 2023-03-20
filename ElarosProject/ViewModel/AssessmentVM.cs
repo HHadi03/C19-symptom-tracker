@@ -36,7 +36,7 @@ namespace ElarosProject.ViewModel
           
         }
 
-        public ObservableCollection<AssessmentModel> SpecificAssessmentResults(int currentId)
+        public ObservableCollection<AssessmentModel> SpecificAssessmentResults(string currentId)
         {
             var userSpecific = AssessmentResults.Where(u => u.User.GetUserID() == currentId);
             ObservableCollection<AssessmentModel> results = new ObservableCollection<AssessmentModel>();
