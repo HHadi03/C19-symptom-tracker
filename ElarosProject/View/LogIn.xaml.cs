@@ -30,6 +30,8 @@ namespace ElarosProject.View
 
         protected async void LogInClick(object sender, EventArgs e)
         {
+            SignUpLoading.IsRunning = true;
+
             // Bool used to determine if user details were found.
             bool loginFound = false;
 
@@ -83,9 +85,9 @@ namespace ElarosProject.View
                     {
                         if (EmailAddress.Text == login.GetEmail() && PassWord.Text == login.GetPassword())
                         {
-                            await DisplayAlert("SUCCESS", "Login successful!", "OK");
                             loginFound = true;
                             Application.Current.Properties["currentUser"] = login;
+                            SignUpLoading.IsRunning = false;
 
                             // Moves to dashboard
                             await Navigation.PushAsync(new Dashboard());
@@ -96,6 +98,7 @@ namespace ElarosProject.View
                 }
                 else
                 {
+                    SignUpLoading.IsRunning = false;
                     await DisplayAlert("ERROR", "Invalid login information", "Cancel");
                     EmailAddress.Text = null;
                     PassWord.Text = null;
@@ -103,6 +106,7 @@ namespace ElarosProject.View
             }
             catch (Exception ex)
             {
+                SignUpLoading.IsRunning = false;
                 await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "OK");
             }
 
