@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 
@@ -13,6 +14,7 @@ namespace ElarosProject.ViewModel
         public ObservableCollection<AssessmentModel> AssessmentResults { get; set; }
         public ObservableCollection<Symptom> SymptomList { get; set; }
         public LoginVM _loginVM = new LoginVM();
+        databaseConnection myConnection = new databaseConnection();
 
         public AssessmentVM()
         {
@@ -33,12 +35,24 @@ namespace ElarosProject.ViewModel
             };
 
             AssessmentResults = new ObservableCollection<AssessmentModel>();
-          
+
+            BuildList();
+
+        }
+
+        public async void BuildList()
+        {
+            List<AssessmentModel> UserSymptoms = await myConnection.GetSymptoms();
+
+            foreach (var entry in UserSymptoms)
+            {
+                AssessmentResults.Add(entry);
+            }
         }
 
         public ObservableCollection<AssessmentModel> SpecificAssessmentResults(string currentId)
         {
-            var userSpecific = AssessmentResults.Where(u => u.User.GetUserID() == currentId);
+            var userSpecific = AssessmentResults.Where(u => u.User == currentId);
             ObservableCollection<AssessmentModel> results = new ObservableCollection<AssessmentModel>();
             foreach (var item in userSpecific)
             {

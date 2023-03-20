@@ -26,7 +26,7 @@
                         <StackLayout>
                             <Frame Margin="5" Padding="15" HasShadow="True" CornerRadius="10">
                                 <StackLayout>
-                                    <Label Text="{Binding Symptom.SymptomName}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="24"/>
+                                    <Label Text="{Binding Symptom}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="24"/>
                                     <Label Text="{Binding Severity, StringFormat='{}{0}/10'}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="24"/>
                                     <Label Text="{Binding DateLogged}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="24"/>
                                 </StackLayout>
@@ -41,7 +41,7 @@
             
         </StackLayout>
     </ContentPage>
-    <local:Diary Title="Diary" IconImageSource="diary.png"/>
+    <local:FatigueTracker Title="Diary" IconImageSource="diary.png"/>
     <local:Goals Title="Goals" IconImageSource="goal.png"/>
 
 </TabbedPage>

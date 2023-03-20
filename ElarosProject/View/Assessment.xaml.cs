@@ -137,8 +137,8 @@ namespace ElarosProject.View
 
                         if (i == selectedCount - 1)
                         {
-                            await DisplayAlert("Assessment Submitted", "You may now login with your username and password.", "OK");
-                            await Navigation.PushAsync(new LogIn());
+                            await DisplayAlert("Assessment Submitted", "You will now be taken to the dashboard", "OK");
+                            await Navigation.PushAsync(new Dashboard());
                         }
                     }
                 }

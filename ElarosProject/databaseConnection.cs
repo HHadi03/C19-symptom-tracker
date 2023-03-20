@@ -5,6 +5,8 @@ using System.Text;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Linq;
+using ElarosProject.Model;
+using Xamarin.Essentials;
 
 namespace ElarosProject
 {
@@ -13,9 +15,9 @@ namespace ElarosProject
         FirebaseClient fbClient = new FirebaseClient("https://elarosdb-default-rtdb.europe-west1.firebasedatabase.app/"); 
 
 
-        public async Task<bool> SubmitLogin(Model.LoginModel login)
+        public async Task<bool> SubmitLogin(LoginModel login)
         {
-            var data = await fbClient.Child(nameof(Model.LoginModel)).PostAsync(JsonConvert.SerializeObject(login));
+            var data = await fbClient.Child("Login Info").PostAsync(JsonConvert.SerializeObject(login));
             if (!string.IsNullOrEmpty(data.Key))
             {
                 return true;
@@ -23,9 +25,20 @@ namespace ElarosProject
             return false;
         }
 
-        public async Task<bool> SaveGoals(Model.GoalModel goals)
+        public async Task<List<LoginModel>> GetLogin()
         {
-            var data = await fbClient.Child(nameof(Model.GoalModel)).PostAsync(JsonConvert.SerializeObject(goals));
+            return (await fbClient.Child("Login Info").OnceAsync<LoginModel>()).Select(item => new LoginModel
+            {
+                Email = item.Object.Email,
+                Password = item.Object.Password,
+                Username = item.Object.Username,
+                UserID = item.Object.UserID
+            }).ToList();
+        }
+
+        public async Task<bool> SaveGoals(GoalModel goals)
+        {
+            var data = await fbClient.Child("Goals").PostAsync(JsonConvert.SerializeObject(goals));
             if (!string.IsNullOrEmpty(data.Key))
             {
                 return true;
@@ -33,9 +46,9 @@ namespace ElarosProject
             return false;
         }
 
-        public async Task<bool> SaveSymptoms(Model.AssessmentModel userSymptom)
+        public async Task<bool> SaveSymptoms(AssessmentModel userSymptom)
         {
-            var data = await fbClient.Child(nameof(Model.AssessmentModel)).PostAsync(JsonConvert.SerializeObject(userSymptom));
+            var data = await fbClient.Child("User Symptoms").PostAsync(JsonConvert.SerializeObject(userSymptom));
             if (!string.IsNullOrEmpty(data.Key))
             {
                 return true;
@@ -43,10 +56,20 @@ namespace ElarosProject
             return false;
         }
 
-
-        public async Task<bool> SaveFatigueTracker(Model.fatigueModel myTracker)
+        public async Task<List<AssessmentModel>> GetSymptoms()
         {
-            var data = await fbClient.Child(nameof(Model.fatigueModel)).PostAsync(JsonConvert.SerializeObject(myTracker));
+            return (await fbClient.Child("User Symptoms").OnceAsync<AssessmentModel>()).Select(item => new AssessmentModel
+            { 
+                DateLogged = item.Object.DateLogged, 
+                Severity = item.Object.Severity, 
+                Symptom = item.Object.Symptom, 
+                User = item.Object.User 
+            }).ToList();
+        }
+
+        public async Task<bool> SaveFatigueTracker(fatigueModel myTracker)
+        {
+            var data = await fbClient.Child("Fatigue Diary").PostAsync(JsonConvert.SerializeObject(myTracker));
             if (!string.IsNullOrEmpty(data.Key))
             {
                 return true;
@@ -54,9 +77,9 @@ namespace ElarosProject
             return false;
         }
 
-        public async Task<List<Model.fatigueModel>> getEntries()
+        public async Task<List<fatigueModel>> getEntries()
         {
-            return (await fbClient.Child(nameof(Model.fatigueModel)).OnceAsync<Model.fatigueModel>()).Select(item => new Model.fatigueModel
+            return (await fbClient.Child("Fatigue Diary").OnceAsync<fatigueModel>()).Select(item => new fatigueModel
             {
                 fatigueLevel = item.Object.fatigueLevel,
                 activities = item.Object.activities,

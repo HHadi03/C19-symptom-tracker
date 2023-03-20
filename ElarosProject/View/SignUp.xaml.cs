@@ -20,6 +20,11 @@ namespace ElarosProject.View
     {
         private LoginVM _loginVM = Application.Current.Properties["_loginVM"] as LoginVM;
         public string WebAPIkey = "AIzaSyAnwLkBWEJDsJwmgs_1Hkpg7ydKW9T5rRM";
+        databaseConnection myConnection = new databaseConnection();
+        // Use SubmitLogin from databaseConnection to save login to db. DONE
+        // Then in LoginVM, load in users from db. DONE
+        // Check for UID to save current user to Application.Current.Properties["currentUser"]
+        // This should allow the LogIn page to work after sign up and app restart
 
         public SignUp()
         {
@@ -87,9 +92,11 @@ namespace ElarosProject.View
 
                 LoginModel newUser = new LoginModel(user.Uid, UserName.Text, PassWord.Text, Email.Text);
                 _loginVM.LoginInfoList.Add(newUser);
+                await myConnection.SubmitLogin(newUser);
                 Application.Current.Properties["currentUser"] = newUser;
                 SignUpLoading.IsRunning = false;
 
+                var loginAuth = await authProvider.SignInWithEmailAndPasswordAsync(Email.Text, PassWord.Text);
 
                 await Navigation.PushAsync(new Assessment());
             }

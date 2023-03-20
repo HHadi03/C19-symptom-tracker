@@ -46,7 +46,7 @@ namespace ElarosProject.View
             //code to create goal object
             // Symptom pickerSymptom = (Symptom)SymptomPicker.SelectedItem;
             AssessmentModel pickerSymptom = (AssessmentModel)SymptomPicker.SelectedItem;
-            string pickerSymptomName = pickerSymptom.Symptom.SymptomName;
+            string pickerSymptomName = pickerSymptom.Symptom;
 
             newGoal.Name = GoalName.Text;
             newGoal.GoalSymptom = pickerSymptomName;

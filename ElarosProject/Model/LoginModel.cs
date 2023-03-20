@@ -6,10 +6,10 @@ namespace ElarosProject.Model
 {
     public class LoginModel
     {
-        private string UserID { get; set; }
-        private string Username { get; set; }
-        private string Password { get; set; }
-        private string Email { get; set; }
+        public string UserID { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
 
         public LoginModel(string uid, string username, string password, string email)
         {
@@ -18,6 +18,8 @@ namespace ElarosProject.Model
             Password = password;
             Email = email;
         }
+
+        public LoginModel() { }
 
         public string GetUserID()
         {

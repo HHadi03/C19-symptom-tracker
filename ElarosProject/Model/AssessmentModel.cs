@@ -6,17 +6,19 @@ namespace ElarosProject.Model
 {
     public class AssessmentModel
     {
-        public LoginModel User { get; set; }
-        public Symptom Symptom { get; set; }
+        public string User { get; set; }
+        public string Symptom { get; set; }
         public int Severity { get; set; }
         public string DateLogged { get; set; }
 
-        public AssessmentModel(LoginModel user, Symptom symptom, int severity, string dateLogged)
+        public AssessmentModel(string user, string symptom, int severity, string dateLogged)
         {
             User = user;
             Symptom = symptom;
             Severity = severity;
             DateLogged = dateLogged;
         }
+
+        public AssessmentModel() { }
     }
 }
