@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ElarosProject.Model;
+using ElarosProject.ViewModel;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,6 +13,9 @@ namespace ElarosProject.View
 	{
         private int selectedSeverity;
         private TaskCompletionSource<bool> inputValidatedTaskCompleted;
+        private AssessmentVM _assessmentVM = Application.Current.Properties["_assessmentVM"] as AssessmentVM;
+        private LoginModel currentUser = Application.Current.Properties["currentUser"] as LoginModel;
+
         public ConcentrationSeverity ()
 		{
 			InitializeComponent ();
@@ -26,6 +32,8 @@ namespace ElarosProject.View
         {
             if (selectedSeverity >= 1 && selectedSeverity <= 10)
             {
+                _assessmentVM.AssessmentResults.Add(new AssessmentModel(currentUser, _assessmentVM.SymptomList.Where(s => s.GetSymptomName() == "Concentration/Short term memory").FirstOrDefault(), selectedSeverity, DateTime.Now.ToString("dd/MM/yy")));
+
                 await DisplayAlert("Submitted", "Your selection has been saved", "OK");
                 inputValidatedTaskCompleted.SetResult(true);
             }

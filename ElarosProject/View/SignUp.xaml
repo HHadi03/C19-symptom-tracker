@@ -13,6 +13,7 @@
             <Entry x:Name="UserName" Placeholder="Username" WidthRequest="300" HorizontalOptions="Center" PlaceholderColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" FontSize="20" HorizontalTextAlignment="Center"/>
             <Entry x:Name="PassWord" Placeholder="Password" WidthRequest="300" HorizontalOptions="Center" PlaceholderColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" FontSize="20" HorizontalTextAlignment="Center" IsPassword="True"/>
             <Button Text="Sign Up" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="24" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" CornerRadius="10" Margin="0,40" BackgroundColor="{StaticResource ButtonColor}" Clicked="SignUpClick"/>
+            <ActivityIndicator x:Name="SignUpLoading" Color="Orange" IsRunning="False"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

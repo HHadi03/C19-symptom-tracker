@@ -11,6 +11,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Firebase.Auth.Providers;
 using Firebase.Auth;
+using System.Threading;
 
 namespace ElarosProject.View
 {
@@ -28,6 +29,8 @@ namespace ElarosProject.View
 
         async void SignUpClick(object sender, EventArgs e)
         {
+            SignUpLoading.IsRunning = true;
+
             // Set BindingContext for _loginVM attribute as LoginVM
             _loginVM = BindingContext as LoginVM;
 
@@ -85,11 +88,14 @@ namespace ElarosProject.View
                 LoginModel newUser = new LoginModel(user.Uid, UserName.Text, PassWord.Text, Email.Text);
                 _loginVM.LoginInfoList.Add(newUser);
                 Application.Current.Properties["currentUser"] = newUser;
+                SignUpLoading.IsRunning = false;
+
 
                 await Navigation.PushAsync(new Assessment());
             }
             catch (Exception ex)
             {
+                SignUpLoading.IsRunning = false;
                 await App.Current.MainPage.DisplayAlert("Exception occurred", ex.Message, "OK");
             }
             
