@@ -22,6 +22,7 @@ namespace ElarosProject.View
         public LoginModel currentUser = Application.Current.Properties["currentUser"] as LoginModel;
         public ObservableCollection<AssessmentModel> userResults = new ObservableCollection<AssessmentModel>();
         public GoalModel newGoal = new GoalModel();
+        databaseConnection myConnection = new databaseConnection();
 
         public NewGoal()
         {
@@ -31,20 +32,19 @@ namespace ElarosProject.View
             
         }
 
-        protected void SaveClick(object sender, EventArgs e)
+        protected async void SaveClick(object sender, EventArgs e)
         {
             
 
             // checks if goal name is left blank
             if (GoalName.Text == null) 
             {
-                DisplayAlert("Error", "Goal name can't be left blank", "OK");
+                await DisplayAlert("Error", "Goal name can't be left blank", "OK");
                 GoalName.Text = null;
                 return;
             }
 
             //code to create goal object
-            // Symptom pickerSymptom = (Symptom)SymptomPicker.SelectedItem;
             AssessmentModel pickerSymptom = (AssessmentModel)SymptomPicker.SelectedItem;
             string pickerSymptomName = pickerSymptom.Symptom;
 
@@ -53,13 +53,16 @@ namespace ElarosProject.View
             newGoal.SeverityLevel = GoalSeverity.SelectedItem.ToString();
             newGoal.StartDate = DateTime.Now.ToString("dd/MM/yyyy");
             newGoal.TargetDate = TargetDatePicker.Date.ToString("dd/MM/yyyy");
+            newGoal.UserID = currentUser.UserID;
 
-            _goalVM.GoalList.Add(new GoalModel(newGoal.Name, newGoal.GoalSymptom, newGoal.SeverityLevel, newGoal.StartDate, newGoal.TargetDate));
+            _goalVM.GoalList.Add(new GoalModel(newGoal.Name, newGoal.GoalSymptom, newGoal.SeverityLevel, newGoal.StartDate, newGoal.TargetDate, newGoal.UserID));
 
             // code to save goal to database
+            GoalModel NewGoal = new GoalModel(newGoal.Name, newGoal.GoalSymptom, newGoal.SeverityLevel, newGoal.StartDate, newGoal.TargetDate, newGoal.UserID);
+            await myConnection.SaveGoals(NewGoal);
 
-            DisplayAlert("SUCCESS", "Goal saved", "OK");
-            this.Navigation.PushAsync(new Goals());
+            await DisplayAlert("SUCCESS", "Goal saved", "OK");
+            await this.Navigation.PushAsync(new Goals());
         }
     }
 }

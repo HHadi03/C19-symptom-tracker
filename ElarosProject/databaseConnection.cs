@@ -37,12 +37,25 @@ namespace ElarosProject
 
         public async Task<bool> SaveGoals(Model.GoalModel goals)
         {
-            var data = await fbClient.Child(nameof(Model.GoalModel)).PostAsync(JsonConvert.SerializeObject(goals));
+            var data = await fbClient.Child("User Goals").PostAsync(JsonConvert.SerializeObject(goals));
             if (!string.IsNullOrEmpty(data.Key))
             {
                 return true;
             }
             return false;
+        }
+
+        public async Task<List<GoalModel>> GetGoals()
+        {
+            return (await fbClient.Child("User Goals").OnceAsync<GoalModel>()).Select(item => new GoalModel
+            {
+                Name = item.Object.Name,
+                GoalSymptom = item.Object.GoalSymptom,
+                SeverityLevel = item.Object.SeverityLevel,
+                StartDate = item.Object.StartDate,
+                TargetDate = item.Object.TargetDate,
+                UserID = item.Object.UserID
+            }).ToList();
         }
 
         public async Task<bool> SaveSymptoms(AssessmentModel userSymptom)

@@ -19,20 +19,20 @@
                                         <Label Text="{Binding Name}" HorizontalTextAlignment="Center" HorizontalOptions="Center" Margin="0,20" FontSize="24" FontAttributes="Bold" TextColor="Black" />
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="Symptom: "  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="Black" />
-                                        <Label Text="{Binding GoalSymptom}"  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="Black" />
+                                        <Label Text="Symptom: "  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="{StaticResource AppTextColor}" />
+                                        <Label Text="{Binding GoalSymptom}"  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="{StaticResource AppTextColor}" />
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="Target: "  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="Black" />
-                                        <Label Text="{Binding SeverityLevel}"  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="Black" />
+                                        <Label Text="Target: "  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="{StaticResource AppTextColor}" />
+                                        <Label Text="{Binding SeverityLevel}"  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="{StaticResource AppTextColor}" />
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="Date Created: "  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="Black" />
-                                        <Label Text="{Binding StartDate}"  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="Black" />
+                                        <Label Text="Date Created: "  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="{StaticResource AppTextColor}" />
+                                        <Label Text="{Binding StartDate}"  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="{StaticResource AppTextColor}" />
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="Target Date: "  HorizontalOptions="Center" Margin="0,20, 15, 0" FontSize="24" TextColor="Black" />
-                                        <Label Text="{Binding TargetDate}"  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="Black" />
+                                        <Label Text="Target Date: "  HorizontalOptions="Center" Margin="0,20, 15, 0" FontSize="24" TextColor="{StaticResource AppTextColor}" />
+                                        <Label Text="{Binding TargetDate}"  HorizontalOptions="Center" Margin="0,20" FontSize="24" TextColor="{StaticResource AppTextColor}" />
                                     </StackLayout>
                                 </StackLayout>
                             </Frame>

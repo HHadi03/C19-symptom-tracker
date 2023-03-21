@@ -12,7 +12,7 @@
             <Label Text="Choose a name for the goal" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="0, 10, 0, 10"/>
             <Entry x:Name="GoalName" Placeholder="Name" PlaceholderColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" MaxLength="30"></Entry>
             <Label Text="Select the symptom you wish to make a goal for" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="30,10"/>
-            <Picker x:Name="SymptomPicker" Title="Symptom" TitleColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" ItemsSource="{Binding}" ItemDisplayBinding="{Binding Symptom.SymptomName}"></Picker>
+            <Picker x:Name="SymptomPicker" Title="Symptom" TitleColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" ItemsSource="{Binding}" ItemDisplayBinding="{Binding Symptom}"></Picker>
             <Label Text="Select the symptom severity level you wish aim for" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="30,10"/>
             <Picker x:Name="GoalSeverity" Title="Severity Level" TitleColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center">
                 <Picker.Items>
