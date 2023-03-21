@@ -11,6 +11,7 @@ namespace ElarosProject.View
         public fatigueEntries()
         {
             InitializeComponent();
+            BindingContext =new ViewModel.fatigueViewModel();
         }
 
         protected override async void OnAppearing() 
@@ -18,6 +19,12 @@ namespace ElarosProject.View
             var userEntries = await myConnection.getEntries();
             listView.ItemsSource = userEntries;
            
+        }
+
+        private async void sortBy(Object sender,EventArgs e)
+        {
+            var userEntries = await myConnection.getDescEntries();
+            listView.ItemsSource = userEntries;
         }
         
     }

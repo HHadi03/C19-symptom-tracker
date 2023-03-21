@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ElarosProject.View.FatigueTracker"
-             BackgroundColor="{StaticResource AppBackgroundColor}"
              Title="Fatigue tracker">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -18,7 +17,7 @@
                 <Setter Property="BorderColor" Value="#91BAD2"/>
                 <Setter Property="CornerRadius" Value="10"/>
                 <Setter Property="BorderWidth" Value="1.5"/>
-                <Setter Property="BackgroundColor" Value="{StaticResource ButtonColor}"/>
+                <Setter Property="BackgroundColor" Value="#d9f1ff"/>
                 <Setter Property="FontSize" Value="Large"/>
                 <Setter Property="FontFamily" Value="boldFont"/>
                 <Setter Property="TextColor" Value="#296D99"/>
@@ -33,14 +32,14 @@
             <Style x:Key="dateLabel" TargetType="Label">
                 <Setter Property="FontSize" Value="Title"/>
                 <Setter Property="FontFamily" Value="boldFont"/>
-                <Setter Property="TextColor" Value="{StaticResource AppTextColor}"/>
+                <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
             </Style>
 
              <Style x:Key="regularLabel" TargetType="Label">
                 <Setter Property="FontSize" Value="Default"/>
                 <Setter Property="FontFamily" Value="myFont"/>
-                <Setter Property="TextColor" Value="{StaticResource AppTextColor}"/>
+                <Setter Property="TextColor" Value="Black"/>
              </Style>
 
              <Style TargetType="ImageButton">

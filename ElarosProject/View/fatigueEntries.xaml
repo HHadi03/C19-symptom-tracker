@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="ElarosProject.View.fatigueEntries"
-    BackgroundColor="{StaticResource AppBackgroundColor}">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+    x:Class="ElarosProject.View.fatigueEntries">
     <ContentPage.Resources>
         <ResourceDictionary>
 
@@ -37,7 +36,7 @@
              <Style x:Key="regularLabel" TargetType="Label">
                 <Setter Property="FontSize" Value="Default"/>
                 <Setter Property="FontFamily" Value="myFont"/>
-                <Setter Property="TextColor" Value="{StaticResource AppTextColor}"/>
+                <Setter Property="TextColor" Value="Black"/>
              </Style>
 
              <Style TargetType="ImageButton">
@@ -49,12 +48,14 @@
 
     <ContentPage.Content>
         <ScrollView>
+            
             <StackLayout>
 
                 <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
                     <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
                 </Frame>
 
+               
                 <ListView Margin="10" x:Name="listView" ItemsSource="{Binding userEntries}">
                     <ListView.Header>
                         <Grid>
@@ -100,7 +101,12 @@
  		                    </ViewCell>   
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                </ListView>     
+                </ListView>
+                 <BoxView HeightRequest="0.1" Grid.ColumnSpan="3" Color="#296D99" IsVisible="True"/>
+                <Button Style="{StaticResource myButton}" Text="Sort by worst" Clicked="sortBy"></Button>
+                 <StackLayout>
+                    <microcharts:ChartView Margin="30" HeightRequest="300" WidthRequest="500" x:Name="testchart" Chart="{Binding Mychart}"/>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -36,7 +36,7 @@ namespace ElarosProject.View
         void addItem(object sender, EventArgs args)
         {
 
-            var newActivity = new Entry { Placeholder = "Add Entry", PlaceholderColor = Color.LightGray, ClearButtonVisibility = ClearButtonVisibility.WhileEditing, FontFamily = "myFont", TextColor = Color.Black  };
+            var newActivity = new Entry { Placeholder = "Add Entry", PlaceholderColor = Color.LightGray, ClearButtonVisibility = ClearButtonVisibility.WhileEditing, FontFamily = "myFont"  };
             myLayout.Children.Insert(myLayout.Children.Count - 1, newActivity);
             newActivity.TextChanged += entryUpdated;
 
@@ -51,7 +51,7 @@ namespace ElarosProject.View
 
             if(string.IsNullOrEmpty(activity))
             {
-                await DisplayAlert("Error","You must enter at least one activity to proceed","Cancel");
+                await DisplayAlert("Error","you must enter at least one activity to proceed","Cancel");
             }
 
             Model.fatigueModel myModel = new Model.fatigueModel();
@@ -62,12 +62,12 @@ namespace ElarosProject.View
 
             if(savedEntry)
             {
-                await DisplayAlert("Info", "Successfully saved entry", "OK");
+                await DisplayAlert("Info", "successfully saved entry", "ok");
                 await this.Navigation.PushAsync(new fatigueEntries());
             }
             else
             {
-                await DisplayAlert("Error", "Failed to save entry", "OK");
+                await DisplayAlert("error", "could not save", "ok");
             }
 
         }
