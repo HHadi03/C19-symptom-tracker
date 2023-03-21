@@ -96,11 +96,6 @@ namespace ElarosProject.View
 
                 await Navigation.PushAsync(new Assessment());
             }
-            catch (FirebaseAuthException)
-            {
-                SignUpLoading.IsRunning = false;
-                await App.Current.MainPage.DisplayAlert("Weak Password", "Password must be at least 6 characters", "OK");
-            }
             catch (Exception ex)
             {
                 SignUpLoading.IsRunning = false;

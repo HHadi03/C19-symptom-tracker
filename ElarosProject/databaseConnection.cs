@@ -11,12 +11,12 @@ namespace ElarosProject
 {
     public class databaseConnection
     {
-        FirebaseClient fbClient = new FirebaseClient("https://elarosproject-default-rtdb.europe-west1.firebasedatabase.app/"); 
+        FirebaseClient fbClient = new FirebaseClient("https://elarosdb-default-rtdb.europe-west1.firebasedatabase.app/"); 
 
 
-        public async Task<bool> SubmitLogin(Model.LoginModel login)
+        public async Task<bool> SubmitLogin(LoginModel login)
         {
-            var data = await fbClient.Child(nameof(Model.LoginModel)).PostAsync(JsonConvert.SerializeObject(login));
+            var data = await fbClient.Child("Login Info").PostAsync(JsonConvert.SerializeObject(login));
             if (!string.IsNullOrEmpty(data.Key))
             {
                 return true;
