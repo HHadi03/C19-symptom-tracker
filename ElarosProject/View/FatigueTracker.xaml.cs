@@ -1,3 +1,4 @@
+using ElarosProject.Model;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -6,7 +7,7 @@ namespace ElarosProject.View
 {	
 	public partial class FatigueTracker : ContentPage 
 	{
-
+        LoginModel currentUser = Application.Current.Properties["currentUser"] as LoginModel;
         databaseConnection myConnection = new databaseConnection();
         private string userEntry;
 
@@ -55,6 +56,7 @@ namespace ElarosProject.View
             }
 
             Model.fatigueModel myModel = new Model.fatigueModel();
+            myModel.userID = currentUser.UserID;
             myModel.date = date;
             myModel.activities = activity;
             myModel.fatigueLevel = fatigueLevel;

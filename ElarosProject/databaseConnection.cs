@@ -5,6 +5,7 @@ using System.Text;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Linq;
+using ElarosProject.Model;
 
 namespace ElarosProject
 {
@@ -23,6 +24,17 @@ namespace ElarosProject
             return false;
         }
 
+        public async Task<List<LoginModel>> GetLogin()
+        {
+            return (await fbClient.Child("Login Info").OnceAsync<LoginModel>()).Select(item => new LoginModel
+            {
+                Email = item.Object.Email,
+                Password = item.Object.Password,
+                Username = item.Object.Username,
+                UserID = item.Object.UserID
+            }).ToList();
+        }
+
         public async Task<bool> SaveGoals(Model.GoalModel goals)
         {
             var data = await fbClient.Child(nameof(Model.GoalModel)).PostAsync(JsonConvert.SerializeObject(goals));
@@ -33,9 +45,9 @@ namespace ElarosProject
             return false;
         }
 
-        public async Task<bool> SaveSymptoms(Model.Symptom userSymptoms)
+        public async Task<bool> SaveSymptoms(AssessmentModel userSymptom)
         {
-            var data = await fbClient.Child(nameof(Model.Symptom)).PostAsync(JsonConvert.SerializeObject(userSymptoms));
+            var data = await fbClient.Child("User Symptoms").PostAsync(JsonConvert.SerializeObject(userSymptom));
             if (!string.IsNullOrEmpty(data.Key))
             {
                 return true;
@@ -43,6 +55,16 @@ namespace ElarosProject
             return false;
         }
 
+        public async Task<List<AssessmentModel>> GetSymptoms()
+        {
+            return (await fbClient.Child("User Symptoms").OnceAsync<AssessmentModel>()).Select(item => new AssessmentModel
+            {
+                DateLogged = item.Object.DateLogged,
+                Severity = item.Object.Severity,
+                Symptom = item.Object.Symptom,
+                User = item.Object.User
+            }).ToList();
+        }
 
         public async Task<bool> SaveFatigueTracker(Model.fatigueModel myTracker)
         {
@@ -60,8 +82,9 @@ namespace ElarosProject
             {
                 fatigueLevel = item.Object.fatigueLevel,
                 activities = item.Object.activities,
-                date = item.Object.date
-
+                date = item.Object.date,
+                userID = item.Object.userID
+                
             }).ToList();
         }
 
@@ -73,7 +96,8 @@ namespace ElarosProject
             {
                 fatigueLevel = item.Object.fatigueLevel,
                 activities = item.Object.activities,
-                date = item.Object.date
+                date = item.Object.date,
+                userID = item.Object.userID
 
             }).OrderByDescending(level=>level.fatigueLevel).ToList();
         }
@@ -84,8 +108,8 @@ namespace ElarosProject
             {
                 fatigueLevel = item.Object.fatigueLevel,
                 activities = item.Object.activities,
-                date = item.Object.date
-
+                date = item.Object.date,
+                userID = item.Object.userID
             }).OrderBy(level => level.date).ToList();
         }
 

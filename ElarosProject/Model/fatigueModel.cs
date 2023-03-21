@@ -5,6 +5,8 @@ namespace ElarosProject.Model
 {
 	public class fatigueModel
 	{
+        public string userID { get; set; }
+
         public string date { get; set; }
 
         public string activities { get; set; }
