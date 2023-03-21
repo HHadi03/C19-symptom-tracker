@@ -31,6 +31,9 @@ namespace ElarosProject.View
         async void SignUpClick(object sender, EventArgs e)
         {
             SignUpLoading.IsRunning = true;
+            string email = Email.Text.Trim();
+            string username = UserName.Text.Trim();
+            string password = PassWord.Text;
 
             // Set BindingContext for _loginVM attribute as LoginVM
             _loginVM = BindingContext as LoginVM;
@@ -47,8 +50,8 @@ namespace ElarosProject.View
             }
 
             // Checks username isn't already in use
-            var username = _loginVM.LoginInfoList.Where(u => u.GetUsername() == UserName.Text);
-            if (username.Any())
+            var usernameCheck = _loginVM.LoginInfoList.Where(u => u.GetUsername() == username);
+            if (usernameCheck.Any())
             {
                 await DisplayAlert("ERROR", "Username already exists, please try again.", "OK");
                 UserName.Text = null;
@@ -58,7 +61,7 @@ namespace ElarosProject.View
             }
 
             // Checks entered email is in the correct format
-            if (IsValid(Email.Text) == false)
+            if (IsValid(email) == false)
             {
                 await DisplayAlert("ERROR", "Email address is an incorrect format. Please try again.", "OK");
                 UserName.Text = null;
@@ -82,17 +85,17 @@ namespace ElarosProject.View
                     }
                 });
 
-                var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(Email.Text, PassWord.Text, UserName.Text);
+                var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(email, password, username);
                 var user = auth.User;
                 var token = await user.GetIdTokenAsync();
 
-                LoginModel newUser = new LoginModel(user.Uid, UserName.Text, PassWord.Text, Email.Text);
+                LoginModel newUser = new LoginModel(user.Uid, username, password, email);
                 _loginVM.LoginInfoList.Add(newUser);
                 await myConnection.SubmitLogin(newUser);
                 Application.Current.Properties["currentUser"] = newUser;
                 SignUpLoading.IsRunning = false;
 
-                var loginAuth = await authProvider.SignInWithEmailAndPasswordAsync(Email.Text, PassWord.Text);
+                var loginAuth = await authProvider.SignInWithEmailAndPasswordAsync(email, password);
 
                 await Navigation.PushAsync(new Assessment());
             }
