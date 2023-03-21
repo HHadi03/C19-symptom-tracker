@@ -2,7 +2,8 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="ElarosProject.View.fatigueEntries">
+    x:Class="ElarosProject.View.fatigueEntries"
+    BackgroundColor="{StaticResource AppBackgroundColor}">
     <ContentPage.Resources>
         <ResourceDictionary>
 
@@ -36,7 +37,7 @@
              <Style x:Key="regularLabel" TargetType="Label">
                 <Setter Property="FontSize" Value="Default"/>
                 <Setter Property="FontFamily" Value="myFont"/>
-                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="TextColor" Value="{StaticResource AppTextColor}"/>
              </Style>
 
              <Style TargetType="ImageButton">
