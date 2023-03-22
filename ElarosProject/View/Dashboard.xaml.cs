@@ -1,5 +1,6 @@
 ﻿using ElarosProject.Model;
 using ElarosProject.ViewModel;
+using Firebase.Auth;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,7 +18,9 @@ namespace ElarosProject.View
     public partial class Dashboard : TabbedPage
     {
         private ObservableCollection<AssessmentModel> specificAssessmentResults;
+        private ObservableCollection<GoalModel> specificGoals;
         private AssessmentVM _assessmentVM = Application.Current.Properties["_assessmentVM"] as AssessmentVM;
+        private GoalVM _goalVM = Application.Current.Properties["_goalVM"] as GoalVM;
         private LoginModel currentUser = Application.Current.Properties["currentUser"] as LoginModel;
         private string currentId;
 
@@ -39,11 +42,33 @@ namespace ElarosProject.View
             specificAssessmentResults = _assessmentVM.SpecificAssessmentResults(currentId);
             Application.Current.Properties["userResults"] = specificAssessmentResults;
 
+            // Uses persisted GoalVM to calculate new GoalList collection for specific user
+            specificGoals = _goalVM.SpecificGoals(currentId);
+            Application.Current.Properties["userGoals"] = specificGoals;
+
             // Binds new AssessmentResults collection data
-            BindingContext = specificAssessmentResults;
+            SymptomCarousel.BindingContext = specificAssessmentResults;
+            GoalCarousel.BindingContext = specificGoals;
+            
             
             // Display welcome to user
             WelcomeLabel.Text = "Welcome " + currentUser.GetUsername() + "!";
         }
+
+        async void LogoutClick(object sender, EventArgs e)
+        {
+            bool response = await DisplayAlert("Logout", "Do you want to logout?", "Yes", "No");
+
+            if (response)
+            {
+                var authProvider = Application.Current.Properties["LoginState"] as FirebaseAuthClient;
+                authProvider.SignOut();
+                currentUser = null;
+                await Navigation.PushAsync(new LoginPage());
+            }
+        }
+
+        // Prevents user pressing back on their device and returning to login
+        protected override bool OnBackButtonPressed() { return true; }
     }
 }

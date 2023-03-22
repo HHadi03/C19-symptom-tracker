@@ -5,6 +5,8 @@ using ElarosProject.View;
 using System.Threading.Tasks;
 using ElarosProject.ViewModel;
 using ElarosProject.Model;
+using Firebase.Auth.Providers;
+using Firebase.Auth;
 
 namespace ElarosProject
 {
@@ -21,7 +23,17 @@ namespace ElarosProject
             Application.Current.Properties["_loginVM"] = new LoginVM();
             Application.Current.Properties["_assessmentVM"] = new AssessmentVM();
             Application.Current.Properties["_goalVM"] = new GoalVM();
-            
+            Application.Current.Properties["LoginState"] = new FirebaseAuthClient(new FirebaseAuthConfig
+            {
+                ApiKey = "AIzaSyAnwLkBWEJDsJwmgs_1Hkpg7ydKW9T5rRM",
+                AuthDomain = "elarosdb.firebaseapp.com",
+                Providers = new FirebaseAuthProvider[]
+                    {
+                        new GoogleProvider().AddScopes("email"),
+                        new EmailProvider()
+                    }
+            });
+
         }
 
         protected override void OnStart()

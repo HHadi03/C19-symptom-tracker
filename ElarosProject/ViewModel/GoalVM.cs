@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
@@ -31,6 +32,18 @@ namespace ElarosProject.ViewModel
         public ObservableCollection<GoalModel> ReturnGoalList()
         {
             return GoalList;
+        }
+
+        public ObservableCollection<GoalModel> SpecificGoals(string currentId)
+        {
+            var userSpecific = GoalList.Where(u => u.UserID == currentId);
+            ObservableCollection<GoalModel> results = new ObservableCollection<GoalModel>();
+            foreach (var item in userSpecific)
+            {
+                results.Add(item);
+            }
+
+            return results;
         }
 
     }
