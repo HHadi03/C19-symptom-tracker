@@ -19,7 +19,6 @@ namespace ElarosProject.View
     public partial class LogIn : ContentPage
     {
         private LoginVM _loginVM = Application.Current.Properties["_loginVM"] as LoginVM;
-        public string WebAPIkey = "AIzaSyAnwLkBWEJDsJwmgs_1Hkpg7ydKW9T5rRM";
 
         // Default constructor for existing users
         public LogIn()
@@ -30,7 +29,7 @@ namespace ElarosProject.View
 
         protected async void LogInClick(object sender, EventArgs e)
         {
-            SignUpLoading.IsRunning = true;
+            LogInLoading.IsRunning = true;
 
             // Bool used to determine if user details were found.
             bool loginFound = false;
@@ -61,59 +60,46 @@ namespace ElarosProject.View
             // Log in with Firebase Authentication
             try
             {
-                var authProvider = new FirebaseAuthClient(new FirebaseAuthConfig
-                {
-                    ApiKey = WebAPIkey,
-                    AuthDomain = "elarosdb.firebaseapp.com",
-                    Providers = new FirebaseAuthProvider[]
-                    {
-                        new GoogleProvider().AddScopes("email"),
-                        new EmailProvider()
-                    }
-                });
-                
+                var authProvider = Application.Current.Properties["LoginState"] as FirebaseAuthClient;
+
+                // Signs user in using email and password
                 var auth = await authProvider.SignInWithEmailAndPasswordAsync(EmailAddress.Text, PassWord.Text);
                 
                 if (auth != null)
                 {
                     var user = auth.User;
+
+                    // Gets a token to be used for Realtime Database (Not implemented yet)
                     var token = await user.GetIdTokenAsync();
 
                     // Loop through each user and if entered username / password matches then display success alert
-                    // NOTE: This will navigate to the Dashboard once created
                     foreach (LoginModel login in _loginVM.LoginInfoList)
                     {
                         if (EmailAddress.Text == login.GetEmail() && PassWord.Text == login.GetPassword())
                         {
                             loginFound = true;
                             Application.Current.Properties["currentUser"] = login;
-                            SignUpLoading.IsRunning = false;
+                            LogInLoading.IsRunning = false;
 
                             // Moves to dashboard
                             await Navigation.PushAsync(new Dashboard());
                         }
                     }
-
-                    await Navigation.PushAsync(new Dashboard());
-                }
-                else
-                {
-                    SignUpLoading.IsRunning = false;
-                    await DisplayAlert("ERROR", "Invalid login information", "Cancel");
-                    EmailAddress.Text = null;
-                    PassWord.Text = null;
                 }
             }
             catch (Exception ex)
             {
-                SignUpLoading.IsRunning = false;
-                await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "OK");
+                LogInLoading.IsRunning = false;
+                // await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "OK");
             }
 
             // Display alert if user details were not found.
             if (loginFound == false)
             {
+                LogInLoading.IsRunning = false;
                 await DisplayAlert("ERROR", "Log in details incorrect", "OK");
+                EmailAddress.Text = null;
+                PassWord.Text = null;
             }
         }
 

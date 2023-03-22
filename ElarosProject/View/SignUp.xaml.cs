@@ -19,7 +19,6 @@ namespace ElarosProject.View
     public partial class SignUp : ContentPage
     {
         private LoginVM _loginVM = Application.Current.Properties["_loginVM"] as LoginVM;
-        public string WebAPIkey = "AIzaSyAnwLkBWEJDsJwmgs_1Hkpg7ydKW9T5rRM";
         databaseConnection myConnection = new databaseConnection();
 
         public SignUp()
@@ -74,27 +73,28 @@ namespace ElarosProject.View
             // Register new user with Firebase Authentication
             try
             {
-                var authProvider = new FirebaseAuthClient(new FirebaseAuthConfig
-                {
-                    ApiKey = WebAPIkey,
-                    AuthDomain = "elarosdb.firebaseapp.com",
-                    Providers = new FirebaseAuthProvider[]
-                    {
-                        new GoogleProvider().AddScopes("email"),
-                        new EmailProvider()
-                    }
-                });
+                var authProvider = Application.Current.Properties["LoginState"] as FirebaseAuthClient;
 
+                // Create user with entered info
                 var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(email, password, username);
                 var user = auth.User;
+
+                // Gets a token to be used for Realtime Database (Not implemented yet)
                 var token = await user.GetIdTokenAsync();
 
+                // Creates a new LoginModel for user & adds to VM list
                 LoginModel newUser = new LoginModel(user.Uid, username, password, email);
                 _loginVM.LoginInfoList.Add(newUser);
+
+                // Saves user info to firebase
                 await myConnection.SubmitLogin(newUser);
+
+                // Sets current application user to the new user
                 Application.Current.Properties["currentUser"] = newUser;
+
                 SignUpLoading.IsRunning = false;
 
+                // Signs user in using email and password
                 var loginAuth = await authProvider.SignInWithEmailAndPasswordAsync(email, password);
 
                 await Navigation.PushAsync(new Assessment());
