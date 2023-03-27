@@ -58,11 +58,12 @@ namespace ElarosProject.View
             _goalVM.GoalList.Add(new GoalModel(newGoal.Name, newGoal.GoalSymptom, newGoal.SeverityLevel, newGoal.StartDate, newGoal.TargetDate, newGoal.UserID));
 
             // code to save goal to database
+            string goalKey = newGoal.Name + " - " + newGoal.UserID;
             GoalModel NewGoal = new GoalModel(newGoal.Name, newGoal.GoalSymptom, newGoal.SeverityLevel, newGoal.StartDate, newGoal.TargetDate, newGoal.UserID);
-            await myConnection.SaveGoals(NewGoal);
+            await myConnection.SaveGoals(NewGoal, goalKey);
 
             await DisplayAlert("SUCCESS", "Goal saved", "OK");
-            await this.Navigation.PushAsync(new Goals());
+            await this.Navigation.PushAsync(new Dashboard());
         }
     }
 }

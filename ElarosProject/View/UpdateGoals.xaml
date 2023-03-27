@@ -26,8 +26,12 @@
                     <x:String>10</x:String>
                 </Picker.Items>
             </Picker>
+            <Label Text="Select a new target date" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="30,10"/>
+            <DatePicker x:Name="TargetDatePicker" TextColor="{StaticResource AppTextColor}" HorizontalOptions="Center"></DatePicker>
     
-            <Button Text="Update" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" WidthRequest="100" HeightRequest="80" CornerRadius="10" Margin="100,40" BackgroundColor="{StaticResource ButtonColor}" FontSize="20" Clicked="UpdateClick"></Button>
+            <Button Text="Update" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" WidthRequest="100" HeightRequest="80" CornerRadius="10" Margin="100,40,100,20" BackgroundColor="{StaticResource ButtonColor}" FontSize="20" Clicked="UpdateClick"></Button>
+
+            <Button Text="Delete" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" WidthRequest="100" HeightRequest="80" CornerRadius="10" Margin="100,20" BackgroundColor="{StaticResource ButtonColor}" FontSize="20" Clicked="DeleteClick"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
