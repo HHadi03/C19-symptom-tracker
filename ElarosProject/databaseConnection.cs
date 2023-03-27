@@ -6,6 +6,8 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Linq;
 using ElarosProject.Model;
+using Firebase.Database.Query;
+using ElarosProject.View;
 
 namespace ElarosProject
 {
@@ -34,9 +36,9 @@ namespace ElarosProject
             }).ToList();
         }
 
-        public async Task<bool> SaveGoals(Model.GoalModel goals)
+        public async Task<bool> SaveGoals(Model.GoalModel goals, string goalKey)
         {
-            var data = await fbClient.Child("User Goals").PostAsync(JsonConvert.SerializeObject(goals));
+            var data = await fbClient.Child("User Goals").Child(goalKey).PostAsync(JsonConvert.SerializeObject(goals), false);
             if (!string.IsNullOrEmpty(data.Key))
             {
                 return true;

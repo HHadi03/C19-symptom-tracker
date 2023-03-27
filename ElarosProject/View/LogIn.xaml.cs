@@ -43,6 +43,7 @@ namespace ElarosProject.View
                 await DisplayAlert("ERROR", "Email address is an incorrect format. Please try again.", "OK");
                 EmailAddress.Text = null;
                 PassWord.Text = null;
+                LogInLoading.IsRunning = false;
 
                 return;
             }
@@ -53,6 +54,7 @@ namespace ElarosProject.View
                 await DisplayAlert("ERROR", "Entry fields cannot be blank. Please try again", "OK");
                 EmailAddress.Text = null;
                 PassWord.Text = null;
+                LogInLoading.IsRunning = false;
 
                 return;
             }
