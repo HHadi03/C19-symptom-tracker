@@ -41,7 +41,7 @@ namespace ElarosProject.View
                     Title = "Elaros Long Covid",
                     Schedule = new NotificationRequestSchedule
                     {
-                        NotifyTime = DateTime.Now.AddSeconds(5)
+                        NotifyTime = DateTime.Now.AddMinutes(2)
                     }
                 };
 
