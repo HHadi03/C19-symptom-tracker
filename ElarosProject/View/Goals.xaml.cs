@@ -1,5 +1,6 @@
 ﻿using ElarosProject.Model;
 using ElarosProject.ViewModel;
+using Plugin.LocalNotification;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +25,28 @@ namespace ElarosProject.View
             InitializeComponent();
         }
 
+        Boolean newGoalClicked = false;
         protected void NewGoalClick(object sender, EventArgs e)
+        { 
+            newGoalClicked = true; this.Navigation.PushAsync(new NewGoal());
+        }
+
+        public void SetupNotification()
         {
-            this.Navigation.PushAsync(new NewGoal());
+            if (!newGoalClicked)
+            {
+                var notification = new NotificationRequest
+                {
+                    Description = "You have not set any new goals today...",
+                    Title = "Elaros Long Covid",
+                    Schedule = new NotificationRequestSchedule
+                    {
+                        NotifyTime = DateTime.Now.AddSeconds(5)
+                    }
+                };
+
+                LocalNotificationCenter.Current.Show(notification);
+            }
         }
 
         protected void UpdateGoalClick(object sender, EventArgs e)

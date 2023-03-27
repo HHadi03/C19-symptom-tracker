@@ -85,6 +85,8 @@ namespace ElarosProject.View
 
                             // Moves to dashboard
                             await Navigation.PushAsync(new Dashboard());
+                            Goals Notifications = new Goals();
+                            Notifications.SetupNotification();
                         }
                     }
                 }
