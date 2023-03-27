@@ -13,7 +13,6 @@ namespace ElarosProject
     {
         FirebaseClient fbClient = new FirebaseClient("https://elarosdb-default-rtdb.europe-west1.firebasedatabase.app/"); 
 
-
         public async Task<bool> SubmitLogin(LoginModel login)
         {
             var data = await fbClient.Child("Login Info").PostAsync(JsonConvert.SerializeObject(login));
@@ -101,8 +100,6 @@ namespace ElarosProject
             }).ToList();
         }
 
-
-
         public async Task<List<Model.fatigueModel>> getDescEntries()
         {
             return (await fbClient.Child(nameof(Model.fatigueModel)).OnceAsync<Model.fatigueModel>()).Select(item => new Model.fatigueModel
@@ -125,8 +122,6 @@ namespace ElarosProject
                 userID = item.Object.userID
             }).OrderBy(level => level.date).ToList();
         }
-
-
     }
 }
 
