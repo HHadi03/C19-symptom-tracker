@@ -1,9 +1,13 @@
 ﻿using ElarosProject.Model;
 using ElarosProject.ViewModel;
+using Firebase.Database;
+using Firebase.Database.Query;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +26,11 @@ namespace ElarosProject.View
         public LoginModel currentUser = Application.Current.Properties["currentUser"] as LoginModel;
         public ObservableCollection<AssessmentModel> userResults = new ObservableCollection<AssessmentModel>();
         public GoalModel newGoal = new GoalModel();
-        databaseConnection myConnection = new databaseConnection();
+        FirebaseClient fbClient = new FirebaseClient("https://elarosdb-default-rtdb.europe-west1.firebasedatabase.app/",
+                                  new FirebaseOptions
+                                  {
+                                      AuthTokenAsyncFactory = () => Task.FromResult("XnCOqCvY6p3hd7G440YmHXABryEhMKCoINcshr2a")
+                                  });
 
         public NewGoal()
         {
@@ -60,7 +68,8 @@ namespace ElarosProject.View
             // code to save goal to database
             string goalKey = newGoal.Name + " - " + newGoal.UserID;
             GoalModel NewGoal = new GoalModel(newGoal.Name, newGoal.GoalSymptom, newGoal.SeverityLevel, newGoal.StartDate, newGoal.TargetDate, newGoal.UserID);
-            await myConnection.SaveGoals(NewGoal, goalKey);
+            await fbClient.Child("User Goals").Child(NewGoal.Name + " - " + NewGoal.UserID).PutAsync(JsonConvert.SerializeObject(NewGoal));
+
 
             await DisplayAlert("SUCCESS", "Goal saved", "OK");
             await this.Navigation.PushAsync(new Dashboard());
