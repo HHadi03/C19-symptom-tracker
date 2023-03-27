@@ -13,7 +13,11 @@ namespace ElarosProject
 {
     public class databaseConnection
     {
-        FirebaseClient fbClient = new FirebaseClient("https://elarosdb-default-rtdb.europe-west1.firebasedatabase.app/"); 
+        FirebaseClient fbClient = new FirebaseClient("https://elarosdb-default-rtdb.europe-west1.firebasedatabase.app/",
+                                  new FirebaseOptions 
+                                  { 
+                                      AuthTokenAsyncFactory = () => Task.FromResult("XnCOqCvY6p3hd7G440YmHXABryEhMKCoINcshr2a") 
+                                  });
 
         public async Task<bool> SubmitLogin(LoginModel login)
         {
