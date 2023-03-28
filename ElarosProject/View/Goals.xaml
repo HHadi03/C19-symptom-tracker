@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ElarosProject.View.Goals"
              NavigationPage.HasNavigationBar="False">
+    
     <ContentPage.Content>
         <ScrollView>
             <StackLayout BackgroundColor="{StaticResource AppBackgroundColor}">

@@ -37,6 +37,17 @@ namespace ElarosProject.View
             // Set BindingContext for _loginVM attribute as LoginVM
             _loginVM = BindingContext as LoginVM;
 
+            // Checks entered email is in the correct format
+            if (IsValid(email) == false)
+            {
+                await DisplayAlert("ERROR", "Email address is an incorrect format. Please try again.", "OK");
+                UserName.Text = null;
+                PassWord.Text = null;
+                Email.Text = null;
+
+                return;
+            }
+
             // Checks that no fields are left empty
             if (UserName.Text == null || PassWord.Text == null || Email.Text == null)
             {
@@ -55,17 +66,6 @@ namespace ElarosProject.View
                 await DisplayAlert("ERROR", "Username already exists, please try again.", "OK");
                 UserName.Text = null;
                 PassWord.Text = null;
-
-                return;
-            }
-
-            // Checks entered email is in the correct format
-            if (IsValid(email) == false)
-            {
-                await DisplayAlert("ERROR", "Email address is an incorrect format. Please try again.", "OK");
-                UserName.Text = null;
-                PassWord.Text = null;
-                Email.Text = null;
 
                 return;
             }
