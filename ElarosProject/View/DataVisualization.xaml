@@ -14,8 +14,6 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <Image Source="ElarosLogo.png" Grid.Column="1" HeightRequest="80"/>
-                        <StackLayout Grid.Column="1" HorizontalOptions="CenterAndExpand">
-                        </StackLayout>
                         <Image Source="help_icon.png" Grid.Column="2" WidthRequest="35">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="helpIconTapped"/>
