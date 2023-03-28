@@ -17,8 +17,13 @@
 		<item name="colorPrimary">#ffa500</item>
 		<item name="colorPrimaryDark">#ffa500</item>
 		<item name="colorAccent">@android:color/holo_orange_light</item>
-		<item name="android:windowBackground">@drawable/splash_screen</item>
-		<item name="android:windowFullscreen">true</item>
 	</style>
-  
+	
+	<style name="splashscreen" parent="Theme.AppCompat.Light.DarkActionBar">
+		<item name="android:windowBackground">@drawable/splash_screen</item>
+		<item name="android:windowNoTitle">true</item>
+		<item name="android:windowFullscreen">true</item>
+		<item name="android:windowContentOverlay">@null</item>
+		<item name="android:windowActionBar">true</item>
+	</style>
 </resources>

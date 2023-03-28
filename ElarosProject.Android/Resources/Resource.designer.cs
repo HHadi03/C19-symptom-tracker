@@ -23207,6 +23207,9 @@ namespace ElarosProject.Droid
 			// aapt resource value: 0x7F0F0138
 			public const int ShapeAppearance_MaterialComponents_Tooltip = 2131689784;
 			
+			// aapt resource value: 0x7F0F02FB
+			public const int splashscreen = 2131690235;
+			
 			// aapt resource value: 0x7F0F014D
 			public const int TestStyleWithLineHeight = 2131689805;
 			

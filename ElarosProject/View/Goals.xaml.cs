@@ -19,16 +19,17 @@ namespace ElarosProject.View
         public AssessmentVM _assessmentVM = Application.Current.Properties["_assessmentVM"] as AssessmentVM;
         public GoalVM _goalVM = Application.Current.Properties["_goalVM"] as GoalVM;
         public LoginModel currentUser = Application.Current.Properties["currentUser"] as LoginModel;
+        bool newGoalClicked = false;
 
         public Goals()
         {
             InitializeComponent();
         }
 
-        Boolean newGoalClicked = false;
         protected void NewGoalClick(object sender, EventArgs e)
         { 
-            newGoalClicked = true; this.Navigation.PushAsync(new NewGoal());
+            newGoalClicked = true; 
+            this.Navigation.PushAsync(new NewGoal());
         }
 
         public void SetupNotification()
