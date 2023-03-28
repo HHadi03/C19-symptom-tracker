@@ -64,7 +64,8 @@
                         
         </StackLayout>
     </ContentPage>
-    <local:FatigueTracker Title="Diary" IconImageSource="diary.png"/>
+    
+    <local:SymptomDiary Title="Diary" IconImageSource="diary.png"/>
     <local:Goals Title="Goals" IconImageSource="goal.png"/>
 
 </TabbedPage>

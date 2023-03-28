@@ -13,6 +13,7 @@ namespace ElarosProject.ViewModel
         // Holds symptom information to use in Views
         public ObservableCollection<AssessmentModel> AssessmentResults { get; set; }
         public ObservableCollection<Symptom> SymptomList { get; set; }
+        public ObservableCollection<AssessmentModel> SymptomUpdate { get; set; } //Holds user symptoms retrieved by User id, grouped by symptom to ensure it holds first occurence (most recent update of symptom)
         public LoginVM _loginVM = new LoginVM();
         databaseConnection myConnection = new databaseConnection();
 
@@ -35,8 +36,9 @@ namespace ElarosProject.ViewModel
             };
 
             AssessmentResults = new ObservableCollection<AssessmentModel>();
-
+            SymptomUpdate = new ObservableCollection<AssessmentModel>();
             BuildList();
+            UpdateSymptom(); //Build a list of symptoms by descending date 
 
         }
 
@@ -62,5 +64,27 @@ namespace ElarosProject.ViewModel
             return results;
         }
 
+        public async void UpdateSymptom()
+        {
+            List<AssessmentModel> symptomss = await myConnection.getUpdatedSymptom();
+            foreach (var entry in symptomss)
+            {
+                SymptomUpdate.Add(entry);
+            }
+
+        }
+
+        public ObservableCollection<AssessmentModel> getSymptomByUser(string userID) //my update- sumaiya
+        {
+            ObservableCollection<AssessmentModel> groupedSymptoms = new ObservableCollection<AssessmentModel>();
+            var result = SymptomUpdate.Where(u => u.User == userID).GroupBy(s => s.Symptom);
+            foreach (var record in result)
+            {
+                groupedSymptoms.Add(record.FirstOrDefault()); //check cast- may be causing issues when building project 
+            }
+            return groupedSymptoms;
+        }
     }
+
+    
 }
