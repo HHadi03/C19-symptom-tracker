@@ -84,6 +84,16 @@ namespace ElarosProject
             }).ToList();
         }
 
+        public async Task<List<AssessmentModel>> getUpdatedSymptom() //method to get all users' symptoms and sort by descending date 
+        {
+            return (await fbClient.Child("User Symptoms").OnceAsync<AssessmentModel>()).Select(item => new AssessmentModel
+            {
+                DateLogged = item.Object.DateLogged,
+                Severity = item.Object.Severity,
+                Symptom = item.Object.Symptom,
+                User = item.Object.User
+            }).OrderByDescending(date => date.DateLogged).ToList();
+        }
         public async Task<bool> SaveFatigueTracker(Model.fatigueModel myTracker)
         {
             var data = await fbClient.Child(nameof(Model.fatigueModel)).PostAsync(JsonConvert.SerializeObject(myTracker));
