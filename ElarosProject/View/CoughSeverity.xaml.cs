@@ -40,7 +40,9 @@ namespace ElarosProject.View
 
                 await DisplayAlert("Submitted", "Your selection has been saved", "OK");
                 inputValidatedTaskCompleted.SetResult(true);
+
             }
+
             else
             {
                 await DisplayAlert("Invalid Selection", "Please select a severity between 1 and 10.", "OK");
