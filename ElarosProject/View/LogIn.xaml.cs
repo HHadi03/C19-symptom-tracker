@@ -94,7 +94,7 @@ namespace ElarosProject.View
             catch (Exception ex)
             {
                 LogInLoading.IsRunning = false;
-                // await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "OK");
+                await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "OK");
             }
 
             // Display alert if user details were not found.
