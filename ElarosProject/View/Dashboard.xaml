@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ElarosProject.View.Dashboard"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="ElarosProject.View.Dashboard"
             xmlns:local="clr-namespace:ElarosProject.View"
             NavigationPage.HasNavigationBar="False"
             BarBackgroundColor="{StaticResource FrameBackgroundColor}"

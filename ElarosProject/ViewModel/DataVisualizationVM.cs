@@ -1,150 +1,144 @@
-﻿using Microcharts;
+﻿using ElarosProject.Model;
+using Microcharts;
 using SkiaSharp;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace ElarosProject.ViewModel
 {
     public class DataVisualizationViewModel : INotifyPropertyChanged
     {
-        public ChartEntry[] _symptoms;
-        public ChartEntry[] _disabilities;
+        public AssessmentVM _assessmentVM = Application.Current.Properties["_assessmentVM"] as AssessmentVM;
+
+        public ChartEntry[] _userSymptoms;
+        public ChartEntry[] _userDisabilities;
         private Chart _symptomsChart;
-        private Chart _disabilitiesChart;
+        private Chart _disabilityChart;
 
         public event PropertyChangedEventHandler PropertyChanged;
-
+        public List<SKColor> colors = new List<SKColor>();
+             
+              
         public Chart SymptomsChart
         {
             get => _symptomsChart;
             set => SetProperty(ref _symptomsChart, value);
         }
 
-        public Chart DisabilitiesChart
+        public Chart DisabilityChart
         {
-            get => _disabilitiesChart;
-            set => SetProperty(ref _disabilitiesChart, value);
+            get => _disabilityChart;
+            set => SetProperty(ref _disabilityChart, value);
         }
 
         public DataVisualizationViewModel()
         {
-            _symptoms = new[]
-            {
-                new ChartEntry(10)
-                {
-                    Label="Breathlessness",
-                    ValueLabel="10",
-                    Color = SKColor.Parse("#2F5CAF")
-                },
-                new ChartEntry(7)
-                {
-                    Label="Cough",
-                    ValueLabel="7",
-                    Color = SKColor.Parse("#FDDDC7")
-                },
-                new ChartEntry(3)
-                {
-                    Label="Swallowing",
-                    ValueLabel="3",
-                    Color = SKColor.Parse("#F7B176")
-                },
-                new ChartEntry(9)
-                {
-                    Label="Fatigue",
-                    ValueLabel="9",
-                    Color = SKColor.Parse("#54A08C")
-                },
-                new ChartEntry(8)
-                {
-                    Label="Continence",
-                    ValueLabel = "8",
-                    Color = SKColor.Parse("#7865B6")
-                },
-                new ChartEntry(4)
-                {
-                    Label="Pain",
-                    ValueLabel = "4",
-                    Color = SKColor.Parse("#EDD182")
-                },
-                new ChartEntry(5)
-                {
-                    Label="Cognition",
-                    ValueLabel="5",
-                    Color = SKColor.Parse("#2F5CAF")
-                },
-                new ChartEntry(2)
-                {
-                    Label="Anxiety",
-                    ValueLabel = "2",
-                    Color = SKColor.Parse("#FDDDC7")
-                },
-            };
+            // Add colors to list
+            colors.Add(SKColor.Parse("#2F5CAF"));
+            colors.Add(SKColor.Parse("#FDDDC7"));
+            colors.Add(SKColor.Parse("#F7B176"));
+            colors.Add(SKColor.Parse("#54A08C"));
+            colors.Add(SKColor.Parse("#EDD182"));
+            colors.Add(SKColor.Parse("#7865B6"));
+            colors.Add(SKColor.Parse("#2F5CAF"));
+            colors.Add(SKColor.Parse("#FDDDC7"));
+            colors.Add(SKColor.Parse("#F7B176"));
+            colors.Add(SKColor.Parse("#54A08C"));
+            colors.Add(SKColor.Parse("#EDD182"));
+            colors.Add(SKColor.Parse("#7865B6"));
 
-            _disabilities = new[]
+            ShowBarCharts();
+        }
+
+        public ChartEntry[] BuildSymptomData(ObservableCollection<AssessmentModel> specificResults)
+        {
+            int colorCount = 0;
+            List<ChartEntry> entryList = new List<ChartEntry>();
+
+            foreach (var item in specificResults)
             {
-                new ChartEntry(7)
+                if (item.Symptom != "Communication" && item.Symptom != "Mobility" && item.Symptom != "Personal Care" && item.Symptom != "Daily tasks")
                 {
-                    Label="Communication",
-                    ValueLabel = "7",
-                    Color = SKColor.Parse("#7865B6")
-                },
-                new ChartEntry(3)
-                {
-                    Label="Mobility",
-                    ValueLabel = "3",
-                    Color = SKColor.Parse("#54A08C")
-                },
-                new ChartEntry(4)
-                {
-                    Label="Personal-Care",
-                    ValueLabel = "4",
-                    Color = SKColor.Parse("#FDDDC7")
-                },
-                new ChartEntry(10)
-                {
-                    Label="Other",
-                    ValueLabel = "10",
-                    Color = SKColor.Parse("#2F5CAF")
+                    entryList.Add(
+                    new ChartEntry(item.Severity)
+                    {
+                        Label = item.Symptom,
+                        ValueLabel = item.Severity.ToString(),
+                        Color = colors[colorCount]
+                    });
+                    colorCount++;
                 }
-            };
+            }
 
-            ShowRadarCharts();
+            return entryList.ToArray();
+        }
+
+        public ChartEntry[] BuildDisabilityData(ObservableCollection<AssessmentModel> specificResults)
+        {
+            int colorCount = 0;
+            List<ChartEntry> entryList = new List<ChartEntry>();
+
+            foreach (var item in specificResults)
+            {
+                if (item.Symptom == "Communication" || item.Symptom == "Mobility" || item.Symptom == "Personal Care" || item.Symptom == "Daily tasks")
+                {
+                    entryList.Add(
+                    new ChartEntry(item.Severity)
+                    {
+                        Label = item.Symptom,
+                        ValueLabel = item.Severity.ToString(),
+                        Color = colors[colorCount]
+                    });
+                    colorCount++;
+                }
+            }
+
+            return entryList.ToArray();
         }
 
         public void ShowBarCharts()
         {
-            SymptomsChart = new BarChart { Entries = _symptoms };
-            DisabilitiesChart = new BarChart { Entries = _disabilities };
+            SymptomsChart = new BarChart 
+            { 
+                Entries = _userSymptoms 
+            };
+
+            DisabilityChart = new BarChart
+            {
+                Entries = _userDisabilities
+            };
         }
 
         public void ShowRadarCharts()
         {
-            SymptomsChart = new RadarChart { Entries = _symptoms };
-            DisabilitiesChart = new RadarChart { Entries = _disabilities };
+            SymptomsChart = new RadarChart 
+            { 
+                Entries = _userSymptoms
+            };
+
+            DisabilityChart = new RadarChart
+            {
+                Entries = _userDisabilities
+            };
         }
 
         public void ShowRadialCharts()
         {
-            SymptomsChart = new RadialGaugeChart { Entries = _symptoms };
-            DisabilitiesChart = new RadialGaugeChart { Entries = _disabilities };
-        }
+            SymptomsChart = new RadialGaugeChart 
+            { 
+                Entries = _userSymptoms
+            };
 
-        public ChartEntry[] GetRadarChartData(ChartEntry[] data)
-        {
-            return data;
+            DisabilityChart = new RadialGaugeChart
+            {
+                Entries = _userDisabilities
+            };
         }
-
-        public ChartEntry[] GetBarChartData(ChartEntry[] data)
-        {
-            return data;
-        }
-
-        public ChartEntry[] GetRadialChartData(ChartEntry[] data)
-        {
-            return data;
-        }
-
 
         private bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
         {

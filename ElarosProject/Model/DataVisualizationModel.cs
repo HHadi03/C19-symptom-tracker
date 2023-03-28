@@ -4,7 +4,8 @@ using System.Text;
 
 namespace ElarosProject.Model
 {
-    internal class DataVisualizationModel
+    public class DataVisualizationModel
     {
+
     }
 }
