@@ -1,4 +1,5 @@
 using ElarosProject.Model;
+using Firebase.Auth;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -72,6 +73,19 @@ namespace ElarosProject.View
                 await DisplayAlert("error", "could not save", "ok");
             }
 
+        }
+
+        async void LogoutClick(object sender, EventArgs e)
+        {
+            bool response = await DisplayAlert("Logout", "Do you want to logout?", "Yes", "No");
+
+            if (response)
+            {
+                var authProvider = Application.Current.Properties["LoginState"] as FirebaseAuthClient;
+                authProvider.SignOut();
+                currentUser = null;
+                await Navigation.PushAsync(new LoginPage());
+            }
         }
     }
 }

@@ -3,12 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ElarosProject.View.Questionnaire">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="{StaticResource AppBackgroundColor}">
+        <ScrollView>
+            <StackLayout BackgroundColor="{StaticResource AppBackgroundColor}">
             <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
-                <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
+                <RelativeLayout>
+                    <Image Source="ElarosLogo.png" HeightRequest="80" x:Name="ElarosLogo"
+                           RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.4}"
+                           RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"/>
+                    <ImageButton Source="logout.png" BackgroundColor="Transparent" HeightRequest="30" Clicked="LogoutClick"
+                           RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ElarosLogo, Property=X, Constant=180}"
+                           RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ElarosLogo, Property=Y, Constant=0}"/>
+                </RelativeLayout>
             </Frame>
             <Label Text="Covid-19 Questionnaire" HorizontalOptions="Center" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="28" Padding="0,25"/>
             <Image Source="placeholder.png" HorizontalOptions="Center" Margin="15,20"/>
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

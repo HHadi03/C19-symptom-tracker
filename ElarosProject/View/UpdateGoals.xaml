@@ -4,7 +4,8 @@
              x:Class="ElarosProject.View.UpdateGoals"
              NavigationPage.HasNavigationBar = "False">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="{StaticResource AppBackgroundColor}">
+        <ScrollView>
+            <StackLayout BackgroundColor="{StaticResource AppBackgroundColor}">
             <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
                 <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
             </Frame>
@@ -32,6 +33,7 @@
             <Button Text="Update" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" WidthRequest="100" HeightRequest="80" CornerRadius="10" Margin="100,40,100,20" BackgroundColor="{StaticResource ButtonColor}" FontSize="20" Clicked="UpdateClick"></Button>
 
             <Button Text="Delete" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" WidthRequest="100" HeightRequest="80" CornerRadius="10" Margin="100,20" BackgroundColor="{StaticResource ButtonColor}" FontSize="20" Clicked="DeleteClick"></Button>
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -4,7 +4,8 @@
              x:Class="ElarosProject.View.NewGoal"
              NavigationPage.HasNavigationBar = "False">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="{StaticResource AppBackgroundColor}">
+        <ScrollView>
+            <StackLayout BackgroundColor="{StaticResource AppBackgroundColor}">
             <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
                 <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
             </Frame>
@@ -31,6 +32,7 @@
             <Label Text="Select the date you wish to reach this goal by" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="30,10"/>
             <DatePicker x:Name="TargetDatePicker" TextColor="{StaticResource AppTextColor}" HorizontalOptions="Center"></DatePicker>
             <Button Text="Save" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" WidthRequest="100" HeightRequest="80" CornerRadius="10" Margin="100,20" BackgroundColor="{StaticResource ButtonColor}" FontSize="20" Clicked="SaveClick"></Button>
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

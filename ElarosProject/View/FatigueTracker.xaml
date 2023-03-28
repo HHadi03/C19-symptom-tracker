@@ -51,7 +51,14 @@
 
     <StackLayout BackgroundColor="{StaticResource AppBackgroundColor}">
         <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
-            <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
+            <RelativeLayout>
+                <Image Source="ElarosLogo.png" HeightRequest="80" x:Name="ElarosLogo"
+                           RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.4}"
+                           RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"/>
+                <ImageButton Source="logout.png" BackgroundColor="Transparent" HeightRequest="30" Clicked="LogoutClick"
+                           RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ElarosLogo, Property=X, Constant=180}"
+                           RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ElarosLogo, Property=Y, Constant=0}"/>
+            </RelativeLayout>
         </Frame>
 
         <Frame Style="{StaticResource customFrame}">

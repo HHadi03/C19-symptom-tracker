@@ -1,5 +1,6 @@
 ﻿using ElarosProject.Model;
 using ElarosProject.ViewModel;
+using Firebase.Auth;
 using Plugin.LocalNotification;
 using System;
 using System.Collections.Generic;
@@ -71,6 +72,19 @@ namespace ElarosProject.View
             else
             {
                 this.Navigation.PushAsync(new ViewGoals());
+            }
+        }
+
+        async void LogoutClick(object sender, EventArgs e)
+        {
+            bool response = await DisplayAlert("Logout", "Do you want to logout?", "Yes", "No");
+
+            if (response)
+            {
+                var authProvider = Application.Current.Properties["LoginState"] as FirebaseAuthClient;
+                authProvider.SignOut();
+                currentUser = null;
+                await Navigation.PushAsync(new LoginPage());
             }
         }
     }
