@@ -23,6 +23,7 @@ namespace ElarosProject.View
         public AssessmentVM _assessmentVM = Application.Current.Properties["_assessmentVM"] as AssessmentVM;
         public GoalVM _goalVM = Application.Current.Properties["_goalVM"] as GoalVM;
         public LoginModel currentUser = Application.Current.Properties["currentUser"] as LoginModel;
+        private ObservableCollection<GoalModel> specificGoals = Application.Current.Properties["userGoals"] as ObservableCollection<GoalModel>;
         FirebaseClient fbClient = new FirebaseClient("https://elarosdb-default-rtdb.europe-west1.firebasedatabase.app/",
                                   new FirebaseOptions
                                   {
@@ -33,7 +34,7 @@ namespace ElarosProject.View
         {
             InitializeComponent();
             ObservableCollection<GoalModel> GoalList = _goalVM.GoalList;
-            BindingContext = GoalList;
+            BindingContext = specificGoals;
         }
 
         protected async void UpdateClick(object sender, EventArgs e)

@@ -9,7 +9,7 @@
                 <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
             </Frame>
             <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Goal information:" TextColor="{StaticResource AppTextColor}" FontSize="24" FontAttributes="Bold" Padding="0,40, 0, 15"/>
-            <CarouselView x:Name="GoalsListView" ItemsSource="{Binding GoalList}" Margin="30, 20" Loop="False">
+            <CarouselView x:Name="GoalsListView" ItemsSource="{Binding}" Margin="30, 20" Loop="False">
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout>
