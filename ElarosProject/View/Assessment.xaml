@@ -7,8 +7,8 @@
         <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
             <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
         </Frame>
-        <Label Text="Initial Assessment" TextColor="{StaticResource AppTextColor}" Padding="0,25" FontAttributes="Bold" FontSize="28" HorizontalOptions="CenterAndExpand" />
-
+        <Label Text="Initial Assessment" TextColor="{StaticResource AppTextColor}" Padding="0,25" FontAttributes="Bold" FontSize="28" HorizontalOptions="CenterAndExpand"/>
+        <Label Text="please select all symptoms that apply" TextColor="{StaticResource AppTextColor}" FontSize="Medium" HorizontalOptions="CenterAndExpand" FontAttributes="Italic" Padding="0,0,0,25"/>
         <ListView x:Name="SymptomsListView" ItemsSource="{Binding SymptomList}" HasUnevenRows="True" SeparatorVisibility="None" SelectionMode="None" Footer="">
             <ListView.ItemTemplate>
                 <DataTemplate>
