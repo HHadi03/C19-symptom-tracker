@@ -40,7 +40,6 @@ namespace ElarosProject.View
 
                 await DisplayAlert("Submitted", "Your selection has been saved", "OK");
                 inputValidatedTaskCompleted.SetResult(true);
-
             }
 
             else
