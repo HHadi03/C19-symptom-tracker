@@ -19579,25 +19579,22 @@ namespace ElarosProject.Droid
 			public const int radial_chart = 2131165358;
 			
 			// aapt resource value: 0x7F0700AF
-			public const int return_icon = 2131165359;
-			
-			// aapt resource value: 0x7F0700B0
-			public const int RobotHelper = 2131165360;
-			
-			// aapt resource value: 0x7F0700B2
-			public const int SplashLogo = 2131165362;
+			public const int RobotHelper = 2131165359;
 			
 			// aapt resource value: 0x7F0700B1
-			public const int splash_screen = 2131165361;
+			public const int SplashLogo = 2131165361;
+			
+			// aapt resource value: 0x7F0700B0
+			public const int splash_screen = 2131165360;
+			
+			// aapt resource value: 0x7F0700B2
+			public const int test_custom_background = 2131165362;
 			
 			// aapt resource value: 0x7F0700B3
-			public const int test_custom_background = 2131165363;
+			public const int tooltip_frame_dark = 2131165363;
 			
 			// aapt resource value: 0x7F0700B4
-			public const int tooltip_frame_dark = 2131165364;
-			
-			// aapt resource value: 0x7F0700B5
-			public const int tooltip_frame_light = 2131165365;
+			public const int tooltip_frame_light = 2131165364;
 			
 			static Drawable()
 			{

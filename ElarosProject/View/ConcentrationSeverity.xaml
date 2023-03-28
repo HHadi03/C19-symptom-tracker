@@ -13,9 +13,9 @@
             <Label Text="The ability to focus the mind on one subject, object or thought and at the same time exclude any other unrelated thoughts, ideas, feelings and sensations."
                TextColor="{StaticResource AppTextColor}" Padding="10,5,5, 10" HorizontalOptions="Center" FontSize="Medium" />
         </Frame>
-            <StackLayout>
+            <StackLayout Padding="20">
                 <Label Text="Lack of Concentration Severity (1-10):" TextColor="{StaticResource AppTextColor}" FontSize="Medium" HorizontalOptions="Center"/>
-                <Picker x:Name="ConcentrationPicker" SelectedIndexChanged="ConcentrationPicker_SelectedIndexChanged" HorizontalOptions="CenterAndExpand" FontSize="Medium" TextColor="{StaticResource AppTextColor}" WidthRequest="200">
+                <Picker x:Name="ConcentrationPicker" SelectedIndexChanged="ConcentrationPicker_SelectedIndexChanged" HorizontalOptions ="Center" HorizontalTextAlignment="Center" FontSize="Medium" TextColor="{StaticResource AppTextColor}" WidthRequest="250">
                     <Picker.Items>
                         <x:String>1</x:String>
                         <x:String>2</x:String>
