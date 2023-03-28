@@ -8,7 +8,8 @@
             <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
                 <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
             </Frame>
-            <Button Text="Set New Goal" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="24" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" CornerRadius="10" Margin="0, 80, 0, 40" BackgroundColor="{StaticResource ButtonColor}" Clicked="NewGoalClick"/>
+            <Label HorizontalOptions="Center" Text="Goal Setting" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="28" Padding="0,25" Margin="0,15,0,0"/>
+            <Button Text="Set New Goal" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="24" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" CornerRadius="10" Margin="0, 40, 0, 40" BackgroundColor="{StaticResource ButtonColor}" Clicked="NewGoalClick"/>
             <Button Text="Update Goal" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="24" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" CornerRadius="10" Margin="0,40" BackgroundColor="{StaticResource ButtonColor}" Clicked="UpdateGoalClick"/>
             <Button Text="View Goals" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="24" WidthRequest="220" HeightRequest="80" HorizontalOptions="Center" CornerRadius="10" Margin="0,40" BackgroundColor="{StaticResource ButtonColor}" Clicked="ViewGoalClick"/>
         </StackLayout>

@@ -14,7 +14,7 @@ namespace ElarosProject.Droid
 {
 	
 	
-	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "13.1.0.5")]
+	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "13.0.0.73")]
 	public partial class Resource
 	{
 		
@@ -17723,34 +17723,37 @@ namespace ElarosProject.Droid
 			public const int secondary_text_disabled_material_light = 2131034328;
 			
 			// aapt resource value: 0x7F0500D9
-			public const int switch_thumb_disabled_material_dark = 2131034329;
+			public const int splash_background = 2131034329;
 			
 			// aapt resource value: 0x7F0500DA
-			public const int switch_thumb_disabled_material_light = 2131034330;
+			public const int switch_thumb_disabled_material_dark = 2131034330;
 			
 			// aapt resource value: 0x7F0500DB
-			public const int switch_thumb_material_dark = 2131034331;
+			public const int switch_thumb_disabled_material_light = 2131034331;
 			
 			// aapt resource value: 0x7F0500DC
-			public const int switch_thumb_material_light = 2131034332;
+			public const int switch_thumb_material_dark = 2131034332;
 			
 			// aapt resource value: 0x7F0500DD
-			public const int switch_thumb_normal_material_dark = 2131034333;
+			public const int switch_thumb_material_light = 2131034333;
 			
 			// aapt resource value: 0x7F0500DE
-			public const int switch_thumb_normal_material_light = 2131034334;
+			public const int switch_thumb_normal_material_dark = 2131034334;
 			
 			// aapt resource value: 0x7F0500DF
-			public const int test_mtrl_calendar_day = 2131034335;
+			public const int switch_thumb_normal_material_light = 2131034335;
 			
 			// aapt resource value: 0x7F0500E0
-			public const int test_mtrl_calendar_day_selected = 2131034336;
+			public const int test_mtrl_calendar_day = 2131034336;
 			
 			// aapt resource value: 0x7F0500E1
-			public const int tooltip_background_dark = 2131034337;
+			public const int test_mtrl_calendar_day_selected = 2131034337;
 			
 			// aapt resource value: 0x7F0500E2
-			public const int tooltip_background_light = 2131034338;
+			public const int tooltip_background_dark = 2131034338;
+			
+			// aapt resource value: 0x7F0500E3
+			public const int tooltip_background_light = 2131034339;
 			
 			static Color()
 			{
@@ -19566,14 +19569,20 @@ namespace ElarosProject.Droid
 			// aapt resource value: 0x7F0700AB
 			public const int RobotHelper = 2131165355;
 			
-			// aapt resource value: 0x7F0700AC
-			public const int test_custom_background = 2131165356;
-			
 			// aapt resource value: 0x7F0700AD
-			public const int tooltip_frame_dark = 2131165357;
+			public const int SplashLogo = 2131165357;
+			
+			// aapt resource value: 0x7F0700AC
+			public const int splash_screen = 2131165356;
 			
 			// aapt resource value: 0x7F0700AE
-			public const int tooltip_frame_light = 2131165358;
+			public const int test_custom_background = 2131165358;
+			
+			// aapt resource value: 0x7F0700AF
+			public const int tooltip_frame_dark = 2131165359;
+			
+			// aapt resource value: 0x7F0700B0
+			public const int tooltip_frame_light = 2131165360;
 			
 			static Drawable()
 			{
