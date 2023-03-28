@@ -4,26 +4,47 @@
              xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" 
              x:Class="ElarosProject.View.DataVisualization">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="{StaticResource AppBackgroundColor}">
-            <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
-                <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
-            </Frame>
-            <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300">
-                <Label Text="Symptom Severity" TextColor="{StaticResource AppTextColor}"/>
-                <Frame>
-                    <microcharts:ChartView x:Name="chartViewSymptoms" HeightRequest="200"/>
+        <ScrollView>
+            <StackLayout BackgroundColor="{StaticResource AppBackgroundColor}">
+                <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="ElarosLogo.png" Grid.Column="1" HeightRequest="80"/>
+                        <StackLayout Grid.Column="1" HorizontalOptions="CenterAndExpand">
+                        </StackLayout>
+                        <Image Source="help_icon.png" Grid.Column="2" WidthRequest="35">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="helpIconTapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
                 </Frame>
-                <Label Text="Functional Disability" TextColor="{StaticResource AppTextColor}"/>
-                <Frame>
-                    <microcharts:ChartView x:Name="chartViewDisabilities" HeightRequest="200"/>
-                </Frame>
-                <StackLayout Orientation="Horizontal">
-                    <Button Text="Bar" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="24" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" CornerRadius="10" Margin="0,40" BackgroundColor="{StaticResource ButtonColor}" Clicked="BarChartClicked"/>
-                    <Button Text="Radar" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="24" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" CornerRadius="10" Margin="0,40" BackgroundColor="{StaticResource ButtonColor}" Clicked="RadarChartClicked"/>
-                    <Button Text="Radial" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="24" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" CornerRadius="10" Margin="0,40" BackgroundColor="{StaticResource ButtonColor}" Clicked="RadialChartClicked"/>
-
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300" Padding="15">
+                    <Label Text="Symptom Severity" TextColor="{StaticResource AppTextColor}" HorizontalOptions="Center" FontSize="Medium" Padding="0,25,0,6" FontAttributes="Bold"/>
+                    <Frame>
+                        <microcharts:ChartView x:Name="chartViewSymptoms" HeightRequest="200"/>
+                    </Frame>
+                    <Label Text="Functional Disability" TextColor="{StaticResource AppTextColor}" HorizontalOptions="Center" FontSize="Medium" Padding="0,25,0,6" FontAttributes="Bold"/>
+                    <Frame>
+                        <microcharts:ChartView x:Name="chartViewDisabilities" HeightRequest="200"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                        <Frame BackgroundColor="{StaticResource ButtonColor}" CornerRadius="50" Margin="0,20,0,20">
+                            <ImageButton Source="bar_chart.png" BackgroundColor="Transparent" WidthRequest="60" HeightRequest="60" Clicked="BarChartClicked" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Frame>
+                        <Frame BackgroundColor="{StaticResource ButtonColor}" CornerRadius="50" Margin="0,20,0,20">
+                            <ImageButton Source="radar_chart.png" BackgroundColor="Transparent" WidthRequest="60" HeightRequest="60" Clicked="RadarChartClicked" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Frame>
+                        <Frame BackgroundColor="{StaticResource ButtonColor}" CornerRadius="100" Margin="0,20,0,20">
+                            <ImageButton Source="radial_chart.png" BackgroundColor="Transparent" WidthRequest="60" HeightRequest="60" Clicked="RadialChartClicked" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Frame>
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

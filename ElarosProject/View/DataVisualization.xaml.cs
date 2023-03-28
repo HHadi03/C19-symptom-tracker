@@ -42,5 +42,10 @@ namespace ElarosProject.View
             chartViewSymptoms.Chart = new RadialGaugeChart { Entries = _viewModel.GetRadialChartData(_viewModel._symptoms) };
             chartViewDisabilities.Chart = new RadialGaugeChart { Entries = _viewModel.GetRadialChartData(_viewModel._disabilities) };
         }
+
+        private async void helpIconTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new HelpPage());
+        }
     }
 }
