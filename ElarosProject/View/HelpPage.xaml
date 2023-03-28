@@ -1,12 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ElarosProject.View.HelpPage">
+         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+         x:Class="ElarosProject.View.HelpPage"
+         NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <ScrollView>
+            <StackLayout BackgroundColor="{StaticResource AppBackgroundColor}">
+            <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
+                <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
+            </Frame>
+            <Label Text="Data Visualisation Help Menu" TextColor="{StaticResource AppTextColor}" Padding="0,25" FontAttributes="Bold" FontSize="25" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="Bar Chart" TextColor="{StaticResource AppTextColor}" Padding="20,5" FontSize="20" TextDecorations="Underline"/>
+            <Label Text="A bar chart is a chart that uses rectangular bars to represent your symptoms. The height of each bar is proportional to the severity it represents." TextColor="{StaticResource AppTextColor}" Padding="20,0,20,20" FontSize="15"/>
+                <Label Text="Radial Chart" TextColor="{StaticResource AppTextColor}" Padding="20,5" FontSize="20" TextDecorations="Underline"/>
+                <Label Text="A radial chart is a chart that uses a circular layout to represent each symptom. Each symptom is represented by a slice of the circle, and the percentage of the size represents the severity." TextColor="{StaticResource AppTextColor}" Padding="20,0,20,20" FontSize="15"/>
+                <Label Text="Radar Chart" TextColor="{StaticResource AppTextColor}" Padding="20,5" FontSize="20" TextDecorations="Underline"/>
+            <Label Text="A radar chart is a chart that uses a circular layout to the data. Each symptom value is represented by a point on the circle, and the distance from the center of the circle is proportional to the severity of the symptom." TextColor="{StaticResource AppTextColor}" Padding="20,0,20,20" FontSize="15"/>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
