@@ -30,8 +30,7 @@
                     </Picker.Items>
                 </Picker>
             </StackLayout>
-        <Image Source="RobotHelper.png" HorizontalOptions="Center" HeightRequest="90" Margin="0,15"></Image>
-        <Button Text="Next" Clicked="SubmitButtonClicked" BackgroundColor="{StaticResource ButtonColor}" WidthRequest="150" HeightRequest="60" FontSize="16" HorizontalOptions="Center" Margin="0,5" TextColor="Black"/>
+            <Button Text="Next" Clicked="SubmitButtonClicked" BackgroundColor="{StaticResource ButtonColor}" WidthRequest="150" HeightRequest="60" FontSize="16" HorizontalOptions="Center" Margin="0,5" TextColor="Black"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>
