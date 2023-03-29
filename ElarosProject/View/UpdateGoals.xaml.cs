@@ -10,7 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Xml.Serialization;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -63,30 +63,38 @@ namespace ElarosProject.View
 
         protected async void DeleteClick(object sender, EventArgs e)
         {
-            GoalModel fromPicker = (GoalModel)GoalPicker.SelectedItem;
-            string goalName = fromPicker.Name;
-
-            bool response = await DisplayAlert("Delete record", "Are you sure you want to delete this goal?", "Yes", "No");
-
-            if (response)
+            try 
             {
-                foreach (GoalModel goal in _goalVM.GoalList)
+
+                GoalModel fromPicker = (GoalModel)GoalPicker.SelectedItem;
+                string goalName = fromPicker.Name;
+
+                bool response = await DisplayAlert("Delete record", "Are you sure you want to delete this goal?", "Yes", "No");
+
+                if (response)
                 {
-                    if (goal.Name == goalName)
+                    foreach (GoalModel goal in _goalVM.GoalList)
                     {
-                        await fbClient.Child("User Goals").Child(goal.Name + " - " + goal.UserID).DeleteAsync();
+                        if (goal.Name == goalName)
+                        {
+                            await fbClient.Child("User Goals").Child(goal.Name + " - " + goal.UserID).DeleteAsync();
+                        }
                     }
-                }
 
-                var item = _goalVM.GoalList.SingleOrDefault(x => x.Name == goalName);
-                if (item != null)
-                {
-                    _goalVM.GoalList.Remove(item);
-                }
+                    var item = _goalVM.GoalList.SingleOrDefault(x => x.Name == goalName);
+                    if (item != null)
+                    {
+                        _goalVM.GoalList.Remove(item);
+                    }
 
-                await DisplayAlert("SUCCESS", "Goal deleted", "OK");
-                await this.Navigation.PushAsync(new Dashboard());
-            }      
+                    await DisplayAlert("SUCCESS", "Goal deleted", "OK");
+                    await this.Navigation.PushAsync(new Dashboard());
+                }
+            }
+            catch (NullReferenceException) 
+            {
+
+            }
         }
     }
 }
