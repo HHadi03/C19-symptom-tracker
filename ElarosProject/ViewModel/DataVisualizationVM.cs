@@ -17,13 +17,15 @@ namespace ElarosProject.ViewModel
 
         public ChartEntry[] _userSymptoms;
         public ChartEntry[] _userDisabilities;
+        public ChartEntry[] _userSymptomsBar;
+        public ChartEntry[] _userDisabilitiesBar;
         private Chart _symptomsChart;
         private Chart _disabilityChart;
 
         public event PropertyChangedEventHandler PropertyChanged;
         public List<SKColor> colors = new List<SKColor>();
-             
-              
+
+
         public Chart SymptomsChart
         {
             get => _symptomsChart;
@@ -40,19 +42,21 @@ namespace ElarosProject.ViewModel
         {
             // Add colors to list
             colors.Add(SKColor.Parse("#2F5CAF"));
-            colors.Add(SKColor.Parse("#FDDDC7"));
-            colors.Add(SKColor.Parse("#F7B176"));
+            colors.Add(SKColor.Parse("#EDC861"));
+            colors.Add(SKColor.Parse("#E81717"));
             colors.Add(SKColor.Parse("#54A08C"));
-            colors.Add(SKColor.Parse("#EDD182"));
+            colors.Add(SKColor.Parse("#A838F2"));
             colors.Add(SKColor.Parse("#7865B6"));
+            colors.Add(SKColor.Parse("#F7B176"));
+            colors.Add(SKColor.Parse("#1F99B8"));
             colors.Add(SKColor.Parse("#2F5CAF"));
-            colors.Add(SKColor.Parse("#FDDDC7"));
-            colors.Add(SKColor.Parse("#F7B176"));
+            colors.Add(SKColor.Parse("#EDC861"));
+            colors.Add(SKColor.Parse("#E81717"));
             colors.Add(SKColor.Parse("#54A08C"));
-            colors.Add(SKColor.Parse("#EDD182"));
-            colors.Add(SKColor.Parse("#7865B6"));
 
-            ShowBarCharts();
+
+
+            ShowRadialCharts();
         }
 
         public ChartEntry[] BuildSymptomData(ObservableCollection<AssessmentModel> specificResults)
@@ -67,15 +71,56 @@ namespace ElarosProject.ViewModel
                     entryList.Add(
                     new ChartEntry(item.Severity)
                     {
-                        Label = item.Symptom,
                         ValueLabel = item.Severity.ToString(),
-                        Color = colors[colorCount]
+                        Color = colors[colorCount],
+                        ValueLabelColor = colors[colorCount]
                     });
                     colorCount++;
                 }
             }
 
             return entryList.ToArray();
+        }
+
+        public ChartEntry[] BuildSymptomDataBar(ObservableCollection<AssessmentModel> specificResults)
+        {
+            int colorCount = 0;
+            List<ChartEntry> entryList = new List<ChartEntry>();
+
+            foreach (var item in specificResults)
+            {
+                if (item.Symptom != "Communication" && item.Symptom != "Mobility" && item.Symptom != "Personal Care" && item.Symptom != "Daily tasks")
+                {
+                    entryList.Add(
+                    new ChartEntry(item.Severity)
+                    {
+                        Label = item.Severity.ToString(),
+                        ValueLabel = " ",
+                        Color = colors[colorCount],
+                        ValueLabelColor = colors[colorCount]
+                    });
+                    colorCount++;
+                }
+            }
+
+            return entryList.ToArray();
+        }
+
+        public ObservableCollection<DataVisualizationModel> BuildSymptomLabel(ObservableCollection<AssessmentModel> specificResults)
+        {
+            int colorCount = 0;
+            ObservableCollection<DataVisualizationModel> labelList = new ObservableCollection<DataVisualizationModel>();
+
+            foreach (var item in specificResults)
+            {
+                if (item.Symptom != "Communication" && item.Symptom != "Mobility" && item.Symptom != "Personal Care" && item.Symptom != "Daily tasks")
+                {
+                    labelList.Add(new DataVisualizationModel(item.Symptom, colors[colorCount].ToString()));
+                    colorCount++;
+                }
+            }
+
+            return labelList;
         }
 
         public ChartEntry[] BuildDisabilityData(ObservableCollection<AssessmentModel> specificResults)
@@ -90,9 +135,9 @@ namespace ElarosProject.ViewModel
                     entryList.Add(
                     new ChartEntry(item.Severity)
                     {
-                        Label = item.Symptom,
                         ValueLabel = item.Severity.ToString(),
-                        Color = colors[colorCount]
+                        Color = colors[colorCount],
+                        ValueLabelColor = colors[colorCount]
                     });
                     colorCount++;
                 }
@@ -101,11 +146,52 @@ namespace ElarosProject.ViewModel
             return entryList.ToArray();
         }
 
+        public ChartEntry[] BuildDisabilityDataBar(ObservableCollection<AssessmentModel> specificResults)
+        {
+            int colorCount = 0;
+            List<ChartEntry> entryList = new List<ChartEntry>();
+
+            foreach (var item in specificResults)
+            {
+                if (item.Symptom == "Communication" || item.Symptom == "Mobility" || item.Symptom == "Personal Care" || item.Symptom == "Daily tasks")
+                {
+                    entryList.Add(
+                    new ChartEntry(item.Severity)
+                    {
+                        Label = item.Severity.ToString(),
+                        ValueLabel = " ",
+                        Color = colors[colorCount],
+                        ValueLabelColor = colors[colorCount]
+                    });
+                    colorCount++;
+                }
+            }
+
+            return entryList.ToArray();
+        }
+
+        public ObservableCollection<DataVisualizationModel> BuildDisabilityLabel(ObservableCollection<AssessmentModel> specificResults)
+        {
+            int colorCount = 0;
+            ObservableCollection<DataVisualizationModel> labelList = new ObservableCollection<DataVisualizationModel>();
+
+            foreach (var item in specificResults)
+            {
+                if (item.Symptom == "Communication" || item.Symptom == "Mobility" || item.Symptom == "Personal Care" || item.Symptom == "Daily tasks")
+                {
+                    labelList.Add(new DataVisualizationModel(item.Symptom, colors[colorCount].ToString()));
+                    colorCount++;
+                }
+            }
+
+            return labelList;
+        }
+
         public void ShowBarCharts()
         {
-            SymptomsChart = new BarChart 
-            { 
-                Entries = _userSymptoms 
+            SymptomsChart = new BarChart
+            {
+                Entries = _userSymptoms
             };
 
             DisabilityChart = new BarChart
@@ -116,8 +202,8 @@ namespace ElarosProject.ViewModel
 
         public void ShowRadarCharts()
         {
-            SymptomsChart = new RadarChart 
-            { 
+            SymptomsChart = new RadarChart
+            {
                 Entries = _userSymptoms
             };
 
@@ -129,8 +215,8 @@ namespace ElarosProject.ViewModel
 
         public void ShowRadialCharts()
         {
-            SymptomsChart = new RadialGaugeChart 
-            { 
+            SymptomsChart = new RadialGaugeChart
+            {
                 Entries = _userSymptoms
             };
 
