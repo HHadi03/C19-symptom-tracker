@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.OS;
 using Android.Content;
 using Android.Views;
+using Plugin.FirebasePushNotification;
 
 namespace ElarosProject.Droid
 {
@@ -27,6 +28,8 @@ namespace ElarosProject.Droid
             LoadApplication(new App());
 
             LocalNotificationCenter.NotifyNotificationTapped(Intent);
+
+            FirebasePushNotificationManager.ProcessIntent(this, Intent);
         }
 
         protected override void OnNewIntent(Intent intent)
