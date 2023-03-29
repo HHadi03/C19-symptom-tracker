@@ -40,7 +40,7 @@ namespace ElarosProject.View
                 var notification = new NotificationRequest
                 {
                     Description = "You have not set any new goals today...",
-                    Title = "Elaros Long Covid",
+                    Title = "Elaros Goal Setting",
                     Schedule = new NotificationRequestSchedule
                     {
                         NotifyTime = DateTime.Now.AddMinutes(2)
