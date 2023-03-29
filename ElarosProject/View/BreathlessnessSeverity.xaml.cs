@@ -16,8 +16,7 @@ namespace ElarosProject.View
         private AssessmentVM _assessmentVM = Application.Current.Properties["_assessmentVM"] as AssessmentVM;
         private LoginModel currentUser = Application.Current.Properties["currentUser"] as LoginModel;
         databaseConnection myConnection = new databaseConnection();
-        private int numSymptoms = 12; 
-        private int completedSymptoms = AssessmentModel.completedPages;
+
         public BreathlessnessSeverity()
         {
             InitializeComponent();
@@ -47,7 +46,6 @@ namespace ElarosProject.View
                 await myConnection.SaveSymptoms(symptom);
 
                 AssessmentModel.completedPages++;
-                completedSymptoms++; 
                 UpdateProgressBar();
 
                 await DisplayAlert("Submitted", "Your selection has been saved", "OK");
@@ -66,7 +64,7 @@ namespace ElarosProject.View
 
         private void UpdateProgressBar()
         {
-            double progress = (double)completedSymptoms / numSymptoms; 
+            double progress = (double)AssessmentModel.completedPages / 12; 
             progressBar.Progress = progress;
         }
     }
