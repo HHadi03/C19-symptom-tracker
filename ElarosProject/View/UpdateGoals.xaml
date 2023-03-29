@@ -10,9 +10,9 @@
                 <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
             </Frame>
             <Label Text="Update Goals" HorizontalOptions="Center" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="28" Padding="0,20, 0, 5"/>
-            <Label Text="Select a goal to update" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="0, 10, 0, 10"/>
+            <Label Text="Select a goal to update" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="20" Padding="0, 10, 0, 10"/>
             <Picker x:Name="GoalPicker" Title="Goal" TitleColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" ItemsSource="{Binding}" ItemDisplayBinding="{Binding Name}" WidthRequest="250" HorizontalOptions="Center"></Picker>
-            <Label Text="Enter a target severity" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="0, 10, 0, 10"/>
+            <Label Text="Enter a target severity" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="20" Padding="0, 10, 0, 10"/>
             <Picker x:Name="SeverityPicker" Title="Severity Level" TitleColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" WidthRequest="250" HorizontalOptions="Center">
                 <Picker.Items>
                     <x:String>1</x:String>
@@ -27,10 +27,10 @@
                     <x:String>10</x:String>
                 </Picker.Items>
             </Picker>
-            <Label Text="Select a new target date" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="30,10"/>
+            <Label Text="Select a new target date" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="20" Padding="30,10"/>
             <DatePicker x:Name="TargetDatePicker" TextColor="{StaticResource AppTextColor}" HorizontalOptions="Center"></DatePicker>
     
-            <Button Text="Update" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" WidthRequest="100" HeightRequest="80" CornerRadius="10" Margin="100,40,100,20" BackgroundColor="{StaticResource ButtonColor}" FontSize="20" Clicked="UpdateClick"></Button>
+            <Button Text="Update" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" WidthRequest="100" HeightRequest="80" CornerRadius="10" Margin="100,40,100,10" BackgroundColor="{StaticResource ButtonColor}" FontSize="20" Clicked="UpdateClick"></Button>
 
             <Button Text="Delete" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" WidthRequest="100" HeightRequest="80" CornerRadius="10" Margin="100,20" BackgroundColor="{StaticResource ButtonColor}" FontSize="20" Clicked="DeleteClick"></Button>
             </StackLayout>

@@ -44,10 +44,9 @@ namespace ElarosProject.View
                 if (IsValid(email) == false)
                 {
                     await DisplayAlert("ERROR", "Email address is an incorrect format. Please try again.", "OK");
-                    UserName.Text = null;
-                    PassWord.Text = null;
                     Email.Text = null;
 
+                    SignUpLoading.IsRunning = false;
                     return;
                 }
 
@@ -59,6 +58,17 @@ namespace ElarosProject.View
                     PassWord.Text = null;
                     Email.Text = null;
 
+                    SignUpLoading.IsRunning = false;
+                    return;
+                }
+
+                // Checks password is 6 or more characters
+                if (PassWord.Text.Length < 6)
+                {
+                    await DisplayAlert("ERROR", "Password must be at least 6 characters", "OK");
+                    PassWord.Text = null;
+
+                    SignUpLoading.IsRunning = false;
                     return;
                 }
 
@@ -70,6 +80,7 @@ namespace ElarosProject.View
                     UserName.Text = null;
                     PassWord.Text = null;
 
+                    SignUpLoading.IsRunning = false;
                     return;
                 }
 
@@ -123,6 +134,7 @@ namespace ElarosProject.View
             catch (NullReferenceException) 
             {
                 await DisplayAlert("ERROR", "Entry fields cannot be blank. Please try again", "OK");
+                SignUpLoading.IsRunning = false;
             }
         }
 

@@ -95,7 +95,7 @@ namespace ElarosProject.View
             catch (Exception ex)
             {
                 LogInLoading.IsRunning = false;
-                await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "OK");
+                // await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "OK");
             }
 
             // Display alert if user details were not found.
@@ -106,6 +106,7 @@ namespace ElarosProject.View
                 EmailAddress.Text = null;
                 PassWord.Text = null;
             }
+
         }
 
         private static bool IsValid(string email)
