@@ -91,6 +91,7 @@ namespace ElarosProject.View
                     }
                 }
             }
+
             catch (Exception ex)
             {
                 LogInLoading.IsRunning = false;

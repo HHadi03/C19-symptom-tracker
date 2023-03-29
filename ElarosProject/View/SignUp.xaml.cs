@@ -35,7 +35,7 @@ namespace ElarosProject.View
                 SignUpLoading.IsRunning = true;
                 string email = Email.Text.Trim();
                 string username = UserName.Text.Trim();
-                string password = PassWord.Text;
+                string password = PassWord.Text.Trim();
 
                 // Set BindingContext for _loginVM attribute as LoginVM
                 _loginVM = BindingContext as LoginVM;
@@ -101,11 +101,23 @@ namespace ElarosProject.View
                     var loginAuth = await authProvider.SignInWithEmailAndPasswordAsync(email, password);
 
                     await Navigation.PushAsync(new Assessment());
+
                 }
-                catch (Exception ex)
+
+                catch (Exception)
                 {
-                    SignUpLoading.IsRunning = false;
-                    await App.Current.MainPage.DisplayAlert("Exception occurred", ex.Message, "OK");
+                    if (password.Length < 6)
+                    {
+                        await App.Current.MainPage.DisplayAlert("Error", "Please enter a password with at least 6 characters", "OK");
+                        return;
+                    }
+
+                    else
+                    {
+                        SignUpLoading.IsRunning = false;
+                        await App.Current.MainPage.DisplayAlert("Error", "Email already exists", "OK");
+                    }
+                   
                 }
             }
             catch (NullReferenceException) 
