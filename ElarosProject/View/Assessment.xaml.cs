@@ -143,11 +143,11 @@ namespace ElarosProject.View
                     }
                 }
             }
+
             else
             {
                 await DisplayAlert("No Symptoms Selected", "Please select at least one symptom to proceed with the assessment.", "OK");
             }
         }
-
     }
 }

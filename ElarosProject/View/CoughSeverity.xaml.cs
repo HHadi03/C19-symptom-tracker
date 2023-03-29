@@ -16,11 +16,20 @@ namespace ElarosProject.View
         private AssessmentVM _assessmentVM = Application.Current.Properties["_assessmentVM"] as AssessmentVM;
         private LoginModel currentUser = Application.Current.Properties["currentUser"] as LoginModel;
         databaseConnection myConnection = new databaseConnection();
+        private int numSymptoms = 12;
+        private int completedSymptoms = AssessmentModel.completedPages;
 
         public CoughSeverity ()
 		{
 			InitializeComponent ();
             inputValidatedTaskCompleted = new TaskCompletionSource<bool>();
+            UpdateProgressBar();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            UpdateProgressBar();
         }
 
         private void CoughPicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -38,6 +47,10 @@ namespace ElarosProject.View
                 _assessmentVM.AssessmentResults.Add(symptom);
                 await myConnection.SaveSymptoms(symptom);
 
+                AssessmentModel.completedPages++;
+                completedSymptoms++;
+                UpdateProgressBar();
+
                 await DisplayAlert("Submitted", "Your selection has been saved", "OK");
                 inputValidatedTaskCompleted.SetResult(true);
             }
@@ -51,6 +64,12 @@ namespace ElarosProject.View
         public async Task WaitForInputValidationAsync()
         {
             await inputValidatedTaskCompleted.Task;
+        }
+
+        private void UpdateProgressBar()
+        {
+            double progress = (double)completedSymptoms / numSymptoms; 
+            progressBar.Progress = progress;
         }
     }
 }

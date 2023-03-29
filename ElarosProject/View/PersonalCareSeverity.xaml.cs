@@ -21,8 +21,16 @@ namespace ElarosProject.View
 		{
 			InitializeComponent ();
             inputValidatedTaskCompleted = new TaskCompletionSource<bool>();
+            UpdateProgressBar();
         }
-		private void PersonalCarePicker_SelectedIndexChanged(object sender, EventArgs e)
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            UpdateProgressBar();
+        }
+
+        private void PersonalCarePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
             selectedSeverity = picker.SelectedIndex + 1;
@@ -37,6 +45,9 @@ namespace ElarosProject.View
                 _assessmentVM.AssessmentResults.Add(symptom);
                 await myConnection.SaveSymptoms(symptom);
 
+                AssessmentModel.completedPages++;
+                UpdateProgressBar();
+
                 await DisplayAlert("Submitted", "Your selection has been saved", "OK");
                 inputValidatedTaskCompleted.SetResult(true);
             }
@@ -49,6 +60,12 @@ namespace ElarosProject.View
         public async Task WaitForInputValidationAsync()
         {
             await inputValidatedTaskCompleted.Task;
+        }
+
+        private void UpdateProgressBar()
+        {
+            double progress = (double)AssessmentModel.completedPages / 12;
+            progressBar.Progress = progress;
         }
     }
 }

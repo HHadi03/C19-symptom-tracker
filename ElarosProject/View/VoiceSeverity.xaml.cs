@@ -21,7 +21,15 @@ namespace ElarosProject.View
 		{
 			InitializeComponent ();
             inputValidatedTaskCompleted = new TaskCompletionSource<bool>();
+            UpdateProgressBar();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            UpdateProgressBar();
+        }
+
 
         private void VoicePicker_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -38,6 +46,9 @@ namespace ElarosProject.View
                 _assessmentVM.AssessmentResults.Add(symptom);
                 await myConnection.SaveSymptoms(symptom);
 
+                AssessmentModel.completedPages++;
+                UpdateProgressBar();
+
                 await DisplayAlert("Submitted", "Your selection has been saved", "OK");
                 inputValidatedTaskCompleted.SetResult(true);
             }
@@ -50,6 +61,12 @@ namespace ElarosProject.View
         public async Task WaitForInputValidationAsync()
         {
             await inputValidatedTaskCompleted.Task;
+        }
+
+        private void UpdateProgressBar()
+        {
+            double progress = (double)AssessmentModel.completedPages / 12;
+            progressBar.Progress = progress;
         }
     }
 }

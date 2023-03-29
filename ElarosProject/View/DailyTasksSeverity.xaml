@@ -8,6 +8,7 @@
             <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
                 <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="90"></Image>
             </Frame>
+            <ProgressBar x:Name="progressBar" Progress="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0,10,0,0" HeightRequest="10"/>
             <Label Text="Symptom Severity" TextColor="{StaticResource AppTextColor}" Padding="0,25" FontAttributes="Bold" FontSize="Large" HorizontalOptions="CenterAndExpand" />
             <Frame BorderColor="DarkOrange" Margin="15">
                 <Label Text="Activities people regularly do from getting up in the morning, showering, grooming, preparing and cooking meals, shopping and travelling to maintaining the house, garden and taking care of pets."

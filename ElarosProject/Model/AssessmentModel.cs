@@ -10,6 +10,7 @@ namespace ElarosProject.Model
         public string Symptom { get; set; }
         public int Severity { get; set; }
         public string DateLogged { get; set; }
+        public static int completedPages { get; set; } = 0; 
 
         public AssessmentModel(string user, string symptom, int severity, string dateLogged)
         {
