@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using ElarosProject.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using Firebase.Auth;
 
 namespace ElarosProject.View
 {
@@ -137,6 +137,19 @@ namespace ElarosProject.View
         private async void helpIconTapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new HelpPage());
+        }
+
+        async void LogoutClick(object sender, EventArgs e)
+        {
+            bool response = await DisplayAlert("Logout", "Do you want to logout?", "Yes", "No");
+
+            if (response)
+            {
+                var authProvider = Application.Current.Properties["LoginState"] as FirebaseAuthClient;
+                authProvider.SignOut();
+                currentUser = null;
+                await Navigation.PushAsync(new LoginPage());
+            }
         }
     }
 }

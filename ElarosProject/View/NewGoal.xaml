@@ -9,12 +9,12 @@
             <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
                 <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
             </Frame>
-            <Label Text="New Goal" HorizontalOptions="Center" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="28" Padding="0,20, 0, 5"/>
-            <Label Text="Choose a name for the goal" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="0, 10, 0, 10"/>
-            <Entry x:Name="GoalName" Placeholder="Name" PlaceholderColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" MaxLength="30" WidthRequest="250" HorizontalOptions="Center"></Entry>
-            <Label Text="Select the symptom you wish to make a goal for" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="30,10"/>
+            <Label Text="New Symptom Goal" HorizontalOptions="Center" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="28" Padding="0,20, 0, 5"/>
+            <Label Text="Select the symptom you wish to make a goal for" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="20" Padding="30,10"/>
             <Picker x:Name="SymptomPicker" Title="Symptom" TitleColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" ItemsSource="{Binding}" ItemDisplayBinding="{Binding Symptom}" WidthRequest="250" HorizontalOptions="Center"></Picker>
-            <Label Text="Select the symptom severity level you wish aim for" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="30,10"/>
+            <Label Text="Choose a name for the goal" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="20" Padding="0, 10, 0, 10"/>
+            <Entry x:Name="GoalName" Placeholder="Name" PlaceholderColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" MaxLength="30" WidthRequest="250" HorizontalOptions="Center"></Entry>
+            <Label Text="Select the symptom severity level you wish aim for" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="20" Padding="30,10"/>
             <Picker x:Name="GoalSeverity" Title="Severity Level" TitleColor="{StaticResource PlaceholderTextColor}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" WidthRequest="250" HorizontalOptions="Center">
                 <Picker.Items>
                     <x:String>1</x:String>
@@ -29,7 +29,7 @@
                     <x:String>10</x:String>
                 </Picker.Items>
             </Picker>
-            <Label Text="Select the date you wish to reach this goal by" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="30,10"/>
+            <Label Text="Select the date you wish to reach this goal by" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{StaticResource AppTextColor}" FontSize="20" Padding="30,10"/>
             <DatePicker x:Name="TargetDatePicker" TextColor="{StaticResource AppTextColor}" HorizontalOptions="Center"></DatePicker>
             <Button Text="Save" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" WidthRequest="100" HeightRequest="80" CornerRadius="10" Margin="100,20" BackgroundColor="{StaticResource ButtonColor}" FontSize="20" Clicked="SaveClick"></Button>
             </StackLayout>

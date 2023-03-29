@@ -13,12 +13,13 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Image Source="ElarosLogo.png" Grid.Column="1" HeightRequest="80" Margin="35,0,0,0"/>
-                        <Image Source="help_icon.png" Grid.Column="2" WidthRequest="35">
+                        <Image Source="ElarosLogo.png" Grid.Column="1" HeightRequest="80" Margin="-30,0,0,0"/>
+                        <Image Source="help_icon.png" Grid.Column="0" WidthRequest="35">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="helpIconTapped"/>
                             </Image.GestureRecognizers>
                         </Image>
+                        <ImageButton Source="logout.png" Grid.Column="2" Margin="0,-50,0,0" BackgroundColor="Transparent" HeightRequest="30" Clicked="LogoutClick"/>
                     </Grid>
                 </Frame>
                 <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="350" Padding="5">
