@@ -14,7 +14,8 @@
     <local:Questionnaire Title="Assessment" IconImageSource="checklist.png"/>
     <local:DataVisualization Title="Analysis" IconImageSource="chart.png"/>
     <ContentPage Title="Dashboard" BackgroundColor="{StaticResource AppBackgroundColor}" IconImageSource="dashboard.png">
-        <StackLayout>
+        <ScrollView>
+            <StackLayout>
             <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
                 <RelativeLayout>
                     <Image Source="ElarosLogo.png" HeightRequest="80" x:Name="ElarosLogo"
@@ -46,23 +47,23 @@
             </CarouselView>
             
             <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Your current goals:" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="20,0"/>
-            <CarouselView x:Name="GoalCarousel" ItemsSource="{Binding}" Margin="30,10" HeightRequest="180" Loop="False">
-                <CarouselView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout>
-                            <Frame Margin="5" Padding="15, 25" HasShadow="True" CornerRadius="10">
-                                <StackLayout>
-                                    <Label Text="{Binding Name}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="20"/>
-                                    <Label Text="{Binding SeverityLevel, StringFormat='{}Target Severity: {0}/10'}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="20"/>
-                                    <Label Text="{Binding TargetDate,StringFormat='{}Target Date: {0}'}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="20"/>
-                                </StackLayout>
-                            </Frame>
-                        </StackLayout>
-                    </DataTemplate>
-                </CarouselView.ItemTemplate>
-            </CarouselView>
-                        
-        </StackLayout>
+                <CarouselView x:Name="GoalCarousel" ItemsSource="{Binding}" Margin="30,10" HeightRequest="180" Loop="False">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Frame Margin="5" Padding="15, 25" HasShadow="True" CornerRadius="10">
+                                    <StackLayout>
+                                        <Label Text="{Binding Name}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="20"/>
+                                        <Label Text="{Binding SeverityLevel, StringFormat='{}Target Severity: {0}/10'}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="20"/>
+                                        <Label Text="{Binding TargetDate,StringFormat='{}Target Date: {0}'}" TextColor="{StaticResource AppTextColor}" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontSize="20"/>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+            </StackLayout>
+        </ScrollView>
     </ContentPage>
     
     <local:SymptomDiary Title="Diary" IconImageSource="diary.png"/>
