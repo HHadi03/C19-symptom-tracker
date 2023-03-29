@@ -29,82 +29,89 @@ namespace ElarosProject.View
 
         async void SignUpClick(object sender, EventArgs e)
         {
-            SignUpLoading.IsRunning = true;
-            string email = Email.Text.Trim();
-            string username = UserName.Text.Trim();
-            string password = PassWord.Text;
-
-            // Set BindingContext for _loginVM attribute as LoginVM
-            _loginVM = BindingContext as LoginVM;
-
-            // Checks entered email is in the correct format
-            if (IsValid(email) == false)
-            {
-                await DisplayAlert("ERROR", "Email address is an incorrect format. Please try again.", "OK");
-                UserName.Text = null;
-                PassWord.Text = null;
-                Email.Text = null;
-
-                return;
-            }
-
-            // Checks that no fields are left empty
-            if (UserName.Text == null || PassWord.Text == null || Email.Text == null)
-            {
-                await DisplayAlert("ERROR", "Entry fields cannot be blank. Please try again", "OK");
-                UserName.Text = null;
-                PassWord.Text = null;
-                Email.Text = null;
-
-                return;
-            }
-
-            // Checks username isn't already in use
-            var usernameCheck = _loginVM.LoginInfoList.Where(u => u.GetUsername() == username);
-            if (usernameCheck.Any())
-            {
-                await DisplayAlert("ERROR", "Username already exists, please try again.", "OK");
-                UserName.Text = null;
-                PassWord.Text = null;
-
-                return;
-            }
-
-            // Register new user with Firebase Authentication
             try
             {
-                var authProvider = Application.Current.Properties["LoginState"] as FirebaseAuthClient;
 
-                // Create user with entered info
-                var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(email, password, username);
-                var user = auth.User;
+                SignUpLoading.IsRunning = true;
+                string email = Email.Text.Trim();
+                string username = UserName.Text.Trim();
+                string password = PassWord.Text;
 
-                // Gets a token to be used for Realtime Database (Not implemented yet)
-                var token = await user.GetIdTokenAsync();
+                // Set BindingContext for _loginVM attribute as LoginVM
+                _loginVM = BindingContext as LoginVM;
 
-                // Creates a new LoginModel for user & adds to VM list
-                LoginModel newUser = new LoginModel(user.Uid, username, password, email);
-                _loginVM.LoginInfoList.Add(newUser);
+                // Checks entered email is in the correct format
+                if (IsValid(email) == false)
+                {
+                    await DisplayAlert("ERROR", "Email address is an incorrect format. Please try again.", "OK");
+                    UserName.Text = null;
+                    PassWord.Text = null;
+                    Email.Text = null;
 
-                // Saves user info to firebase
-                await myConnection.SubmitLogin(newUser);
+                    return;
+                }
 
-                // Sets current application user to the new user
-                Application.Current.Properties["currentUser"] = newUser;
+                // Checks that no fields are left empty
+                if (UserName.Text == null || PassWord.Text == null || Email.Text == null)
+                {
+                    await DisplayAlert("ERROR", "Entry fields cannot be blank. Please try again", "OK");
+                    UserName.Text = null;
+                    PassWord.Text = null;
+                    Email.Text = null;
 
-                SignUpLoading.IsRunning = false;
+                    return;
+                }
 
-                // Signs user in using email and password
-                var loginAuth = await authProvider.SignInWithEmailAndPasswordAsync(email, password);
+                // Checks username isn't already in use
+                var usernameCheck = _loginVM.LoginInfoList.Where(u => u.GetUsername() == username);
+                if (usernameCheck.Any())
+                {
+                    await DisplayAlert("ERROR", "Username already exists, please try again.", "OK");
+                    UserName.Text = null;
+                    PassWord.Text = null;
 
-                await Navigation.PushAsync(new Assessment());
+                    return;
+                }
+
+                // Register new user with Firebase Authentication
+                try
+                {
+                    var authProvider = Application.Current.Properties["LoginState"] as FirebaseAuthClient;
+
+                    // Create user with entered info
+                    var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(email, password, username);
+                    var user = auth.User;
+
+                    // Gets a token to be used for Realtime Database (Not implemented yet)
+                    var token = await user.GetIdTokenAsync();
+
+                    // Creates a new LoginModel for user & adds to VM list
+                    LoginModel newUser = new LoginModel(user.Uid, username, password, email);
+                    _loginVM.LoginInfoList.Add(newUser);
+
+                    // Saves user info to firebase
+                    await myConnection.SubmitLogin(newUser);
+
+                    // Sets current application user to the new user
+                    Application.Current.Properties["currentUser"] = newUser;
+
+                    SignUpLoading.IsRunning = false;
+
+                    // Signs user in using email and password
+                    var loginAuth = await authProvider.SignInWithEmailAndPasswordAsync(email, password);
+
+                    await Navigation.PushAsync(new Assessment());
+                }
+                catch (Exception ex)
+                {
+                    SignUpLoading.IsRunning = false;
+                    await App.Current.MainPage.DisplayAlert("Exception occurred", ex.Message, "OK");
+                }
             }
-            catch (Exception ex)
+            catch (NullReferenceException) 
             {
-                SignUpLoading.IsRunning = false;
-                await App.Current.MainPage.DisplayAlert("Exception occurred", ex.Message, "OK");
+                await DisplayAlert("ERROR", "Entry fields cannot be blank. Please try again", "OK");
             }
-            
         }
 
         // Uses MailAddress from System.Net.Mail to check if an email address is in the valid format. Used in
