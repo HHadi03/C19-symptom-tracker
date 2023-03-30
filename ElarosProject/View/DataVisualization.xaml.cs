@@ -64,6 +64,8 @@ namespace ElarosProject.View
                 chartViewSymptoms.Chart = new RadialGaugeChart
                 {
                     Entries = _viewModel._userSymptoms,
+                    MaxValue = 10,
+                    MinValue = 1,
                     LabelTextSize = 30f,
                     IsAnimated = true,
                     LineSize = 20
@@ -74,6 +76,8 @@ namespace ElarosProject.View
                 chartViewSymptoms.Chart = new RadialGaugeChart
                 {
                     Entries = _viewModel._userSymptoms,
+                    MaxValue = 10,
+                    MinValue = 1,
                     LabelTextSize = 30f,
                     IsAnimated = true,
                     LineSize = 30
@@ -83,6 +87,8 @@ namespace ElarosProject.View
             chartViewDisabilities.Chart = new RadialGaugeChart
             {
                 Entries = _viewModel._userDisabilities,
+                MaxValue = 10,
+                MinValue = 1,
                 LabelTextSize = 30f,
                 IsAnimated = true,
                 LineSize = 30
@@ -137,6 +143,8 @@ namespace ElarosProject.View
                 chartViewSymptoms.Chart = new RadialGaugeChart
                 {
                     Entries = _viewModel._userSymptoms,
+                    MaxValue = 10,
+                    MinValue = 1,
                     LabelTextSize = 30f,
                     IsAnimated = true,
                     LineSize = 20
@@ -147,6 +155,8 @@ namespace ElarosProject.View
                 chartViewSymptoms.Chart = new RadialGaugeChart
                 {
                     Entries = _viewModel._userSymptoms,
+                    MaxValue = 10,
+                    MinValue = 1,
                     LabelTextSize = 30f,
                     IsAnimated = true,
                     LineSize = 30
@@ -156,6 +166,8 @@ namespace ElarosProject.View
             chartViewDisabilities.Chart = new RadialGaugeChart
             {
                 Entries = _viewModel._userDisabilities,
+                MaxValue = 10,
+                MinValue = 1,
                 LabelTextSize = 30f,
                 LineSize = 30,
             };
