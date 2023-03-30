@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ElarosProject.View.FatigueTracker"
@@ -66,11 +66,11 @@
         <ScrollView>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.05*"></RowDefinition>
-                    <RowDefinition Height="0.1*"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="0.1*"></RowDefinition>
-                    <RowDefinition Height="0.1*"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -82,18 +82,19 @@
                     <Label x:Name="showDate" Style="{StaticResource dateLabel}"/>
                 </Frame>
                   
-                <StackLayout  Margin="10" Grid.Row="1" Grid.ColumnSpan="2">
-                    <Label Style="{StaticResource headingLabel}" Text="Your Activities"/>
-                    <BoxView HeightRequest="1" Color="#00000" IsVisible="True"/>
-                    <Label Style="{StaticResource regularLabel}" Text="&#x2022; Click the + button to record a new activity "/>
+                
+                    <Label Grid.Row="1" Style="{StaticResource headingLabel}" Text="Your Activities"/>
+                    <BoxView  Grid.Row="1" HeightRequest="1" Color="#00000" IsVisible="True"/>
+                <StackLayout Grid.Row="2" Grid.ColumnSpan="2">
+                     <Label Style="{StaticResource regularLabel}" Text="&#x2022; Click the + button to enter your activities"/>
                     <Label Style="{StaticResource regularLabel}" Text="&#x2022; Record your Fatigue levels on a scale of 1-10"/>
-                    <Label Style="{StaticResource regularLabel}" Text="&#x2022; Click 'Submit' to save the entry to your diary"/>
-                 
+                    <Label Style="{StaticResource regularLabel}" Text="&#x2022; Click 'Save' to add the entry to your diary"/>
                 </StackLayout>
-                    
+       
+          
                 <Label Style="{StaticResource headingLabel}" Margin="10" Grid.Row="1"/>
 
-                <ScrollView Margin="5" Grid.Row="2" Grid.ColumnSpan="2">
+                <ScrollView Margin="5" Grid.Row="3" Grid.ColumnSpan="2">
                     <StackLayout x:Name="myLayout">
                         <ImageButton HeightRequest="30" WidthRequest="30" Source="bluePlus.png" Clicked="addItem"/>   
                     </StackLayout>
@@ -107,9 +108,10 @@
                     Path=Value}"/>
                 </StackLayout>
 
-                <Button Style="{StaticResource myButton}" Grid.Row="4" Grid.ColumnSpan="2" Text="Submit" Clicked="OnButtonClicked"></Button>
+                <Button Style="{StaticResource myButton}" Grid.Row="4" Grid.ColumnSpan="2" Text="Save" Clicked="OnButtonClicked"></Button>
             </Grid>
         </ScrollView>
+       
 
         </Frame>
     </StackLayout>

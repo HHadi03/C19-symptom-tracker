@@ -30,23 +30,18 @@ namespace ElarosProject.View
 
         void entryUpdated(object sender,TextChangedEventArgs e)
         {
-
             userEntry = e.NewTextValue;
-
         }
 
         void addItem(object sender, EventArgs args)
         {
-
-            var newActivity = new Entry { Placeholder = "Add Entry", PlaceholderColor = Color.LightGray, ClearButtonVisibility = ClearButtonVisibility.WhileEditing, FontFamily = "myFont"  };
+            var newActivity = new Entry { Placeholder = "Add Entry", PlaceholderColor = Color.Black, ClearButtonVisibility = ClearButtonVisibility.WhileEditing, FontFamily = "myFont"  };
             myLayout.Children.Insert(myLayout.Children.Count - 1, newActivity);
             newActivity.TextChanged += entryUpdated;
-
         }
     
         private async void OnButtonClicked(Object sender, EventArgs e) 
         {
-
             string date = showDate.Text;
             string fatigueLevel = slider.Value.ToString();
             string activity = userEntry;
@@ -56,7 +51,7 @@ namespace ElarosProject.View
                 await DisplayAlert("Error","you must enter at least one activity to proceed","Cancel");
             }
 
-            Model.fatigueModel myModel = new Model.fatigueModel();
+            fatigueModel myModel = new fatigueModel();
             myModel.userID = currentUser.UserID;
             myModel.date = date;
             myModel.activities = activity;
@@ -65,17 +60,16 @@ namespace ElarosProject.View
 
             if(savedEntry)
             {
-                await DisplayAlert("Info", "successfully saved entry", "ok");
+                await DisplayAlert("Success", "Entry Saved, Click Ok to continue", "Ok");
                 await this.Navigation.PushAsync(new fatigueEntries());
             }
             else
             {
-                await DisplayAlert("error", "could not save", "ok");
+                await DisplayAlert("Error", "Unable to save entry", "Ok");
             }
 
         }
-
-        async void LogoutClick(object sender, EventArgs e)
+         async void LogoutClick(object sender, EventArgs e)
         {
             bool response = await DisplayAlert("Logout", "Do you want to logout?", "Yes", "No");
 
@@ -89,4 +83,5 @@ namespace ElarosProject.View
         }
     }
 }
+
 

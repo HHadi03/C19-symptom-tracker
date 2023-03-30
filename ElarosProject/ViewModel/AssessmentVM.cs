@@ -52,6 +52,26 @@ namespace ElarosProject.ViewModel
             }
         }
 
+        public async void UpdateSymptom() 
+        {
+            List<AssessmentModel> symptomss = await myConnection.getUpdatedSymptom();
+            foreach (var entry in symptomss)
+            {
+                SymptomUpdate.Add(entry);
+            }
+
+        }
+
+        public ObservableCollection<AssessmentModel> getSymptomByUser(string userID) 
+        {
+            ObservableCollection<AssessmentModel> groupedSymptoms = new ObservableCollection<AssessmentModel>();
+            var result = SymptomUpdate.Where(u => u.User == userID).GroupBy(s => s.Symptom);
+            foreach (var record in result) 
+            {
+                groupedSymptoms.Add(record.FirstOrDefault());  
+            }
+            return groupedSymptoms;
+        }
         public ObservableCollection<AssessmentModel> SpecificAssessmentResults(string currentId)
         {
             var userSpecific = AssessmentResults.Where(u => u.User == currentId);
@@ -64,27 +84,5 @@ namespace ElarosProject.ViewModel
             return results;
         }
 
-        public async void UpdateSymptom()
-        {
-            List<AssessmentModel> symptomss = await myConnection.getUpdatedSymptom();
-            foreach (var entry in symptomss)
-            {
-                SymptomUpdate.Add(entry);
-            }
-
-        }
-
-        public ObservableCollection<AssessmentModel> getSymptomByUser(string userID) //my update- sumaiya
-        {
-            ObservableCollection<AssessmentModel> groupedSymptoms = new ObservableCollection<AssessmentModel>();
-            var result = SymptomUpdate.Where(u => u.User == userID).GroupBy(s => s.Symptom);
-            foreach (var record in result)
-            {
-                groupedSymptoms.Add(record.FirstOrDefault()); //check cast- may be causing issues when building project 
-            }
-            return groupedSymptoms;
-        }
     }
-
-    
 }

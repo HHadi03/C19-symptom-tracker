@@ -56,8 +56,9 @@
                     <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
                 </Frame>
 
-               
+               <Button Style="{StaticResource myButton}" Text="Sort by worst" Clicked="sortBy"></Button>
                 <ListView Margin="10" x:Name="listView" ItemsSource="{Binding userEntries}">
+
                     <ListView.Header>
                         <Grid>
 
@@ -104,7 +105,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
                  <BoxView HeightRequest="0.1" Grid.ColumnSpan="3" Color="#296D99" IsVisible="True"/>
-                <Button Style="{StaticResource myButton}" Text="Sort by worst" Clicked="sortBy"></Button>
+                
                  <StackLayout>
                     <microcharts:ChartView Margin="30" HeightRequest="300" WidthRequest="500" x:Name="testchart" Chart="{Binding Mychart}"/>
                 </StackLayout>
