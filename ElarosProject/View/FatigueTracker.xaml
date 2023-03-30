@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ElarosProject.View.FatigueTracker"
+             Title="Fatigue Tracker">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="customFrame" TargetType="Frame">
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="BorderColor" Value="#91BAD2"/>
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="HasShadow" Value="True"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource AppBackgroundColor}"/>
+            </Style>
+
+            <Style x:Key="myButton" TargetType="Button">
+                <Setter Property="BorderColor" Value="#91BAD2"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="BorderWidth" Value="1.5"/>
+                <Setter Property="BackgroundColor" Value="#d9f1ff"/>
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="FontFamily" Value="boldFont"/>
+                <Setter Property="TextColor" Value="#296D99"/>
+            </Style>
+
+            <Style x:Key="headingLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="FontFamily" Value="boldFont"/>
+                <Setter Property="TextColor" Value="#296D98"/>
+            </Style>
+
+            <Style x:Key="dateLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Title"/>
+                <Setter Property="FontFamily" Value="boldFont"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+
+            <Style x:Key="regularLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Default"/>
+                <Setter Property="FontFamily" Value="myFont"/>
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+
+            <Style TargetType="ImageButton">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout BackgroundColor="{StaticResource AppBackgroundColor}">
+        <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
+            <RelativeLayout>
+                <Image Source="ElarosLogo.png" HeightRequest="80" x:Name="ElarosLogo"
+                           RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.4}"
+                           RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"/>
+                <ImageButton Source="logout.png" BackgroundColor="Transparent" HeightRequest="30" Clicked="LogoutClick"
+                           RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ElarosLogo, Property=X, Constant=180}"
+                           RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ElarosLogo, Property=Y, Constant=0}"/>
+            </RelativeLayout>
+        </Frame>
+
+        <Frame Style="{StaticResource customFrame}">
+
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*"></ColumnDefinition>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Frame Style="{StaticResource customFrame}" Grid.ColumnSpan="2">
+                    <Label x:Name="showDate" Style="{StaticResource dateLabel}"/>
+                </Frame>
+                  
+                
+                    <Label Grid.Row="1" Style="{StaticResource headingLabel}" Text="Your Activities"/>
+                    <BoxView  Grid.Row="1" HeightRequest="1" Color="#00000" IsVisible="True"/>
+                <StackLayout Grid.Row="2" Grid.ColumnSpan="2">
+                     <Label Style="{StaticResource regularLabel}" Text="&#x2022; Click the + button to enter your activities"/>
+                    <Label Style="{StaticResource regularLabel}" Text="&#x2022; Record your Fatigue levels on a scale of 1-10"/>
+                    <Label Style="{StaticResource regularLabel}" Text="&#x2022; Click 'Save' to add the entry to your diary"/>
+                </StackLayout>
+       
+          
+                <Label Style="{StaticResource headingLabel}" Margin="10" Grid.Row="1"/>
+
+                <ScrollView Margin="5" Grid.Row="3" Grid.ColumnSpan="2">
+                    <StackLayout x:Name="myLayout">
+                        <ImageButton HeightRequest="30" WidthRequest="30" Source="bluePlus.png" Clicked="addItem"/>   
+                    </StackLayout>
+                </ScrollView>
+
+                <StackLayout Margin="20" Grid.Row="3" Grid.ColumnSpan="2">
+                    <Label Style="{StaticResource headingLabel}" Text="Fatigue Level"/>
+                    <Slider x:Name="slider"
+                    Minimum="0" Maximum="10" ThumbColor="Black"  MinimumTrackColor="red" MaximumTrackColor="Blue" ValueChanged="sliderChange"/>
+                    <Label Style="{StaticResource regularLabel}" Text="{Binding Source={x:Reference slider},
+                    Path=Value}"/>
+                </StackLayout>
+
+                <Button Style="{StaticResource myButton}" Grid.Row="4" Grid.ColumnSpan="2" Text="Save" Clicked="OnButtonClicked"></Button>
+            </Grid>
+        </ScrollView>
+       
+
+        </Frame>
+    </StackLayout>
+</ContentPage>
+
