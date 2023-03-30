@@ -48,7 +48,7 @@
                             </ListView>
                         </StackLayout>
                     </Frame>
-                    <Label Text="Functional Disability" TextColor="{StaticResource AppTextColor}" HorizontalOptions="Center" FontSize="Medium" Padding="0,25,0,10" FontAttributes="Bold"/>
+                    <Label Text="Functional Disability Severity" TextColor="{StaticResource AppTextColor}" HorizontalOptions="Center" FontSize="Medium" Padding="0,25,0,10" FontAttributes="Bold"/>
                     <Frame x:Name="disabilityFrame" HeightRequest="550">
                         <StackLayout>
                             <Label x:Name="disabilityLabel" Text="No functional disability info to populate chart" TextColor="{StaticResource AppTextColor}" HorizontalOptions="Center" IsVisible="false"/>
