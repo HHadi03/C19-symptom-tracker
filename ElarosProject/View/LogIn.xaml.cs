@@ -38,7 +38,7 @@ namespace ElarosProject.View
             _loginVM = BindingContext as LoginVM;
 
             // Checks entered email is in the correct format
-            if (IsValid(EmailAddress.Text) == false)
+            if (IsValid(EmailAddress.Text.Trim()) == false)
             {
                 await DisplayAlert("ERROR", "Email address is an incorrect format. Please try again.", "OK");
                 EmailAddress.Text = null;
@@ -49,7 +49,7 @@ namespace ElarosProject.View
             }
 
             // Checks that no fields are left empty
-            if (EmailAddress.Text == null || PassWord.Text == null)
+            if (EmailAddress.Text.Trim() == null || PassWord.Text == null)
             {
                 await DisplayAlert("ERROR", "Entry fields cannot be blank. Please try again", "OK");
                 EmailAddress.Text = null;
@@ -65,7 +65,7 @@ namespace ElarosProject.View
                 var authProvider = Application.Current.Properties["LoginState"] as FirebaseAuthClient;
 
                 // Signs user in using email and password
-                var auth = await authProvider.SignInWithEmailAndPasswordAsync(EmailAddress.Text, PassWord.Text);
+                var auth = await authProvider.SignInWithEmailAndPasswordAsync(EmailAddress.Text.Trim(), PassWord.Text);
                 
                 if (auth != null)
                 {
@@ -77,7 +77,7 @@ namespace ElarosProject.View
                     // Loop through each user and if entered username / password matches then display success alert
                     foreach (LoginModel login in _loginVM.LoginInfoList)
                     {
-                        if (EmailAddress.Text == login.GetEmail() && PassWord.Text == login.GetPassword())
+                        if (EmailAddress.Text.Trim() == login.GetEmail() && PassWord.Text == login.GetPassword())
                         {
                             loginFound = true;
                             Application.Current.Properties["currentUser"] = login;

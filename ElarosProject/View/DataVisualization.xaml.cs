@@ -64,7 +64,7 @@ namespace ElarosProject.View
                 Entries = _viewModel._userSymptoms,
                 LabelTextSize = 30f,
                 IsAnimated = true,
-                LineSize = 40
+                LineSize = 30
             };
 
             chartViewDisabilities.Chart = new RadialGaugeChart
@@ -72,7 +72,7 @@ namespace ElarosProject.View
                 Entries = _viewModel._userDisabilities,
                 LabelTextSize = 30f,
                 IsAnimated = true,
-                LineSize = 40
+                LineSize = 30
             };
         }
 
@@ -123,14 +123,14 @@ namespace ElarosProject.View
             {
                 Entries = _viewModel._userSymptoms,
                 LabelTextSize = 30f,
-                LineSize = 40,
+                LineSize = 30,
             };
 
             chartViewDisabilities.Chart = new RadialGaugeChart
             {
                 Entries = _viewModel._userDisabilities,
                 LabelTextSize = 30f,
-                LineSize = 40,
+                LineSize = 30,
             };
         }
 
