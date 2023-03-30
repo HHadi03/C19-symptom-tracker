@@ -28,7 +28,8 @@ namespace ElarosProject.View
         {
             InitializeComponent();
             uID = currentUser.GetUserID();
-            updatedSymptom = _assessmentVM.getSymptomByUser(uID);
+            //updatedSymptom = _assessmentVM.getSymptomByUser(uID);
+            updatedSymptom = _assessmentVM.SpecificAssessmentResults(uID);
             SymptomCarousel.BindingContext = updatedSymptom;
 
         }
@@ -60,12 +61,10 @@ namespace ElarosProject.View
 
         async void submitUpdate(object sender, EventArgs e)
         {
-            
-                foreach (var update in UpdateList)
-                {
-                    await connect.SaveUpdatedSymptoms(update);
-                }
-    
+            //foreach (var update in UpdateList)
+            //{
+            //    await connect.SaveUpdatedSymptoms(update);
+            //}
         }
     
     }
