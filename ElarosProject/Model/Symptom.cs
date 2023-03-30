@@ -24,6 +24,5 @@ namespace ElarosProject.Model
         {
             return SymptomName;
         }
-
     }
 }

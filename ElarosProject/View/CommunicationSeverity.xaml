@@ -8,8 +8,9 @@
         <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
             <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="90"></Image>
         </Frame>
-        <ProgressBar x:Name="progressBar" Progress="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0,10,0,0" HeightRequest="10"/>
-        <Label Text="Symptom Severity" TextColor="{StaticResource AppTextColor}" Padding="0,25" FontAttributes="Bold" FontSize="Large" HorizontalOptions="CenterAndExpand" />
+            <Label x:Name="progressLabel" Text="0/12 Symptoms Selected" TextColor="{StaticResource AppTextColor}" FontSize="Small" HorizontalOptions="CenterAndExpand" Padding="0,10" />
+            <!--<ProgressBar x:Name="progressBar" Progress="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0,10,0,0" HeightRequest="10"/>-->
+            <Label Text="Symptom Severity" TextColor="{StaticResource AppTextColor}" Padding="0,25" FontAttributes="Bold" FontSize="Large" HorizontalOptions="CenterAndExpand" />
         <Frame BorderColor="DarkOrange" Margin="15">
             <Label Text="People with communication difficulties may: have little or no speech or speech that is difficult to understand. have difficulty saying or generating words or sentences. have difficulty understanding what other people are saying."
                TextColor="{StaticResource AppTextColor}" Padding="10,5,5, 10" HorizontalOptions="Center" FontSize="Medium" />

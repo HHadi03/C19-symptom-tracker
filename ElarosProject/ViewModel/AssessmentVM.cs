@@ -21,7 +21,7 @@ namespace ElarosProject.ViewModel
         {
             SymptomList = new ObservableCollection<Symptom>
             {
-                new Symptom("Breathlessness", "BreathlessnessSeverity.xaml"),
+                new Symptom("Breathlessness", "BreathlessnessSeverity.xaml,"),
                 new Symptom("Cough", "CoughSeverity.xaml"),
                 new Symptom("Voice Change/Noisy Breathing", "VoiceSeverity.xaml"),
                 new Symptom("Continence", "ContinenceSeverity.xaml"),
@@ -83,6 +83,5 @@ namespace ElarosProject.ViewModel
 
             return results;
         }
-
     }
 }

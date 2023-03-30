@@ -66,7 +66,9 @@ namespace ElarosProject.View
         private void UpdateProgressBar()
         {
             double progress = (double)AssessmentModel.completedPages / 12;
-            progressBar.Progress = progress;
+            //progressBar.Progress = progress;
+
+            progressLabel.Text = $"{AssessmentModel.completedPages} Symptoms Selected";
         }
     }
 }

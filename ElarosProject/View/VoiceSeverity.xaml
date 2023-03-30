@@ -8,7 +8,8 @@
             <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
                 <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="90"></Image>
             </Frame>
-            <ProgressBar x:Name="progressBar" Progress="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0,10,0,0" HeightRequest="10"/>
+            <Label x:Name="progressLabel" Text="0/12 Symptoms Selected" TextColor="{StaticResource AppTextColor}" FontSize="Small" HorizontalOptions="CenterAndExpand" Padding="0,10" />
+            <!--<ProgressBar x:Name="progressBar" Progress="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0,10,0,0" HeightRequest="10"/>-->
             <Label Text="Symptom Severity" TextColor="{StaticResource AppTextColor}" Padding="0,25" FontAttributes="Bold" FontSize="Large" HorizontalOptions="CenterAndExpand" />
             <Frame BorderColor="DarkOrange" Margin="15">
                 <Label Text="Hoarseness or Dysphonia means a change in the sound of someone's voice, people suffering from hoarseness can experience a strained, husky or breathy voice."
