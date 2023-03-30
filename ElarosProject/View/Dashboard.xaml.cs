@@ -59,7 +59,7 @@ namespace ElarosProject.View
 
         async void CarouselScroll()
         {
-            Device.StartTimer(TimeSpan.FromSeconds(3.5), (Func<bool>)(() =>
+            Device.StartTimer(TimeSpan.FromSeconds(5), (Func<bool>)(() =>
             {
                 if (specificAssessmentResults.Count > 0)
                 {
