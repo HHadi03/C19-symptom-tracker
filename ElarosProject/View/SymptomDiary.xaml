@@ -109,7 +109,7 @@
             <IndicatorView x:Name="indicatorView"
                    Margin="0,0,0,100"  
                    IndicatorColor="#91BAD2"
-                   SelectedIndicatorColor="GreenYellow"
+                   SelectedIndicatorColor="Orange"
                    HorizontalOptions="Center" >
             </IndicatorView>
 

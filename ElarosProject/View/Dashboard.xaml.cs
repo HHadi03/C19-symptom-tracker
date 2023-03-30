@@ -53,27 +53,6 @@ namespace ElarosProject.View
             // Display welcome to user
             WelcomeLabel.Text = "Welcome " + currentUser.GetUsername() + "!";
 
-            // Autoscroll carousels
-            CarouselScroll();
-        }
-
-        async void CarouselScroll()
-        {
-            Device.StartTimer(TimeSpan.FromSeconds(5), (Func<bool>)(() =>
-            {
-                if (specificAssessmentResults.Count > 0)
-                {
-                    SymptomCarousel.Position = (SymptomCarousel.Position + 1) % specificAssessmentResults.Count;
-                }
-
-                if (specificGoals.Count > 0)
-                {
-                    GoalCarousel.Position = (GoalCarousel.Position + 1) % specificGoals.Count;
-                }
-
-                return true;
-            })
-            );
         }
 
         async void LogoutClick(object sender, EventArgs e)

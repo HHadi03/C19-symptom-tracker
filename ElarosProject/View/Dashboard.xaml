@@ -30,7 +30,7 @@
                 <Label x:Name="WelcomeLabel" HorizontalOptions="Center" Text="" TextColor="{StaticResource AppTextColor}" FontAttributes="Bold" FontSize="28" Padding="0,25"/>
 
                 <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Your current symptoms:" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="20,0"/>
-                <CarouselView x:Name="SymptomCarousel" ItemsSource="{Binding}" Margin="30,10" HeightRequest="180" Loop="False">
+                <CarouselView x:Name="SymptomCarousel" ItemsSource="{Binding}" Margin="30,10" HeightRequest="180" Loop="True" IndicatorView="indicatorSymptom">
                     <CarouselView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout>
@@ -46,8 +46,15 @@
                     </CarouselView.ItemTemplate>
                 </CarouselView>
 
+                <IndicatorView x:Name="indicatorSymptom"
+                   Margin="0,-20,0,20"  
+                   IndicatorColor="#91BAD2"
+                   SelectedIndicatorColor="Orange"
+                   HorizontalOptions="Center" >
+                </IndicatorView>
+
                 <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Your current goals:" TextColor="{StaticResource AppTextColor}" FontSize="24" Padding="20,0"/>
-                <CarouselView x:Name="GoalCarousel" ItemsSource="{Binding}" Margin="30,10" HeightRequest="180" Loop="False">
+                <CarouselView x:Name="GoalCarousel" ItemsSource="{Binding}" Margin="30,10" HeightRequest="180" Loop="True" IndicatorView="indicatorGoal">
                     <CarouselView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout>
@@ -62,6 +69,13 @@
                         </DataTemplate>
                     </CarouselView.ItemTemplate>
                 </CarouselView>
+
+                <IndicatorView x:Name="indicatorGoal"
+                   Margin="0,-20,0,20"  
+                   IndicatorColor="#91BAD2"
+                   SelectedIndicatorColor="Orange"
+                   HorizontalOptions="Center" >
+                </IndicatorView>
             </StackLayout>
         </ScrollView>
     </ContentPage>
