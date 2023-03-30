@@ -43,7 +43,7 @@ namespace ElarosProject.View
                     Title = "Elaros App",
                     Schedule = new NotificationRequestSchedule
                     {
-                        NotifyTime = DateTime.Now.AddMinutes(1)
+                        NotifyTime = DateTime.Now.AddSeconds(30)
                     }
                 };
 
