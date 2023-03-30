@@ -69,7 +69,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
    
-    <StackLayout>
+    <StackLayout BackgroundColor="{StaticResource AppBackgroundColor}">
        
         <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
             <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
@@ -93,7 +93,7 @@
                             <Label  Style="{StaticResource regularLabel}" Text="Last Updated:"/>
                             <Label Style="{StaticResource regularLabel}" Text="{Binding DateLogged}"/>
                             <Label  Style="{StaticResource regularLabel}" Text="Severity:"/>
-                            <Label  Style="{StaticResource regularLabel}" Text="{Binding updatedSeverity}"/>
+                            <Label  Style="{StaticResource regularLabel}" Text="{Binding Severity}"/>
                             </StackLayout>
                        </Frame>
                 </StackLayout>
