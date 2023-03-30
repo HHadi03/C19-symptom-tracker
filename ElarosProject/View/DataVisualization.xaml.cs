@@ -59,14 +59,27 @@ namespace ElarosProject.View
                 chartViewDisabilities.HeightRequest = 80;
             }
 
-            chartViewSymptoms.Chart = new RadialGaugeChart
+            if (_viewModel._userSymptoms.Count() > 5)
             {
-                Entries = _viewModel._userSymptoms,
-                LabelTextSize = 30f,
-                IsAnimated = true,
-                LineSize = 30
-            };
-
+                chartViewSymptoms.Chart = new RadialGaugeChart
+                {
+                    Entries = _viewModel._userSymptoms,
+                    LabelTextSize = 30f,
+                    IsAnimated = true,
+                    LineSize = 20
+                };
+            }
+            else
+            {
+                chartViewSymptoms.Chart = new RadialGaugeChart
+                {
+                    Entries = _viewModel._userSymptoms,
+                    LabelTextSize = 30f,
+                    IsAnimated = true,
+                    LineSize = 30
+                };
+            }
+            
             chartViewDisabilities.Chart = new RadialGaugeChart
             {
                 Entries = _viewModel._userDisabilities,
@@ -119,12 +132,26 @@ namespace ElarosProject.View
 
         private void RadialChartClicked(object sender, EventArgs e)
         {
-            chartViewSymptoms.Chart = new RadialGaugeChart
+            if (_viewModel._userSymptoms.Count() > 5)
             {
-                Entries = _viewModel._userSymptoms,
-                LabelTextSize = 30f,
-                LineSize = 30,
-            };
+                chartViewSymptoms.Chart = new RadialGaugeChart
+                {
+                    Entries = _viewModel._userSymptoms,
+                    LabelTextSize = 30f,
+                    IsAnimated = true,
+                    LineSize = 20
+                };
+            }
+            else
+            {
+                chartViewSymptoms.Chart = new RadialGaugeChart
+                {
+                    Entries = _viewModel._userSymptoms,
+                    LabelTextSize = 30f,
+                    IsAnimated = true,
+                    LineSize = 30
+                };
+            }
 
             chartViewDisabilities.Chart = new RadialGaugeChart
             {
