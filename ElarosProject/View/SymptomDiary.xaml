@@ -68,58 +68,62 @@
              </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-   
-    <StackLayout BackgroundColor="{StaticResource AppBackgroundColor}">
-       
-        <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
-            <Image Source="ElarosLogo.png" HorizontalOptions="Center" HeightRequest="80"></Image>
-        </Frame>
+        <StackLayout BackgroundColor="{StaticResource AppBackgroundColor}">
 
-        <Frame Style="{StaticResource customFrame}">
-            <Label Style="{StaticResource headingLabel}" Text="Symptom Diary"/>
+            <Frame BackgroundColor="{StaticResource FrameBackgroundColor}">
+                <RelativeLayout>
+                    <Image Source="ElarosLogo.png" HeightRequest="80" x:Name="ElarosLogo"
+                           RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.4}"
+                           RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"/>
+                    <ImageButton Source="logout.png" BackgroundColor="Transparent" HeightRequest="30" Clicked="LogoutClick"
+                           RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ElarosLogo, Property=X, Constant=180}"
+                           RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ElarosLogo, Property=Y, Constant=0}"/>
+                </RelativeLayout>
+            </Frame>
 
-        </Frame>
-      
-         <CarouselView x:Name="SymptomCarousel" ItemsSource="{Binding}" CurrentItemChanged="SymptomSwiped" Loop="False" MinimumHeightRequest="250"
+            <Frame Style="{StaticResource customFrame}">
+                <Label Style="{StaticResource headingLabel}" Text="Symptom Diary"/>
+            </Frame>
+
+            <CarouselView x:Name="SymptomCarousel" ItemsSource="{Binding}" CurrentItemChanged="SymptomSwiped" Loop="False" MinimumHeightRequest="250"
                   IndicatorView="indicatorView" WidthRequest="50">
-        <CarouselView.ItemTemplate>
-            <DataTemplate>
-              
-                <StackLayout>
-                    <Frame Style="{StaticResource gradientFrame}">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+
                         <StackLayout>
-                        <Label Style="{StaticResource headingLabel}" Text="{Binding Symptom}"/>
-                            <BoxView HeightRequest="1" Color="#296D98" IsVisible="True"/>
-                            <Label  Style="{StaticResource regularLabel}" Text="Last Updated:"/>
-                            <Label Style="{StaticResource regularLabel}" Text="{Binding DateLogged}"/>
-                            <Label  Style="{StaticResource regularLabel}" Text="Severity:"/>
-                            <Label  Style="{StaticResource regularLabel}" Text="{Binding Severity}"/>
-                            </StackLayout>
-                       </Frame>
-                </StackLayout>
-            </DataTemplate>
-        </CarouselView.ItemTemplate>  
-    </CarouselView>
-  
-    <IndicatorView x:Name="indicatorView"
+                            <Frame Style="{StaticResource gradientFrame}">
+                                <StackLayout>
+                                    <Label Style="{StaticResource headingLabel}" Text="{Binding Symptom}"/>
+                                    <BoxView HeightRequest="1" Color="#296D98" IsVisible="True"/>
+                                    <Label  Style="{StaticResource regularLabel}" Text="Last Updated:"/>
+                                    <Label Style="{StaticResource regularLabel}" Text="{Binding DateLogged}"/>
+                                    <Label  Style="{StaticResource regularLabel}" Text="Severity:"/>
+                                    <Label  Style="{StaticResource regularLabel}" Text="{Binding Severity}"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <IndicatorView x:Name="indicatorView"
                    Margin="0,0,0,100"  
                    IndicatorColor="#91BAD2"
                    SelectedIndicatorColor="GreenYellow"
-                   HorizontalOptions="Center" >  
-    </IndicatorView>
-       
-       
-       <StackLayout Margin="0,-50,0,0"  x:Name="sliderContainer" >
-           <Label Style="{StaticResource headingLabel}" Text="{Binding Source={x:Reference slider},
+                   HorizontalOptions="Center" >
+            </IndicatorView>
+
+
+            <StackLayout Margin="0,-50,0,0"  x:Name="sliderContainer" >
+                <Label Style="{StaticResource headingLabel}" Text="{Binding Source={x:Reference slider},
                     Path=Value}" HorizontalTextAlignment="Center"/>
-                         <Slider x:Name="slider"
-                    Minimum="0" Maximum="10" ThumbColor="#91BAD2"  MinimumTrackColor="red" MaximumTrackColor="#296D99" ValueChanged="sliderChange"/>    
+                <Slider x:Name="slider"
+                    Minimum="0" Maximum="10" ThumbColor="#91BAD2"  MinimumTrackColor="red" MaximumTrackColor="#296D99" ValueChanged="sliderChange"/>
+            </StackLayout>
+
+            <Button Style="{StaticResource myButton}" Text="Update Severity" Clicked="submitUpdate"/>
+
         </StackLayout>
-       
-       <Button Style="{StaticResource myButton}" Text="Update Severity" Clicked="submitUpdate"/>
-         
-    </StackLayout>
-      
-        
+     
 </ContentPage>
 
