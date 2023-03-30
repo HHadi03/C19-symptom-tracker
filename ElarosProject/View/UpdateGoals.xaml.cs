@@ -39,26 +39,34 @@ namespace ElarosProject.View
 
         protected async void UpdateClick(object sender, EventArgs e)
         {
-            GoalModel fromPicker = (GoalModel)GoalPicker.SelectedItem;
-            string goalName = fromPicker.Name;
-
-            //code to update goal
-            foreach (GoalModel goal in _goalVM.GoalList)
+            try
             {
-                if (goal.Name == goalName)
+
+                GoalModel fromPicker = (GoalModel)GoalPicker.SelectedItem;
+                string goalName = fromPicker.Name;
+
+                //code to update goal
+                foreach (GoalModel goal in _goalVM.GoalList)
                 {
-                    goal.SeverityLevel = SeverityPicker.SelectedItem.ToString();
-                    goal.TargetDate = TargetDatePicker.Date.ToString("dd/MM/yyyy");
-                    goal.UpdateDate = DateTime.Now.ToString("dd/MM/yyyy");
+                    if (goal.Name == goalName)
+                    {
+                        goal.SeverityLevel = SeverityPicker.SelectedItem.ToString();
+                        goal.TargetDate = TargetDatePicker.Date.ToString("dd/MM/yyyy");
+                        goal.UpdateDate = DateTime.Now.ToString("dd/MM/yyyy");
 
-                    GoalModel newGoal = new GoalModel(goal.Name, goal.GoalSymptom, goal.SeverityLevel, goal.StartDate, goal.TargetDate, goal.UserID);
+                        GoalModel newGoal = new GoalModel(goal.Name, goal.GoalSymptom, goal.SeverityLevel, goal.StartDate, goal.TargetDate, goal.UserID);
 
-                    await fbClient.Child("User Goals").Child(goal.Name + " - " + goal.UserID).PutAsync(JsonConvert.SerializeObject(newGoal));
+                        await fbClient.Child("User Goals").Child(goal.Name + " - " + goal.UserID).PutAsync(JsonConvert.SerializeObject(newGoal));
+                    }
                 }
-            }
 
-            await DisplayAlert("SUCCESS", "Goal updated", "OK");
-            await this.Navigation.PushAsync(new Dashboard());
+                await DisplayAlert("SUCCESS", "Goal updated", "OK");
+                await this.Navigation.PushAsync(new Dashboard());
+            }
+            catch (NullReferenceException) 
+            {
+
+            }
         }
 
         protected async void DeleteClick(object sender, EventArgs e)

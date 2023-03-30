@@ -31,12 +31,12 @@ namespace ElarosProject.Droid
                 FirebasePushNotificationManager.DefaultNotificationChannelName = "General";
             }
 
-            
-#if DEBUG
-            FirebasePushNotificationManager.Initialize(this, true);
-#else
-            FirebasePushNotificationManager.Initialize(this,false);
-#endif
+
+//#if DEBUG
+//            FirebasePushNotificationManager.Initialize(this, true);
+//#else
+//            FirebasePushNotificationManager.Initialize(this,false);
+//#endif
 
             CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
             {
