@@ -17,7 +17,7 @@ namespace ElarosProject
         FirebaseClient fbClient = new FirebaseClient("https://elarosdb-default-rtdb.europe-west1.firebasedatabase.app/",
                                   new FirebaseOptions 
                                   { 
-                                      AuthTokenAsyncFactory = () => Task.FromResult("XnCOqCvY6p3hd7G440YmHXABryEhMKCoINcshr2a") 
+                                      AuthTokenAsyncFactory = () => Task.FromResult() 
                                   });
 
         public async Task<bool> SubmitLogin(LoginModel login)
